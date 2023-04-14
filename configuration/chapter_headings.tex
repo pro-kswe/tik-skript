@@ -1,0 +1,136 @@
+\newtoggle{image}
+\newtoggle{imagehover}
+
+\newcommand{\thechapterimagetitle}{}
+\newcommand{\chapterimagetitle}[1]{\renewcommand{\thechapterimagetitle}{\small #1}}%
+
+\newcommand{\thechapterimageurl}{}
+\newcommand{\chapterimageurl}[1]{\renewcommand{\thechapterimageurl}{\small #1}}%
+
+\newcommand{\thechapterimagehover}{}
+\newcommand{\chapterimagehover}[1]{\renewcommand{\thechapterimagehover}{\vspace{0.25cm} \hrule \vspace{0.1cm} \small #1}}%
+
+\newcommand{\thechapterimage}{}
+\newcommand{\chapterimage}[1]{\renewcommand{\thechapterimage}{\includegraphics[width=0.95\linewidth, keepaspectratio]{#1}}}%
+
+\newcommand{\autodot}{.}
+
+\def\@makechapterhead#1{%
+{\parindent \z@ \raggedright \normalfont
+\ifnum \c@secnumdepth >\m@ne
+\if@mainmatter
+\begin{tikzpicture}[remember picture, overlay]
+\node at (current page.north west)
+{
+\begin{tikzpicture}[remember picture, overlay]
+\iftoggle{image}{
+\node[anchor=north west] (rect) at (0,0) [fill=chaptercolor, minimum width=\paperwidth, minimum height=10.5cm] {};
+}
+{
+\node[anchor=north west] (rect) at (0,0) [fill=chaptercolor, minimum width=\paperwidth, minimum height=5.5cm] {};
+}
+\node (top) at (current page.north) {};
+\node[shift={(0cm,-9cm)}] (bottom) at (current page.north) {};
+\iftoggle{image}{
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+}
+{
+\draw[anchor=west] (\Gm@lmargin,-4cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+}
+\iftoggle{image}{
+\draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter\autodot~#1\strut};
+}
+{
+\draw[anchor=west] (\Gm@lmargin+.3cm,-4cm) node {\huge\sffamily\bfseries\color{black}\thechapter\autodot~#1\strut};
+}
+\iftoggle{image}{
+	\node[inner sep=0pt, font=\sffamily] at ($(top)!0.5!(bottom)$) {
+		\fcolorbox{ocre}{white}{
+			\begin{minipage}{\linewidth}
+				\centering
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.45\linewidth}
+						\thechapterimagetitle
+					\end{minipage}
+				}
+				\hfill
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.45\linewidth}
+						\begin{flushright}
+							\thechapterimageurl
+						\end{flushright}
+					\end{minipage}
+				}
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.95\linewidth}
+						\centering
+						\thechapterimage
+						\iftoggle{imagehover}{
+							\thechapterimagehover
+						}{}
+					\end{minipage}
+				}
+			\end{minipage}
+		}
+	};
+}{}
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\else
+\fi\fi
+\iftoggle{image}{
+\par\vspace*{225\p@}
+}
+{
+\par\vspace*{75\p@}
+}
+}}
+
+% Used in TOC
+
+\def\@makeschapterhead#1{%
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west] (rect) at (0,0) [fill=chaptercolor, minimum width=\paperwidth,minimum height=10.5cm] {};
+\node (top) at (current page.north) {};
+\node[shift={(0cm,-9cm)}] (bottom) at (current page.north) {};
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}#1\strut};
+\iftoggle{image}{
+	\node[inner sep=0pt, font=\sffamily] at ($(top)!0.5!(bottom)$) {
+		\fcolorbox{ocre}{white}{
+			\begin{minipage}{\linewidth}
+				\centering
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.45\linewidth}
+						\thechapterimagetitle
+					\end{minipage}
+				}
+				\hfill
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.45\linewidth}
+						\begin{flushright}
+							\thechapterimageurl
+						\end{flushright}
+					\end{minipage}
+				}
+				\fcolorbox{white}{white}{
+					\begin{minipage}{0.95\linewidth}
+						\centering
+						\thechapterimage
+						\iftoggle{imagehover}{
+							\thechapterimagehover
+						}{}
+					\end{minipage}
+				}
+			\end{minipage}
+		}
+	};
+}{}
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\par\vspace*{225\p@}}
+\makeatother

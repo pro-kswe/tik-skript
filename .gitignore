@@ -1,3 +1,9 @@
+# Custom ListOf-Files
+*.lernziele
+
+# xsim – eXercise Sheets IMproved LaTeX package
+*.xsim
+
 # PDF-Files
 *.pdf
 

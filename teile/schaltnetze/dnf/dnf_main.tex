@@ -1,0 +1,273 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{boat_puzzle}
+\chapterimagetitle{\uppercase{Boat Puzzle}}
+\chapterimageurl{https://xkcd.com/2348/}
+\chapterimagehover{'No, my cabbage moths have already started laying eggs in them! Send the trolley into the river!' 'No, the sailing wolf will steal the boat to rescue them!'.}
+
+\chapter{Disjunktive Normalform}
+\label{chapter-dnf}
+
+Damit wir sinnvolle Anwendungen mit einem Schaltnetz möglichst einfach realisieren können, müssen wir für eine Wahrheitstabelle eine Boolesche Formel konstruieren. Die Lernziele lauten:\\
+
+\newcommand{\dnfLernziele}{
+\protect\begin{minipage}{\textwidth}
+\begin{todolist}
+\item Sie erstellen für eine Wahrheitstabelle die Boolesche Formel in disjunktiver Normalform (\acs{DNF}) und das dazugehörige Schaltnetz.
+\end{todolist}
+\end{minipage}
+}
+
+\lernziel{\autoref{chapter-dnf}, \nameref{chapter-dnf}}{\protect\dnfLernziele}
+
+\dnfLernziele
+
+\section{Konstruktion der disjunktiven Normalform}
+\label{section-dnf}
+
+Wir können für \textbf{jede} Wahrheitstabelle mit folgenden Regeln eine Boolesche Formel erstellen:
+
+\begin{important}[Eine Boolesche Formel in \acs{DNF} erstellen:]
+Für jeden Ausgang $A$:
+\begin{enumerate}
+\item[1.)] Suche alle Zeilen, bei denen der Ausgang $1$ ist.
+\item[2.)] Für jede Zeile aus 1.): Verknüpfe die Eingänge dieser Zeile mit Konjunktionen (\texttt{UND}-Operator). Falls der Eingang $E$ den Wert $1$ hat, dann notiere $E$. Ansonsten (der Eingang hat den Wert $0$) notiere $\neg E$.
+\item[3.)] Verknüpfe die Zeilen aus 2.) mit Disjunktionen (\texttt{ODER}-Operator).
+\end{enumerate}
+\end{important}
+
+Durch dieses \say{Rezept} entstehen Boolesche Formeln der folgenden Form:
+\begin{align*}
+A _1 = \overbrace{(E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion1}\vee \overbrace{(E_0 \wedge \neg E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion2}\vee \cdots \tikzmark{disjunktion3}\vee \overbrace{(\neg E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}}
+\begin{tikzpicture}[overlay, remember picture, shorten <=1mm, font=\footnotesize]
+\draw[latex-] ([xshift=1.0ex] pic cs:disjunktion1) -- ++ (0,-0.5) node[below] {\text{Disjunktion}};
+\draw[latex-] ([xshift=1.0ex] pic cs:disjunktion2) -- ++ (0.5,-0.5) node[below] {};
+\draw[latex-] ([xshift=1.0ex] pic cs:disjunktion3) -- ++ (0,-0.5) node[below] {\text{Disjunktion}};
+\end{tikzpicture}
+\end{align*}
+
+\vspace{0.75cm}
+
+Besitzt eine Boolesche Formel diesen Aufbau, dann handelt es sich um eine Boolesche Formel in \textbf{disjunktiver Normalform} (\ac{DNF}).
+
+\begin{hinweis}
+Für eine Wahrheitstabelle gibt es mehrere Boolesche Formeln. Die Boolesche Formeln in \ac{DNF} können für jede Wahrheitstabelle benutzt werden. Es kann jedoch sein, dass es eine Boolesche Formel gibt, welche kürzer ist als die Boolesche Formel in \ac{DNF}.
+\end{hinweis}
+
+Wir zeigen nun an einem Beispiel, wie wir eine Boolesche Formeln in \ac{DNF} konstruieren.
+
+\newpage
+
+\begin{example}
+Wir konstruieren für die Wahrheitstabelle aus \autoref{dnf-bsp1} eine Boolesche Formeln in \ac{DNF}. Dazu markieren wir alle Ausgänge, welche eine \num{1} besitzen (siehe \autoref{dnf-bsp1-schritt-1}).
+
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0 = \text{???}$ \\ \hline[2pt]
+$0$    	&  $0$     	&  1	\\ \hline
+$0$     	& $1$     	&  0	\\ \hline
+$1$ 		& $0$      	&  0 	\\ \hline
+$1$     	& $1$     	&  1	\\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für $A_0$.}
+\label{dnf-bsp1}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c||c|c},
+cell{2}{3} = {yellow!25},
+cell{4}{3} = {yellow!25}
+}
+\cline{1-3}
+$E_1$ & $E_0$ & $A_0 = \text{???}$ \\ \cline[2pt]{1-3}
+$0$    	& $0$     	&  1 & \circled{1} \\ \cline{1-3}
+$0$     	& $1$     	&  0	\\ \cline{1-3}
+$1$ 		& $0$      	&  1 & \circled{3} \\ \cline{1-3}
+$1$     	& $1$     	&  0	\\ \cline{1-3}
+\end{tblr}
+\caption{Schritt 1}
+\label{dnf-bsp1-schritt-1}
+\end{minipage}
+\end{table}
+
+Dann konstruieren wir für jede dieser Zeilen (Zeilen mit einem \say{gelben} Ausgang) eine Teilformel mithilfe von \textbf{Negationen} und \textbf{Konjunktionen}:
+
+\begin{multicols}{2}
+\begin{itemize}
+\item Zeile \circled{1} ergibt: $\neg E_0 \wedge \neg E_1$
+\item Zeile \circled{3} ergibt: $E_0 \wedge \neg E_1$
+\end{itemize}
+\end{multicols}
+
+Abschliessend setzen wir die Teilformel mithilfe von \textbf{Disjunktionen} für $A_0$ zusammen:
+\begin{align*}
+A_0 = (\neg E_0 \wedge \neg E_1) \vee (E_0 \wedge \neg E_1)
+\end{align*}
+\end{example}
+
+Wir können aus der Booleschen Formel in \ac{DNF} auch wieder die Wahrheitstabelle ausfüllen und das dazugehörige Schaltnetz zeichnen.
+
+\section{Übungen}
+
+\begin{exercise}
+Erstellen Sie für $A_0$ (siehe \autoref{table-dnf-uebung-1}) die Boolesche Formel in \ac{DNF}. Zeichnen Sie dann das dazugehörige Schaltnetz.
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c||c|}
+}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  \\ \hline
+$1$  & $0$  & $1$  \\ \hline
+$1$ & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für $A_0$}
+\label{table-dnf-uebung-1}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+Boolesche Formel in \ac{DNF}:
+\fillwithgrid{1.75in}
+\end{minipage}
+\end{table}
+\fillwithgrid{\stretch{1}}
+\end{exercise}
+
+\newpage
+
+\begin{important}
+Die Schaltnetze für die beiden folgenden Aufgaben können sehr gross werden. Sie können auch Logikgatter mit mehr als zwei Eingängen verwenden (siehe \autoref{circuit-and-3-inputs} und \autoref{circuit-or-3-inputs} als Beispieles).
+\end{important}
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,0) node[and port, number inputs=3, circuitikz/tripoles/european and port/height=1.5] (AND1) {}
+(AND1.in 1) node[anchor=east] {$E_0$} 
+(AND1.in 2) node[anchor=east] {$E_1$}
+(AND1.in 3) node[anchor=east] {$E_2$}
+(AND1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+\caption{Drei Eingänge}
+\label{circuit-and-3-inputs}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,0) node[or port, number inputs=3, circuitikz/tripoles/european or port/height=1.5] (OR1) {}
+(OR1.in 1) node[anchor=east] {$E_0$} 
+(OR1.in 2) node[anchor=east] {$E_1$}
+(OR1.in 3) node[anchor=east] {$E_2$}
+(OR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+\caption{Drei Eingänge}
+\label{circuit-or-3-inputs}
+\end{minipage}
+\end{figure}
+
+\begin{exercise}
+Erstellen Sie für $A_0$ (siehe \autoref{table-dnf-uebung-2}) die Boolesche Formel in \ac{DNF}. Zeichnen Sie dann das dazugehörige Schaltnetz.
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c|c||c|}
+}
+\hline
+$E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  & $0$  \\ \hline
+$0$  & $0$  & $1$  & $0$  \\ \hline
+$0$  & $1$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  & $1$  \\ \hline
+$1$  & $0$  & $0$  & $0$  \\ \hline
+$1$  & $0$  & $1$  & $1$  \\ \hline
+$1$  & $1$  & $0$  & $1$  \\ \hline
+$1$  & $1$  & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für $A_0$}
+\label{table-dnf-uebung-2}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+Boolesche Formel in \ac{DNF}:
+\fillwithgrid{2.5in}
+\end{minipage}
+\end{table}
+\fillwithgrid{\stretch{1}}
+\end{exercise}
+
+\newpage
+
+\begin{exercise}
+Erstellen Sie für $A_0$ (siehe \autoref{table-dnf-uebung-3}) die Boolesche Formel in \ac{DNF}. Zeichnen Sie dann das dazugehörige Schaltnetz.
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c|c||c|}
+}
+\hline
+$E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  & $0$  \\ \hline
+$0$  & $0$  & $1$  & $1$  \\ \hline
+$0$  & $1$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  & $0$  \\ \hline
+$1$  & $0$  & $0$  & $1$  \\ \hline
+$1$  & $0$  & $1$  & $1$  \\ \hline
+$1$  & $1$  & $0$  & $1$  \\ \hline
+$1$  & $1$  & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für $A_0$}
+\label{table-dnf-uebung-3}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+Boolesche Formel in \ac{DNF}:
+\fillwithgrid{2.5in}
+\end{minipage}
+\end{table}
+\fillwithgrid{\stretch{1}}
+\end{exercise}
+
+\begin{exercise}
+Erstellen Sie für $A_0$ (siehe \autoref{table-dnf-uebung-4}) die Boolesche Formel in \ac{DNF}. Zeichnen Sie dann das dazugehörige Schaltnetz.
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c||c|}
+}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$    &  $0$     & $1$    \\ \hline
+$0$     & $1$     & $0$   \\ \hline
+$1$ & $0$      & $0$   \\ \hline
+$1$     & $1$     & $0$     \\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für $A_0$}
+\label{table-dnf-uebung-4}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+Boolesche Formel in \ac{DNF} und Schaltnetz:
+\fillwithgrid{1.25in}
+\end{minipage}
+\end{table}
+\end{exercise}

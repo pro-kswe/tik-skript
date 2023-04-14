@@ -1,0 +1,303 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\togglefalse{imagehover}
+\chapterimage{logic_boat_2}
+\chapterimagetitle{\uppercase{Logic Boat 2}}
+\chapterimageurl{https://xkcd.com/1134/}
+\toggletrue{imagehover}
+
+
+\chapter{Wahrheitstabellen}
+\label{chapter-wahrheitstabellen}
+
+Damit wir das Verhalten einer Booleschen Formel bzw. eines Logikgatters besser verstehen, stellen wir alle Kombinationen der Eingänge und Ausgänge tabellarisch dar. Die Lernziele lauten:\\
+ 
+\newcommand{\wahrheitstabellenLernziele}{
+\protect\begin{minipage}{\textwidth}
+\begin{todolist}
+\item Sie erklären, was wir unter einer Wahrheitstabelle verstehen.
+\item Sie notieren für die drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT} die Wahrheitstabelle.
+\end{todolist}
+\end{minipage}
+}
+
+\lernziel{\autoref{chapter-wahrheitstabellen}, \nameref{chapter-wahrheitstabellen}}{\protect\wahrheitstabellenLernziele}
+
+\wahrheitstabellenLernziele
+
+\leavevmode
+\newline
+
+\begin{definition}[Wahrheitstabelle]
+Eine Wahrheitstabelle (eng. truth table) besteht aus Spalten und Zeilen. Für jeden Eingang und Ausgang gibt es eine Spalte. Jede Zeile erhält eine Kombination der Eingangswerte und den dazugehörigen Ausgangswert.
+\end{definition}
+
+Eine Wahrheitstabelle zeigt den Zusammenhang der Eingänge und Ausgänge. Die Wahrheitstabelle ist also eine andere Darstellung für eine Boolesche Formel bzw. ein Logikgatter. Wir zeigen nun die Wahrheitstabellen für die drei Grundgatter bzw. die dazugehörigen Booleschen Formeln.
+
+\section{Konjunktion / \texttt{UND}-Gatter}
+
+Für die Boolesche Formel  $A_0=E_0 \wedge E_1$ (beziehungsweise das \texttt{UND}-Gatter), ergibt sich eine Wahrheitstabelle mit vier Zeilen (siehe \autoref{and-switcher-table-1}). Es gibt vier mögliche Kombinationen, wie wir die Schalter für die Eingänge $E_0$ und $E_1$ einstellen können.
+
+\begin{table}[ht]
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0 = E_0 \wedge E_1$ \\ \hline[2pt]
+Nicht gedrückt    &  Nicht gedrückt     & Aus    \\ \hline
+Nicht gedrückt     & Gedrückt    & Aus   \\ \hline
+Gedrückt   & Nicht gedrückt      & Aus   \\ \hline
+Gedrückt    & Gedrückt    & An    \\ \hline
+\end{tblr}
+\caption{Vollständige Darstellung.} 
+\label{and-switcher-table-1}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0 = E_0 \wedge E_1$ \\ \hline[2pt]
+Strom aus    &  Strom aus    & Strom aus    \\ \hline
+Strom aus     & Strom ein    & Strom aus   \\ \hline
+Strom ein   & Strom aus     & Strom aus   \\ \hline
+Strom ein    & Strom ein    & Strom ein    \\ \hline
+\end{tblr}
+\caption{Einheitliche Repräsentation.} 
+\label{and-switcher-table-2}
+\end{minipage}
+\end{table}
+
+Wir können die Inhalte von \autoref{and-switcher-table-1} auch verallgemeinern (abstrahieren). Ein Schalter kontrolliert, ob Strom fliesst oder nicht. Eine Glühbirne zeigt an, ob Strom fliesst oder nicht. \autoref{and-switcher-table-2} zeigt die einheitliche Darstellung. Aber auch die Notation aus \autoref{and-switcher-table-2} ist sehr aufwendig. Wir können die Schreibarbeit abkürzen, in dem wir für \textbf{\say{Strom aus} eine $0$} notieren und für\textbf{ \say{Strom ein} eine $1$}. Wir können die \autoref{and-switcher-table-1} somit noch einfacher darstellen. \autoref{and-ttt-1} ist die sogenannte \textbf{Wahrheitstabelle}, wie sie typischerweise in der Digitaltechnik notiert wird.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ 	& $E_0$	& $A_0 = E_0 \wedge E_1$ \\ \hline[2pt]
+$0$		& $0$   & 0 \\ \hline
+$0$		& $1$   & 0 \\ \hline	
+$1$ 		& $0$   & 0 \\ \hline 	
+$1$		& $1$   & 1 \\ \hline	
+\end{tblr}
+\caption{Die Wahrheitstabelle für die Konjunktion bzw. das \texttt{UND}-Gatter.} 
+\label{and-ttt-1}
+\end{table}
+
+\newpage
+
+Eine Wahrheitstabelle zeigt alle möglichen Kombinationen, wie wir die Eingänge einstellen können.
+
+\begin{definition}[Belegung]
+Eine konkrete Zuteilung der Binärziffern ($0$ und $1$) für die Eingänge nennen wir eine \textbf{Belegung der Eingänge}.
+\end{definition}
+
+Jede \textbf{Zeile einer Wahrheitstabelle} beinhaltet somit eine \textbf{Belegung der Eingänge}. Durch die Belegung der ist der Wert für den Ausgang bestimmt.
+
+\section{Disjunktion / \texttt{ODER}-Gatter}
+
+Für die Boolesche Formel  $A_0=E_0 \vee E_1$ (beziehungsweise das \texttt{ODER}-Gatter), ergibt sich die Wahrheitstabelle aus \autoref{or-ttt}.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ 	& $E_0$	& $A_0 = E_0 \vee E_1$ \\ \hline[2pt]
+$0$		& $0$   & 0 \\ \hline
+$0$		& $1$   & 1 \\ \hline	
+$1$ 		& $0$   & 1 \\ \hline 	
+$1$		& $1$   & 1 \\ \hline	
+\end{tblr}
+\caption{Die Wahrheitstabelle für die Disjunktion bzw. das \texttt{ODER}-Gatter.} 
+\label{or-ttt}
+\end{table}
+
+\section{Negation / \texttt{NICHT}-Gatter}
+
+Für die Boolesche Formel  $A_0=\neg E_0$ (beziehungsweise das \texttt{NICHT}-Gatter), ergibt sich eine Wahrheitstabelle mit zwei Zeilen. Es gibt zwei mögliche Belegungen für den Eingang $E_0$. Wir erhalten somit die Wahrheitstabelle aus \autoref{not-ttt}.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|c||c|}
+\hline
+$E_0$ 	& $A_0 = \neg E_0$ \\ \hline[2pt]
+$0$		& 1 \\ \hline
+$1$		& 0 \\ \hline	
+\end{tblr}
+\caption{Die Wahrheitstabelle für die Negation bzw. das \texttt{NICHT}-Gatter.} 
+\label{not-ttt}
+\end{table}
+
+\newpage
+
+\section{Übungen}
+
+\begin{exercise}
+Füllen Sie die folgende Tabelle aus. Verwenden Sie $E_0$, $E_1$ und $A_0$.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{
+colspec={|Q[c, m]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|}
+}
+\hline
+& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline
+\textbf{\small Boolescher Operator} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$            \\ \hline
+\textbf{\small Logikgatter} &        
+\begin{circuitikz}
+\draw (0,0) node[and port] (AND1) {}
+(AND1.in 1) node[anchor=east] {$E_0$} 
+(AND1.in 2) node[anchor=east] {$E_1$}
+(AND1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &               
+      \begin{circuitikz}
+\draw (0,0) node[or port] (OR1) {}
+(OR1.in 1) node[anchor=east] {$E_0$} 
+(OR1.in 2) node[anchor=east] {$E_1$}
+(OR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &
+      \begin{circuitikz}
+\draw (0,0) node[european not port] (NOT1) {}
+(NOT1.in) node[anchor=east] {$E_0$} 
+(NOT1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      \\ \hline
+\textbf{\small Wahrheitstabelle}         &     \vspace{2.5cm}         &               &                \\ \hline
+\end{tblr}
+\end{table}
+\end{exercise}
+
+\vspace{-0.75cm}
+
+\begin{exercise}
+Das \texttt{UND}- und \texttt{ODER}-Gatter gibt es auch mit mehr als zwei Eingänge (in Logicly können wir pro Gatter bis zu \num{8} Eingänge einstellen). Füllen Sie die Wahrheitstabelle  für die beiden Ausgänge aus.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|c|c|c||c|c|}
+\hline
+$E_2$ & $E_1$	& $E_0$ & $A_0 = E_0 \wedge E_1 \wedge E_2$ & $A_1 = E_0 \vee E_1 \vee E_2$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & & \\ \hline
+$0$ & $0$ & $1$ & & \\ \hline
+$0$ & $1$ & $0$ & & \\ \hline
+$0$ & $1$ & $1$ & & \\ \hline
+$1$ & $0$ & $0$ & & \\ \hline
+$1$ & $0$ & $1$ & & \\ \hline
+$1$ & $1$ & $0$ & & \\ \hline
+$1$ & $1$ & $1$ & & \\ \hline
+\end{tblr}
+\end{table}
+\end{exercise}
+
+\vspace{-0.75cm}
+
+\begin{exercise}
+Studieren Sie für alle bisherigen Wahrheitstabellen, die \textbf{Anzahl der Eingänge} und die \textbf{Anzahl der verschiedenen Belegungen} (Anzahl Zeilen). Notieren Sie dann in der folgenden Tabelle das Ergebnis. Können Sie auch für vier, fünf und sechs Eingänge die Anzahl bestimmen? Wie lautet die Formel für $n$ Eingänge? 
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|c|c|}
+\hline
+\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} \\ \hline[2pt]
+1 &\\ \hline
+2 &\\ \hline
+3 &\\ \hline
+4 &\\ \hline
+5 &\\ \hline
+6 &\\ \hline
+\end{tblr}
+\end{table}
+
+Formel:
+\fillwithgrid{\stretch{1}}
+\end{exercise}
+
+\newpage
+
+\begin{exercise}
+Studieren Sie abermals alle bisherigen Wahrheitstabellen. Legen Sie dieses Mal den Fokus auf die Belegungen. Versuchen Sie daraus abzuleiten, wie Sie \textbf{systematisch} alle möglichen Belegungen für die Eingänge auflisten können. Erstellen Sie dann die Wahrheitstabelle für vier und fünf Eingänge mit allen Belegungen.
+
+\begin{table}[H]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{tblr}{|c|[4pt]c|c|[4pt]c|c|c|}
+\hline
+$E_0$ & $E_1$ & $E_0$ & $E_2$ & $E_1$	& $E_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\ \hline
+$1$ & $0$ & $1$ & $0$ & $0$ & $1$ \\ \hline
+& $1$ & $0$ & $0$ & $1$ & $0$ \\ \hline
+& $1$ & $1$ & $0$ & $1$ & $1$ \\ \hline
+& & & $1$ & $0$ & $0$ \\ \hline
+& & & $1$ & $0$ & $1$ \\ \hline
+& & & $1$ & $1$ & $0$ \\ \hline
+& & & $1$ & $1$ & $1$ \\ \hline
+\end{tblr}
+
+\vspace{1cm}
+\begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
+\hline
+$E_3$ & $E_2$	& $E_1$ & $E_0$ \\ \hline[2pt]
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+& & & \\ \hline
+\end{tblr}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
+\hline
+$E_4$ & $E_3$	& $E_2$ & $E_1$ & $E_0$ \\ \hline[2pt]
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+& & & & \\ \hline
+\end{tblr}
+\end{minipage}
+\end{table}
+\end{exercise}

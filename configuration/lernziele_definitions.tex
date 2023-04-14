@@ -1,0 +1,11 @@
+\newlistof{lernziele}{lernziele}{Liste der Lernziele}
+
+\newcommand{\lernziel}[2]{%
+\refstepcounter{lernziele}
+
+\addcontentsline{lernziele}{lernziel}{
+{\newline\newline\sffamily\bfseries #1} \newline\newline #2 \newline\newline \hspace{0.9\textwidth} Seite \dotfill
+}
+% locally modified /usr/local/te xlive/2022/texmf-dist/tex/latex/tocloft to make chapter* => chapter
+}
+

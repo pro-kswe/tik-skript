@@ -1,0 +1,29 @@
+\documentclass{skript}
+
+\pdfminorversion=3
+
+% locally modified /usr/local/texlive/2022/texmf-dist/tex/latex/tocloft to make chapter* => chapter
+
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+
+\input{configuration/configuration_main.tex}
+
+\begin{document}
+
+\setboolean{withsolutions}{false}
+
+\import{book_cover}{u1_front_cover.tex}
+
+\import{book_cover}{u2_vordere_klappe.tex}
+
+\import{toc}{toc_main.tex}
+
+\import{teile}{teile_main.tex}
+
+\import{anhang}{anhang_main.tex}
+
+\import{book_cover}{u3_hintere_klappe.tex}
+
+\import{book_cover}{u4_back_cover.tex}
+	
+\end{document}

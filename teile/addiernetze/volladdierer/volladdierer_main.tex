@@ -1,0 +1,250 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{add}
+\chapterimagetitle{\uppercase{Add}}
+\chapterimageurl{https://xkcd.com/1106/}
+\chapterimagehover{\footnotesize 20 balloons float away while I'm busy permanently tying one to a tree to deal with it for good. Unfortunately, that one balloon was 'land a rocket on the moon in Kerbal Space Program.'}
+
+\chapter{Volladdierer}
+\label{chapter-volladdierer}
+
+Ein Halbaddierer reicht für die Addition von zwei mehrstelligen Dualzahlen nicht aus. Wir müssen in der Lage sein, drei einstellige Dualzahlen zu addieren. Die Lernziele für dieses Kapitel lauten:\\
+
+\newcommand{\volladdiererLernziele}{
+\protect\begin{minipage}{\textwidth}
+\begin{todolist}
+\item Sie erstellen ein Schaltnetz, welches drei einstellige Dualzahlen addieren kann.
+\item Sie definieren, was ein Volladdierer ist.
+\item Sie erklären die Notwendigkeit eines Volladdierers für die Addition mehrstelliger Dualzahlen.
+\item Sie konstruieren einen Volladdierer unter der Verwendung von Halbaddierern.
+\end{todolist}
+\end{minipage}
+}
+
+\lernziel{\autoref{chapter-volladdierer}, \nameref{chapter-volladdierer}}{\protect\volladdiererLernziele}
+
+\volladdiererLernziele
+
+\section{Konstruktion des Volladdierers}
+
+Wir realisieren nun die Addition von \textbf{drei} Binär\textbf{ziffern} durch ein Schaltnetz. Dies kommt bei der schriftlichen Addition von zwei mehrstelligen Dualzahlen fast in jeder Spalte vor, wie in folgendem Beispiel zu sehen.
+
+\begin{figure}[htb]
+\centering
+\begin{equation*}
+\begin{tikzpicture}[
+    row 3/.style={font=\scriptsize},
+    every node/.style={column sep=.5mm, row sep=1mm}]
+    \matrix (m) [matrix of math nodes,
+        nodes in empty cells,
+        %nodes=draw
+    ] 
+    {
+    		& 	& \textbf{1} & \textbf{0} & \textbf{1} & 1 & [5mm]	\text{1. Summand} \\
+	+      & 	& \textbf{0} & \textbf{1} & \textbf{1} & 1 &      	\text{2. Summand} \\ 
+		& 1 	& \textbf{1} & \textbf{1} & \textbf{1} &    &         	\text{Überträge} \\
+        		& 1 	& 0 & 0 & 0 & 0 &      	 \text{Summe} \\                                                  
+    };
+    \draw[-,color=black, semithick] (m-3-1.south west) -- (m-3-6.south east);
+\end{tikzpicture}
+\end{equation*}
+\end{figure}
+
+Die Addition besteht nun aus folgenden Komponenten:
+
+\begin{itemize}
+\item Die drei Summanden Bit $x$, Bit $y$ und der \textbf{ein}gehende Übertrag $c_{\text{in}}$ aus der \textbf{vorherigen} Spalte.
+\item Das Bit $s$ für das Ergebnis der Addition (Summe).
+\item Der \textbf{aus}gehende Übertrag $c_{\text{out}}$ für die \textbf{nächste} Spalte, welcher bei der Addition entsteht.
+\end{itemize}
+
+Wir können nun wie bei einem Halbaddierer vorgehen und das Schaltnetz für die Addition von drei Binärziffern erstellen.
+
+\newpage
+
+\subsection{Übungen}
+
+Lösen Sie die Übungen in der vorgegebenen Reihenfolge.
+
+\begin{exercise}\label{exercise-addition-drei-binarziffern-wahrheitstabelle}
+Füllen Sie die Wahrheitstabelle (siehe \autoref{table-addition-drei-binarziffern}). Die Wahrheitstabelle soll alle acht Kombinationen für die Addition von drei Binärziffern darstellen.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{|Q[c, m, 2cm]|Q[c, m, 2cm]|Q[c, m, 2cm]||Q[c, m, 2cm]|Q[c, m, 2cm]|}
+\hline
+Bit $x$ & Bit $y$ & $c_{\text{in}}$ & Summe $s$ & $c_{\text{out}}$ \\ \hline[2pt]
+0 & 0 & 0 & & \\ \hline
+0 & 0 & 1 & & \\ \hline
+0 & 1 & 0 & & \\ \hline
+0 & 1 & 1 & & \\ \hline
+1 & 0 & 0 & & \\ \hline
+1 & 0 & 1 & & \\ \hline
+1 & 1 & 0 & & \\ \hline
+1 & 1 & 1 & & \\ \hline
+\end{tblr}
+\caption{Wahrheitstabelle für die Addition von drei Binärziffern.}
+\label{table-addition-drei-binarziffern}
+\end{table}
+\end{exercise}
+
+
+\begin{exercise}\label{exercise-addition-drei-binarziffern-dnf}
+Erstellen Sie für die Wahrheitstabelle aus Übung \ref{exercise-addition-drei-binarziffern-wahrheitstabelle} (siehe \autoref{table-addition-drei-binarziffern}) eine \textbf{vereinfachte} Boolesche Formel in \ac{DNF}. Sie müssen also für $s$ und $c_{\text{out}}$ \textbf{jeweils} eine Boolesche Formel in \ac{DNF} erstellen. Verwenden Sie dazu \textbf{zwei} \ac{KV}-Diagramme. Jedes Diagramm besitzt \textbf{drei} Eingänge.
+
+\fillwithgrid{\stretch{1}}
+
+\end{exercise}
+
+\newpage
+
+\begin{exercise}
+Zeichen Sie für die Booleschen Formeln aus Übung \ref{exercise-addition-drei-binarziffern-dnf} das dazugehörige Schaltnetz. Es ist \textbf{ein} Schaltnetz mit \textbf{drei} Eingängen und \textbf{zwei Ausgängen}.
+
+\fillwithgrid{4in}
+
+\end{exercise}
+
+\begin{exercise}
+Zeichnen Sie erneut das Schaltnetz für einen Volladdierer. Verwenden Sie dieses Mal jedoch nur \textbf{zwei Halbaddierer} und \textbf{ein \texttt{XOR}-Gatter}.
+\fillwithgrid{\stretch{1}}
+\end{exercise}
+
+\newpage
+
+\section{Der Volladdierer}
+
+Bei der Addition von zwei mehrstelligen Dualzahlen muss ein Übertrag aus der vorherigen Stelle berücksichtigt werden. Wir nennen dies einen \textbf{eingehenden Übertrag} (eng. carry in, kurz $c_{\text{in}}$). 
+
+\begin{definition}
+Ein Schaltnetz, welches \textbf{drei} \textbf{einstellige} Dualzahlen (drei Binärziffern) addieren kann, nennt man \textbf{Volladdierer} (eng. full adder, kurz \acs{FA}). Die dritte Binärziffer entspricht dabei dem eingehenden Übertrag aus der vorherigen Stelle. Die beiden Ausgänge stellen die Summe, sowie den ausgehenden Übertrag (eng. carry out, kurz $c_{\text{out}}$) dar.
+\end{definition}
+
+Es gibt mehrere Möglichkeiten, wie man ein Schaltnetz für einen Volladdierer konstruieren kann. In \autoref{full-adder-schaltnetz-1} ist eine Möglichkeit dargestellt.
+
+\begin{figure}[ht]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[xor port] (XOR1) {};
+\draw (0, -1.5) node[and port] (AND1) {};
+\draw (-3,0) node (x) {$x$};
+\draw (x) to (-2,  0) node[circle, fill, inner sep=1pt] (xcross) {} |- (XOR1.in 1);
+\draw (-2,  0) |- (AND1.in 1);
+\draw (-3,-0.5) node (y) {$y$};
+\draw (y) to (-2.5,  -0.5) node[circle, fill, inner sep=1pt] (ycross) {} |- (XOR1.in 2);
+\draw (-2.5, -0.5) |- (AND1.in 2);
+\draw (-3,-2.5) node (ci) {$c_{\text{in}}$};
+
+\draw (3,0) node[xor port] (XOR2) {};
+\draw (3, -1.5) node[and port] (AND2) {};
+\draw (XOR1.out) to (0.5, 0) node[circle, fill, inner sep=1pt] (s1cross) {} |- (XOR2.in 1);
+\draw (s1cross) |- (AND2.in 1);
+\node[circle, fill, inner sep=1pt] (cicross2) at (AND2.in 2) {};
+\draw (cicross2) {} |- (XOR2.in 2);
+\draw (ci) to (1, -2.5) node (s1cross) {} |- (cicross2);
+
+\draw (5, -2) node[or port] (OR1) {};
+\draw (AND2.out) |- (OR1.in 1);
+\draw (AND1.out) |- (OR1.in 2);
+\draw (XOR2.out) to (5, 0) node[anchor=west] {$s$};
+\draw (OR1.out) node[anchor=west] {$c_{\text{out}}$};
+\end{circuitikz}
+\caption{Das Schaltnetz stellt einen Volladdierer dar. Es kann 3 Binärziffern addieren.}
+\label{full-adder-schaltnetz-1}
+\end{figure}
+
+Unabhängig davon, wie wir das Schaltnetz für den Volladdierer (eng. full adder, kurz \ac{FA}) konstruieren, verwenden wir nun die Darstellung aus \autoref{figure-fa-block} für den Volladdierer.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}[american]
+	\draw (0,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0] (FA) {\acs{FA}};
+	\draw (FA.pin 1) -- ++(-0.5,0) coordinate(extpin) node[left] (x) {$x$};
+	\draw (FA.pin 2) -- ++(-0.5,0) coordinate(extpin) node[left] (y) {$y$};
+	\draw (FA.pin 3) -- ++(-0.5,0) coordinate(extpin) node[left] (ci) {$c_{\text{in}}$};
+	\draw (FA.pin 4) -- ++(0.5,0) coordinate(extpin) node[right] (co) {$c_{\text{out}}$};
+	\draw (FA.pin 6) -- ++(0.5,0) coordinate(extpin) node[right] (s) {$s$};
+\end{circuitikz}
+\caption{Ein Volladdierer mit drei Eingängen ($x$, $y$ und $c_{\text{in}}$) und zwei Ausgängen ($s$ und $c_{\text{out}}$).}
+\label{figure-fa-block}
+\end{figure}
+
+\subsection{Übungen}
+
+\begin{exercise}
+Ein Halbaddierer kann bei einer Addition von zwei \textbf{mehrstelligen} Dualzahlen die Addition in der \textbf{ersten} Spalte durchführen. Für alle anderen Spalten wird jeweils ein Volladdierer benötigt. Notieren Sie jeweils die Anzahl der Halb- und Volladdierer für folgende Additionen:
+
+\begin{multicols}{3}
+\begin{itemize}
+\item zwei \num{3}-Bit-Dualzahlen
+\item zwei \num{8}-Bit-Dualzahlen
+\item zwei \num{10}-Bit-Dualzahlen
+\end{itemize}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}
+Stellen Sie den Ablauf der Addition von zwei beliebigen \num{3}-Bit-Dualzahlen grafisch dar. Die Bits der beiden Summanden werden durch $x_i$ und $y_i$ notiert. Die Bits der Summe werden mit $s_i$ abgekürzt. Stellen Sie auch eingehende und ausgehende Überträge dar. Tragen Sie in die Rechtecke entweder \ac{HA} ein, falls ein Halbaddierer oder \ac{FA}, falls ein Volladdierer benötigt wird.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.2\textwidth}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tblr}{ccccc}
+   	& & $x_2$ & $x_1$ & $x_0$ \\
++ 	& & $y_2$ & $y_1$ & $y_0$ \\
+    	& {\scriptsize $c_2$}  & {\scriptsize $c_1$} & {\scriptsize $c_0$} & \\
+\hline
+	& $s_3$ & $s_2$ & $s_1$ & $s_0$ \\
+\end{tblr}
+\end{adjustbox}
+\end{minipage}
+\hfill
+\begin{minipage}{0.7\textwidth}
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tikzpicture}
+
+\node[rectangle, draw, fill=green!25, minimum width=2cm, minimum height=1cm] (r0) at (0, 0) {};
+\node (x0) at (0.5, 1) {};
+\node (y0) at (-0.5, 1) {};
+\node (s0) at (0, -1) {};
+\draw[-latex] (x0) -- ([xshift=+0.5cm]r0.north);
+\draw[-latex] (y0) -- ([xshift=-0.5cm]r0.north);
+\draw[-latex] (r0.south) -- (s0);
+
+\node[rectangle, draw, fill=green!25, minimum width=2cm, minimum height=1cm] (r1) at (-4, 0) {};
+\node (x1) at (-3.5, 1) {};
+\node (y1) at (-4.5, 1) {};
+\node (s1) at (-4, -1) {};
+\draw[-latex] (x1) -- ([xshift=+0.5cm]r1.north);
+\draw[-latex] (y1) -- ([xshift=-0.5cm]r1.north);
+\draw[-latex] (r1.south) -- (s1);
+
+\draw[-latex] (r0.west) -- node[above] {} (r1.east);
+
+\node[rectangle, draw, fill=green!25, minimum width=2cm, minimum height=1cm] (r2) at (-8, 0) {};
+\node (x2) at (-7.5, 1) {};
+\node (y2) at (-8.5, 1) {};
+\node (s2) at (-8, -1) {};
+\draw[-latex] (x2) -- ([xshift=+0.5cm]r2.north);
+\draw[-latex] (y2) -- ([xshift=-0.5cm]r2.north);
+\draw[-latex] (r2.south) -- (s2);
+
+\draw[-latex] (r1.west) -- node[above] {} (r2.east);
+
+\node (tmp) at (-11, 0) {};
+\node (s3) at (-11, -1) {};
+
+\draw (r2.west) -- node[above] {} (tmp.center);
+\draw[-latex] (tmp.center) -- (s3);
+
+\end{tikzpicture}
+\end{adjustbox}
+
+\end{minipage}
+\end{figure}
+\end{exercise}

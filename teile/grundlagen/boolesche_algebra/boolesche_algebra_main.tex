@@ -1,0 +1,106 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\togglefalse{imagehover}
+\chapterimage{logic_boat_1}
+\chapterimagetitle{\uppercase{Logic Boat 1}}
+\chapterimageurl{https://xkcd.com/1134/}
+\toggletrue{imagehover}
+
+\chapter{Boolesche Algebra}
+\label{chapter-boolesche-algebra}
+
+Die Grundlage für die Logikgatter bildet die \textbf{Boolesche Algebra}\footnote{Benannt nach Georg Boole, 1815 - 1864}. Für jedes Logikgatter gibt es ein \say{Rechensymbol}. Das Verhalten eines Logikgatters stellen wir dann als \textbf{Boolesche Formeln} dar. Die Lernziele lauten:\\
+
+\newcommand{\boolescheAlgebraLernziele}{
+\protect\begin{minipage}{\textwidth}
+\begin{todolist}
+\item Sie nennen für die drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT} jeweils die Boolesche Operation.
+\item Sie notieren für die drei Logikgatter jeweils den Booleschen Operator.
+\item Sie stellen das Verhalten für die drei Logikgatter jeweils als Boolesche Formel dar.
+\end{todolist}
+\end{minipage}
+}
+
+\lernziel{\autoref{chapter-boolesche-algebra}, \nameref{chapter-boolesche-algebra}}{\protect\boolescheAlgebraLernziele}
+
+\boolescheAlgebraLernziele
+
+\section{Konjunktion}
+
+Die Boolesche Operation für das \texttt{UND}-Gatter ist die \textbf{Konjunktion} der Booleschen Algebra. Wir notieren die Boolesche Formel für das Verhalten des \texttt{UND}-Gatters wie folgt:
+
+\begin{center}
+\Large
+$\underbrace{A_0 = \overbrace{E_0 \wedge E_1}^{\text{Konjunktion}}}_{\text{Boolesche Formel}}$
+\end{center}
+
+Das $\wedge$-Symbol ist der Boolesche Operator für die Konjunktion. Die Formel wird gesprochen als \say{$A_0$ gleich $E_0$ \textbf{und} $E_1$}.
+
+\begin{hinweis}
+Sie kennen den Begriff des Operators bereits aus der Mathematik. Bei der Addition ist $+$ ein (arithmetische) Operator. Meist einfach nur Rechensymbol genannt.
+\end{hinweis}
+
+\section{Disjunktion}
+
+Die Boolesche Operation für das \texttt{ODER}-Gatter ist die \textbf{Disjunktion} der Booleschen Algebra. Wir notieren die Boolesche Formel für das Verhalten des \texttt{ODER}-Gatters wie folgt:
+
+\begin{center}
+\Large
+$\underbrace{A_0 = \overbrace{E_0 \vee E_1}^{\text{Disjunktion}}}_{\text{Boolesche Formel}}$
+\end{center}
+
+Das $\vee$-Symbol ist der Boolesche Operator für die Disjunktion. Die Formel wird gesprochen als \say{$A_0$ gleich $E_0$ \textbf{oder} $E_1$}.
+
+\section{Negation}
+
+Die Boolesche Operation für das \texttt{NICHT}-Gatter ist die \textbf{Negation} der Booleschen Algebra. Wir notieren die Boolesche Formel für das Verhalten des \texttt{NICHT}-Gatters wie folgt:
+
+\begin{center}
+\Large
+$\underbrace{A_0 = \overbrace{\neg E_0}^{\text{Negation}}}_{\text{Boolesche Formel}}$
+\end{center}
+
+Das $\neg$-Symbol ist der Boolesche Operator für die Negation. Die Formel wird gesprochen als \say{$A_0$ gleich \textbf{nicht} $E_0$}.
+
+\section{Übungen}
+
+\begin{exercise}
+Füllen Sie die folgende Tabelle aus. Verwenden Sie $E_0$, $E_1$ und $A_0$.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{
+colspec={|Q[c, m]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|}
+}
+\hline
+& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline
+\textbf{Boolescher}\\ {\textbf{Operator}} &     \vspace{0.5cm}           &               &                \\ \hline
+\textbf{Logikgatter}         &        \vspace{2cm}        &               &                \\ \hline
+\end{tblr}
+\end{table}
+\end{exercise}
+
+\begin{exercise}
+Wir können, wie in der Mathematik, das Ergebnis einer Booleschen Formel für konkrete Eingangswerte (eine sogenannte Belegung) ausrechnen. Falls $E_0 = 0$ und $E_1 = 1$ ist, dann erhalten wir für $A_0 = E_0 \wedge E_1$ das Ergebnis aus \autoref{boolean-algebra-eq-1}. Das Ergebnis ergibt sich aus der Definition der Konjunktion. 
+\begin{align}
+A_0 = E_0 \wedge E_1 = 0 \wedge 1 = 0\label{boolean-algebra-eq-1}
+\end{align}
+Füllen Sie mit dieser Information folgende Tabelle aus.
+
+\begin{table}[htb]
+\centering
+\begin{tblr}{
+colspec={|c|Q[c, l, 4cm]|Q[c, l, 4cm]|},
+stretch=2
+}
+\hline
+\textbf{Neutralitätsgesetze} & $E_0 \wedge 1 =$ & $E_0 \vee 0 =$\\ \hline
+\textbf{Extremalgesetze} & $E_0 \wedge 0 =$ & $E_0 \vee 1 =$\\ \hline
+\textbf{Dualitätsgesetze} & $\neg 0 =$ & $\neg 1 =$\\ \hline
+\textbf{Idempotenzgesetze} & $E_0 \wedge E_0 =$ & $E_0 \vee E_0 =$\\ \hline
+\textbf{Kommutativgesetze} & $E_0 \wedge E_1 =$ & $E_0 \vee E_1 =$\\ \hline
+\end{tblr}
+\caption{Gesetze der Booleschen Algebra (Teil 1).}
+\end{table} 
+\end{exercise}
