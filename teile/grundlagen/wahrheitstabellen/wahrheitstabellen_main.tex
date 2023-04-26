@@ -11,13 +11,13 @@
 \chapter{Wahrheitstabellen}
 \label{chapter-wahrheitstabellen}
 
-Damit wir das Verhalten einer Booleschen Formel bzw. eines Logikgatters besser verstehen, stellen wir alle Kombinationen der Eingänge und Ausgänge tabellarisch dar. Die Lernziele lauten:\\
+Um das Verhalten einer booleschen Formel oder eines Logikgatters besser zu verstehen, stellen wir alle Kombinationen von Ein- und Ausgängen in einer Tabelle dar. Die Lernziele sind:\\
  
 \newcommand{\wahrheitstabellenLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
 \item Sie erklären, was wir unter einer Wahrheitstabelle verstehen.
-\item Sie notieren für die drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT} die Wahrheitstabelle.
+\item Sie notieren für jedes der drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT} die Wahrheitstabelle.
 \end{todolist}
 \end{minipage}
 }
@@ -30,14 +30,14 @@ Damit wir das Verhalten einer Booleschen Formel bzw. eines Logikgatters besser v
 \newline
 
 \begin{definition}[Wahrheitstabelle]
-Eine Wahrheitstabelle (eng. truth table) besteht aus Spalten und Zeilen. Für jeden Eingang und Ausgang gibt es eine Spalte. Jede Zeile erhält eine Kombination der Eingangswerte und den dazugehörigen Ausgangswert.
+Eine Wahrheitstabelle (engl. truth table) besteht aus Spalten und Zeilen. Für jeden Eingang und Ausgang gibt es eine Spalte. Jede Zeile enthält eine Kombination der Eingangswerte und den zugehörigen Ausgangswert.
 \end{definition}
 
-Eine Wahrheitstabelle zeigt den Zusammenhang der Eingänge und Ausgänge. Die Wahrheitstabelle ist also eine andere Darstellung für eine Boolesche Formel bzw. ein Logikgatter. Wir zeigen nun die Wahrheitstabellen für die drei Grundgatter bzw. die dazugehörigen Booleschen Formeln.
+Eine Wahrheitstabelle zeigt den Zusammenhang zwischen Ein- und Ausgängen. Die Wahrheitstabelle ist also eine andere Darstellung einer booleschen Formel bzw. eines Logikgatters. Im Folgenden werden wir die Wahrheitstabellen für die drei Grundgatter bzw. die zugehörigen booleschen Formeln dargestellt.
 
 \section{Konjunktion / \texttt{UND}-Gatter}
 
-Für die Boolesche Formel  $A_0=E_0 \wedge E_1$ (beziehungsweise das \texttt{UND}-Gatter), ergibt sich eine Wahrheitstabelle mit vier Zeilen (siehe \autoref{and-switcher-table-1}). Es gibt vier mögliche Kombinationen, wie wir die Schalter für die Eingänge $E_0$ und $E_1$ einstellen können.
+Für die boolesche Formel  $A_0=E_0 \wedge E_1$ (bzw. das \texttt{UND}-Gatter), ergibt sich eine Wahrheitstabelle mit vier Zeilen (siehe \autoref{and-switcher-table-1}). Es gibt vier mögliche Kombinationen für die Einstellung der Schalter (Eingänge $E_0$ und $E_1$).
 
 \begin{table}[ht]
 \begin{minipage}{0.45\textwidth}
@@ -69,7 +69,7 @@ Strom ein    & Strom ein    & Strom ein    \\ \hline
 \end{minipage}
 \end{table}
 
-Wir können die Inhalte von \autoref{and-switcher-table-1} auch verallgemeinern (abstrahieren). Ein Schalter kontrolliert, ob Strom fliesst oder nicht. Eine Glühbirne zeigt an, ob Strom fliesst oder nicht. \autoref{and-switcher-table-2} zeigt die einheitliche Darstellung. Aber auch die Notation aus \autoref{and-switcher-table-2} ist sehr aufwendig. Wir können die Schreibarbeit abkürzen, in dem wir für \textbf{\say{Strom aus} eine $0$} notieren und für\textbf{ \say{Strom ein} eine $1$}. Wir können die \autoref{and-switcher-table-1} somit noch einfacher darstellen. \autoref{and-ttt-1} ist die sogenannte \textbf{Wahrheitstabelle}, wie sie typischerweise in der Digitaltechnik notiert wird.
+Wir können den Inhalt der \autoref{and-switcher-table-1} auch verallgemeinern (abstrahieren). Ein Schalter kontrolliert, ob Strom fliesst oder nicht. Eine Glühlampe zeigt an, ob Strom fliesst oder nicht. \autoref{and-switcher-table-2} zeigt die einheitliche Notation. Aber auch diese Notation ist sehr aufwendig. Wir können die Schreibarbeit abkürzen, indem wir für \textbf{\say{Strom aus} eine $0$} notieren und für \textbf{\say{Strom ein} eine $1$}. So können wir \autoref{and-switcher-table-1} noch einfacher darstellen. \autoref{and-ttt-1} ist die sogenannte \textbf{Wahrheitstabelle}, wie sie typischerweise in der Digitaltechnik notiert wird.
 
 \begin{table}[htb]
 \centering
@@ -85,19 +85,17 @@ $1$		& $1$   & 1 \\ \hline
 \label{and-ttt-1}
 \end{table}
 
-\newpage
-
-Eine Wahrheitstabelle zeigt alle möglichen Kombinationen, wie wir die Eingänge einstellen können.
+Eine Wahrheitstabelle zeigt alle möglichen Kombinationen für die Einstellung der Eingänge.
 
 \begin{definition}[Belegung]
-Eine konkrete Zuteilung der Binärziffern ($0$ und $1$) für die Eingänge nennen wir eine \textbf{Belegung der Eingänge}.
+Die konkrete Zuordnung der Binärziffern ($0$ und $1$) zu den \textbf{Eingängen} wird als Eingangsbelegung oder kurz \textbf{Belegung} bezeichnet.
 \end{definition}
 
-Jede \textbf{Zeile einer Wahrheitstabelle} beinhaltet somit eine \textbf{Belegung der Eingänge}. Durch die Belegung der ist der Wert für den Ausgang bestimmt.
+Jede \textbf{Zeile einer Wahrheitstabelle} enthält also eine \textbf{Belegung der Eingänge}. Die Belegung der Eingänge bestimmt den Wert des Ausgangs.
 
 \section{Disjunktion / \texttt{ODER}-Gatter}
 
-Für die Boolesche Formel  $A_0=E_0 \vee E_1$ (beziehungsweise das \texttt{ODER}-Gatter), ergibt sich die Wahrheitstabelle aus \autoref{or-ttt}.
+Für die boolesche Formel  $A_0=E_0 \vee E_1$ (bzw. das \texttt{ODER}-Gatter) ergibt sich die Wahrheitstabelle aus \autoref{or-ttt}.
 
 \begin{table}[htb]
 \centering
@@ -115,7 +113,7 @@ $1$		& $1$   & 1 \\ \hline
 
 \section{Negation / \texttt{NICHT}-Gatter}
 
-Für die Boolesche Formel  $A_0=\neg E_0$ (beziehungsweise das \texttt{NICHT}-Gatter), ergibt sich eine Wahrheitstabelle mit zwei Zeilen. Es gibt zwei mögliche Belegungen für den Eingang $E_0$. Wir erhalten somit die Wahrheitstabelle aus \autoref{not-ttt}.
+Für die Boolesche Formel  $A_0=\neg E_0$ (bzw. das \texttt{NICHT}-Gatter) ergibt sich eine Wahrheitstabelle mit zwei Zeilen. Für den Eingang $E_0$ gibt es zwei mögliche Belegungen. Es ergibt sich die Wahrheitstabelle aus \autoref{not-ttt}.
 
 \begin{table}[htb]
 \centering
@@ -134,16 +132,16 @@ $1$		& 0 \\ \hline
 \section{Übungen}
 
 \begin{exercise}
-Füllen Sie die folgende Tabelle aus. Verwenden Sie $E_0$, $E_1$ und $A_0$.
+Füllen Sie die nachstehende Tabelle aus. Verwenden Sie $E_0$, $E_1$ und $A_0$.
 
 \begin{table}[htb]
 \centering
 \begin{tblr}{
-colspec={|Q[c, m]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|}
+colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
 }
 \hline
-& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline
-\textbf{\small Boolescher Operator} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$            \\ \hline
+& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline[2pt]
+\textbf{\small Boolesche Formel} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$            \\ \hline
 \textbf{\small Logikgatter} &        
 \begin{circuitikz}
 \draw (0,0) node[and port] (AND1) {}
@@ -173,7 +171,7 @@ colspec={|Q[c, m]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|Q[c, m, 3.5cm]|}
 \vspace{-0.75cm}
 
 \begin{exercise}
-Das \texttt{UND}- und \texttt{ODER}-Gatter gibt es auch mit mehr als zwei Eingänge (in Logicly können wir pro Gatter bis zu \num{8} Eingänge einstellen). Füllen Sie die Wahrheitstabelle  für die beiden Ausgänge aus.
+Das \texttt{UND}- und \texttt{ODER}-Gatter gibt es auch mit mehr als zwei Eingängen (Logicly: bis zu \num{8} Eingänge pro Gatter). Füllen Sie die Wahrheitstabelle  für die beiden Ausgänge aus.
 
 \begin{table}[htb]
 \centering
@@ -195,7 +193,7 @@ $1$ & $1$ & $1$ & & \\ \hline
 \vspace{-0.75cm}
 
 \begin{exercise}
-Studieren Sie für alle bisherigen Wahrheitstabellen, die \textbf{Anzahl der Eingänge} und die \textbf{Anzahl der verschiedenen Belegungen} (Anzahl Zeilen). Notieren Sie dann in der folgenden Tabelle das Ergebnis. Können Sie auch für vier, fünf und sechs Eingänge die Anzahl bestimmen? Wie lautet die Formel für $n$ Eingänge? 
+Untersuchen Sie für alle bisherigen Wahrheitstabellen, die \textbf{Anzahl der Eingänge} und die \textbf{Anzahl der verschiedenen Belegungen} (Anzahl der Zeilen). Tragen Sie dann das Ergebnis in die nachfolgenden Tabelle ein. Können Sie auch für vier, fünf und sechs Eingänge die Anzahl bestimmen? Wie lautet die Formel für $n$ Eingänge? 
 
 \begin{table}[htb]
 \centering
@@ -218,7 +216,7 @@ Formel:
 \newpage
 
 \begin{exercise}
-Studieren Sie abermals alle bisherigen Wahrheitstabellen. Legen Sie dieses Mal den Fokus auf die Belegungen. Versuchen Sie daraus abzuleiten, wie Sie \textbf{systematisch} alle möglichen Belegungen für die Eingänge auflisten können. Erstellen Sie dann die Wahrheitstabelle für vier und fünf Eingänge mit allen Belegungen.
+Studieren Sie abermals alle bisherigen Wahrheitstabellen. Legen Sie dieses Mal den Fokus auf die Belegungen. Versuchen Sie daraus abzuleiten, wie Sie \textbf{systematisch} alle möglichen Belegungen für die Eingänge auflisten können. Erstellen Sie dann die Wahrheitstabellen für vier und fünf Eingänge mit allen Belegungen.
 
 \begin{table}[H]
 \centering
@@ -236,7 +234,7 @@ $1$ & $0$ & $1$ & $0$ & $0$ & $1$ \\ \hline
 & & & $1$ & $1$ & $0$ \\ \hline
 & & & $1$ & $1$ & $1$ \\ \hline
 \end{tblr}
-
+\caption{Drei Wahrheitstabellen.}
 \vspace{1cm}
 \begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
 \hline

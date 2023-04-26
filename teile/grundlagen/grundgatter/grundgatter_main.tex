@@ -10,13 +10,13 @@
 \chapter{Grundgatter}
 \label{chapter-grundgatter}
 
-Die Grundlage aller Computerbauteile bilden die \textbf{Logikgatter} (engl. logic gates). Ein Logikgatter ist eine elektronische Schaltung. Es gibt \textbf{drei Grundgatter}, aus denen alle anderen Bauteile bestehen. Die Lernziele lauten: \\
+Logische Gatter (engl. logic gates) bilden die Grundlage aller Computerbauteile. Ein \textbf{Logikgatter} ist eine elektronische Schaltung. Es gibt \textbf{drei Grundgatter}, aus denen alle anderen Bauteile aufgebaut sind. Die Lernziele sind:\\
 
 \newcommand{\grundgatterLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
 \item Sie erklären, was wir unter einem Logikgatter verstehen.
-\item Sie erklären an einem Beispiel das Verhalten der drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT}.
+\item Sie erklären anhand eines Beispiels das Verhalten der drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT}.
 \item Sie stellen die drei Logikgatter \texttt{UND}, \texttt{ODER} und \texttt{NICHT} grafisch dar.
 \end{todolist}
 \end{minipage}
@@ -28,7 +28,7 @@ Die Grundlage aller Computerbauteile bilden die \textbf{Logikgatter} (engl. logi
 
 \section{\texttt{UND}-Gatter}
 
-Das \texttt{UND}-Gatter (eng. \texttt{AND}-Gate\footnote{Gatter (bzw. Gate) ist die Abkürzung für Logikgatter bzw. Logic Gate.}) besitzt das Verhalten, dass die Glühbirne nur dann leuchtet, wenn \textbf{beide Schalter} gedrückt sind (siehe \autoref{logicly-and}).
+Das \texttt{UND}-Gatter (engl. \texttt{AND}-Gate\footnote{Gatter (bzw. Gate) ist die Abkürzung für Logikgatter bzw. Logic Gate.}) hat das Verhalten, dass die Glühlampe nur dann leuchtet, wenn \textbf{beide Schalter} gedrückt werden (siehe \autoref{logicly-and}).
 
 \begin{figure}[htb]
 \centering
@@ -48,7 +48,7 @@ Das \texttt{UND}-Gatter (eng. \texttt{AND}-Gate\footnote{Gatter (bzw. Gate) ist 
 \label{logicly-and}
 \end{figure}
 
-Wenn wir die Bauteile von Hand zeichnen, dann ist es einfacher, wenn wir Schalter und Glühbirnen nicht zeichnen müssen. Wir bezeichnen die Schalter als \textbf{Eingänge} und die Glühbirne als \textbf{Ausgang}. Das \texttt{UND}-Gatter aus \autoref{logicly-and} hat \textbf{zwei Eingänge}. Wir kürzen einen Eingang mit $E$ ab und geben jedem Eingang eine Nummer. Ausserdem hat das Gatter \textbf{einen Ausgang}. Wir kürzen dies mit $A_0$ ab. \autoref{circuit-and} zeigt die kompakte Darstellung, die in der Digitaltechnik geläufig ist.
+Wenn wir die Bauteile von Hand zeichnen, dann ist es einfacher, wenn wir die Schalter und die Glühlampen nicht zeichnen müssen. Wir nennen die Schalter als \textbf{Eingänge} und die Glühlampen \textbf{Ausgang}. Das \texttt{UND}-Gatter in \autoref{logicly-and} hat \textbf{zwei Eingänge}. Wir kürzen einen Eingang mit $E$ ab und geben jedem Eingang eine Nummer. Das Gatter hat auch \textbf{einen Ausgang}. Diesen kürzen wir mit $A_0$ ab. \autoref{circuit-and} zeigt die kompakte Darstellung, wie sie in der Digitaltechnik üblich ist.
 
 \begin{figure}[htb]
 \centering
@@ -58,11 +58,11 @@ Wenn wir die Bauteile von Hand zeichnen, dann ist es einfacher, wenn wir Schalte
 (AND1.in 2) node[anchor=east] {$E_1$}
 (AND1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
-\caption{Das \texttt{UND}-Gatter besteht aus einem Rechteck mit einem \protect\say{Kaufmanns-Und} (eng. ampersand) darin. Die Eingänge werden immer links vom Bauteil gezeichnet, die Ausgänge rechts.}
+\caption{Das \texttt{UND}-Gatter besteht aus einem Rechteck mit einem \protect\say{Kaufmanns-Und} (engl. ampersand) darin. Die Eingänge werden immer auf der linken, die Ausgänge auf der rechten Seite des Bauteils gezeichnet.}
 \label{circuit-and}
 \end{figure}
 
-Wir können die Funktionsweise des \texttt{UND}-Gatters auch gut mithilfe eines Schaltplans der Elektrotechnik veranschaulichen (siehe \autoref{circuit-and-schaltplan}). Die Glühbirne leuchtet nur dann, wenn sowohl Schalter $E_0$ als auch Schalter $E_1$ gedrückt sind. Die Schalter sind sogenannte Schliesser. Wenn Sie gedrückt sind, dann ist der Stromkreis geschlossen. Dann kann von der Batterie aus der Strom in Pfeilrichtung fliessen und die Glühbirne leuchten.
+Die Funktionsweise des \texttt{UND}-Gatters lässt sich auch gut anhand eines elektrischen Schaltplans veranschaulichen (siehe \autoref{circuit-and-schaltplan}). Die Glühlampe leuchtet nur, wenn der Schalter $E_0$ und der Schalter $E_1$ gedrückt sind. Die Schalter sind sogenannte Schliesser. Wenn sie gedrückt sind, ist der Stromkreis geschlossen. Dann kann der Strom aus der Batterie in Pfeilrichtung fliessen und die Glühlampe leuchtet.
 
 \begin{figure}[htb]
 \centering
@@ -76,7 +76,7 @@ to (5.5, -1) to[lamp, label=$A_0$] (2.5, -1) to[battery1=\SI{5}{V}] (0,-1) to (0
 
 \section{\texttt{ODER}-Gatter}
 
-Das \texttt{ODER}-Gatter (eng. \texttt{OR}-Gate) besitzt das Verhalten, dass die Glühbirne nur dann leuchtet, wenn \textbf{mindestens} ein Schalter gedrückt ist (siehe \autoref{logicly-or}).
+Das \texttt{ODER}-Gatter (engl. \texttt{OR}-Gate) hat das Verhalten, dass die Glühlampe nur dann leuchtet, wenn \textbf{mindestens} ein Schalter gedrückt wird (siehe \autoref{logicly-or}).
 
 \begin{figure}[htb]
 \centering
@@ -92,7 +92,7 @@ Das \texttt{ODER}-Gatter (eng. \texttt{OR}-Gate) besitzt das Verhalten, dass die
 \begin{minipage}{0.225\textwidth}
 \includegraphics[width=\textwidth]{./or/or_on_on}
 \end{minipage}
-\caption{Es dürfen auch beide Schalter gedrückt sein.}
+\caption{Es dürfen auch beide Schalter gedrückt werden.}
 \label{logicly-or}
 \end{figure}
 
@@ -106,11 +106,11 @@ Wir zeichnen das \texttt{ODER}-Gatter (siehe \autoref{circuit-or}) mit zwei Eing
 (OR1.in 2) node[anchor=east] {$E_1$}
 (OR1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
-\caption{Das \texttt{ODER}-Gatter: Rechteck mit Grösser-Gleich-Zeichen ($\geq$) und einer \num{1} darin.}
+\caption{\texttt{ODER}-Gatter: Rechteck mit einem Grösser-Gleich-Zeichen ($\geq$) und einer \num{1} darin.}
 \label{circuit-or}
 \end{figure}
 
-Die Funktionsweise des \texttt{ODER}-Gatters ist in \autoref{circuit-or-schaltplan} als Schaltplan veranschaulicht.
+Die Funktionsweise des \texttt{ODER}-Gatters ist in \autoref{circuit-or-schaltplan} als elektrischer Schaltplan dargestellt.
 
 \begin{figure}[H]
 \centering
@@ -119,13 +119,13 @@ Die Funktionsweise des \texttt{ODER}-Gatters ist in \autoref{circuit-or-schaltpl
 \draw (0,0) to (1,0) to (1, -0.75) to (2, -0.75) to[cute open switch, label=$E_1$] (3.5, -0.75) to (4, -0.75) to (4, 0);
 \draw (4,0) to (5.5, 0) to (5.5, -1.5) to[lamp, label=$A_0$] (2.5, -1.5) to[battery1=\SI{5}{V}] (0,-1.5) to (0,0);
 \end{circuitikz}
-\caption{Ein Schalter muss mindestens gedrückt sein, damit die Lampe leuchtet.}
+\caption{Mindestens ein Schalter muss gedrückt werden, damit die Glühlampe leuchtet.}
 \label{circuit-or-schaltplan}
 \end{figure}
 
 \section{\texttt{NICHT}-Gatter}
 
-Das \texttt{NICHT}-Gatter (eng. \texttt{NOT}-Gate) besitzt das Verhalten, dass die Glühbirne nur dann leuchtet, wenn der Schalter \textbf{nicht} gedrückt ist (siehe \autoref{logicly-not}).
+Das \texttt{NICHT}-Gatter (engl. \texttt{NOT}-Gate) hat das Verhalten, dass die Glühlampe nur dann leuchtet, wenn der Schalter \textbf{nicht} gedrückt ist (siehe \autoref{logicly-not}).
 
 \begin{figure}[H]
 \centering
@@ -135,11 +135,11 @@ Das \texttt{NICHT}-Gatter (eng. \texttt{NOT}-Gate) besitzt das Verhalten, dass d
 \begin{minipage}{0.25\textwidth}
 \includegraphics[width=\textwidth]{./not/not_on}
 \end{minipage}
-\caption{Das \texttt{NICHT}-Gatter besitzt nur einen Eingang.}
+\caption{Das \texttt{NICHT}-Gatter hat nur einen Eingang.}
 \label{logicly-not}
 \end{figure}
 
-Das \texttt{NICHT}-Gatter \say{dreht} den Strom quasi um. Wir nennen dieses Gatter auch deshalb \textbf{Inverter}\footnote{Invertieren bedeutet umkehren beziehungsweise umdrehen.}. Wir zeichnen das Gatter mit \textbf{einem} Eingang und \textbf{einem} Ausgang (siehe \autoref{circuit-not}).
+Das \texttt{NICHT}-Gatter \say{dreht} den Strom sozusagen um. Deshalb nennen wir dieses Gatter \textbf{Inverter}\footnote{Invertieren bedeutet umkehren beziehungsweise umdrehen.}. Wir zeichnen das Gatter mit \textbf{einem} Eingang und \textbf{einem} Ausgang (siehe \autoref{circuit-not}).
 
 \begin{figure}[ht]
 \centering
@@ -150,7 +150,7 @@ Das \texttt{NICHT}-Gatter \say{dreht} den Strom quasi um. Wir nennen dieses Gatt
 (NOT1.in) node[anchor=east] {$E_0$} 
 (NOT1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
-\caption{\texttt{NICHT}-Gatter: ausserhalb des Rechtecks wird ein Kreis gezeichnet.}
+\caption{\texttt{NICHT}-Gatter: ausserhalb des Rechtecks ist ein Kreis eingezeichnet.}
 \label{circuit-not}
 \end{minipage}
 \hfill
@@ -166,9 +166,7 @@ Das \texttt{NICHT}-Gatter \say{dreht} den Strom quasi um. Wir nennen dieses Gatt
 \end{minipage}
 \end{figure}
 
-Die Darstellung des \texttt{NICHT}-Gatters können wir uns besser vorstellen, wenn wir zunächst das \texttt{BUFFER}-Gatter betrachten. Das \texttt{BUFFER}-Gatter leitet den Strom einfach unverändert weiter. Der Kreis beim \texttt{NICHT}-Gatter symbolisiert das \protect\say{Umdrehen} des Stroms.
-
-Die Funktionsweise des \texttt{NICHT}-Gatters ist in \autoref{circuit-not-schaltplan} als Schaltplan veranschaulicht. Der Schalter $E_0$ ist ein sogenannter Öffner. Wenn der Öffner gedrückt ist, dann ist der Stromkreis unterbrochen. Nur wenn der Öffner \textbf{nicht} gedrückt ist, kann von der Batterie aus der Strom in Pfeilrichtung fliessen und die Glühbirne leuchten.
+Wir können uns die Darstellung des \texttt{NICHT}-Gatters besser vorstellen, wenn wir zunächst das \texttt{BUFFER}-Gatter betrachten. Das \texttt{BUFFER}-Gatter leitet den Strom einfach unverändert weiter. Der Kreis beim \texttt{NICHT}-Gatter symbolisiert das \protect\say{Umdrehen} des Stromes. Die Funktionsweise des \texttt{NICHT}-Gatters ist in \autoref{circuit-not-schaltplan} als elektrischen Schaltplan dargestellt. Der Schalter $E_0$ ist ein so genannter Öffner. Wird der Öffner betätigt, ist der Stromkreis unterbrochen. Nur wenn der Öffner \textbf{nicht} gedrückt ist, kann der Strom in Pfeilrichtung fliessen und die Glühlampe leuchtet.
 
 \begin{figure}[htb]
 \centering
@@ -176,7 +174,7 @@ Die Funktionsweise des \texttt{NICHT}-Gatters ist in \autoref{circuit-not-schalt
 \draw (0,0) to (1,0) to[normal closed switch, label=$E_0$] (2.5,0) to (3.5,0) to (5.5,0)
 to (5.5, -1) to[lamp, label=$A_0$] (2.5, -1) to[battery1=\SI{5}{V}] (0,-1) to (0,0);
 \end{circuitikz}
-\caption{Der Öffner wird betätigt (man drückt von unten gegen den Schalter) und dadurch wird der Stromkreis unterbrochen.}
+\caption{Wir drücken von \protect\say{unten} gegen den Öffner und dann wird der Strom unterbrochen.}
 \label{circuit-not-schaltplan}
 \end{figure}
 
@@ -185,20 +183,20 @@ to (5.5, -1) to[lamp, label=$A_0$] (2.5, -1) to[battery1=\SI{5}{V}] (0,-1) to (0
 \section{Übungen}
 
 \begin{exercise}\label{uebung-raum}
-Oft hat es für das in Licht in einem Raum mehrere Schalter. In \autoref{figure-logikgatter-uebung-oder} gibt es zwei Schalter, welch das Licht einschalten können. Tragen Sie für diese Situation das passende Logikgatter ein.
+In \autoref{figure-logikgatter-uebung-oder} gibt es zwei Schalter, mit denen das Licht eingeschaltet werden kann. Das Licht wird erst ausgeschaltet, wenn beide Schalter ausgeschaltet sind. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
 
 \begin{figure}[htb]
 \centering
 \begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[height=2cm]{logikgatter_uebung_oder}
+\includegraphics[height=2.5cm]{logikgatter_uebung_oder}
 \caption{Übung \ref{uebung-raum}}
 \label{figure-logikgatter-uebung-oder}
 \end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
 \centering
-\includegraphics[height=2cm]{logikgatter_uebung_und}
+\includegraphics[height=2.5cm]{logikgatter_uebung_und}
 \caption{Übung \ref{uebung-sensor}}
 \label{figure-logikgatter-uebung-und}
 \centering
@@ -209,13 +207,15 @@ Oft hat es für das in Licht in einem Raum mehrere Schalter. In \autoref{figure-
 \vspace{-0.75cm}
 
 \begin{exercise}\label{uebung-sensor}
-In einem Museum gibt es einen Bewegungssensor (siehe \autoref{figure-logikgatter-uebung-und}). Der Sensor soll nur in der Nacht einen Alarm auslösen. Dazu stellt der Nachtwächter mit einem Schalter das Überwachungssystem \say{scharf}. Tragen Sie für diese Situation das passende Logikgatter ein.
+In einem Museum befindet sich ein Bewegungsmelder (siehe \autoref{figure-logikgatter-uebung-und}). Der Bewegungsmelder soll nur nachts einen Alarm auslösen. Dazu schaltet der Nachtwächter das Überwachungssystem mit einem Schalter \say{scharf}. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
 \end{exercise}
 
 \begin{exercise}
-Finden Sie ein Alltagsbeispiel für das \texttt{NICHT}-Gatter. Beschreiben Sie die Situation.
+Finden Sie ein Beispiel aus dem \textbf{Alltag} für das \texttt{NICHT}-Gatter. Beschreiben Sie die Situation.
 
 % Die Kronjuwelen liegen auf einem Gewichtssensor. Wenn man die Kronjuwelen wegnimmt, dann soll ein Alarm ertönen. Dafür kann man ein NICHT-Gatter verwenden. Wenn der Gewichtssensor kein Gewicht ermittelt, dann ertönt der Alarm.
+
+% Wenn der Notausschalter in der Werkstatt nicht gedrückt ist, dann fliesst der Strom. Wenn der Schalter gedrückt wird, dann ist der Strom unterbrochen.
 
 \fillwithgrid{\stretch{1}}
 \end{exercise}
