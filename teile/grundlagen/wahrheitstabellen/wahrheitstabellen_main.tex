@@ -69,7 +69,7 @@ Strom ein    & Strom ein    & Strom ein    \\ \hline
 \end{minipage}
 \end{table}
 
-Wir können den Inhalt der \autoref{and-switcher-table-1} auch verallgemeinern (abstrahieren). Ein Schalter kontrolliert, ob Strom fliesst oder nicht. Eine Glühlampe zeigt an, ob Strom fliesst oder nicht. \autoref{and-switcher-table-2} zeigt die einheitliche Notation. Aber auch diese Notation ist sehr aufwendig. Wir können die Schreibarbeit abkürzen, indem wir für \textbf{\say{Strom aus} eine $0$} notieren und für \textbf{\say{Strom ein} eine $1$}. So können wir \autoref{and-switcher-table-1} noch einfacher darstellen. \autoref{and-ttt-1} ist die sogenannte \textbf{Wahrheitstabelle}, wie sie typischerweise in der Digitaltechnik notiert wird.
+Wir können den Inhalt der \autoref{and-switcher-table-1} auch verallgemeinern (abstrahieren). Ein Schalter kontrolliert, ob Strom fliesst oder nicht. Eine Glühlampe zeigt an, ob Strom fliesst oder nicht. \autoref{and-switcher-table-2} zeigt die einheitliche Notation. Aber auch diese Notation ist sehr aufwendig. Wir können die Schreibarbeit abkürzen, indem wir für \textbf{\say{Strom aus}} eine \textbf{0} notieren und für \textbf{\say{Strom ein}} eine \textbf{1}. So können wir \autoref{and-switcher-table-1} noch einfacher darstellen. \autoref{and-ttt-1} ist die sogenannte \textbf{Wahrheitstabelle}, wie sie typischerweise in der Digitaltechnik notiert wird.
 
 \begin{table}[htb]
 \centering
@@ -193,49 +193,68 @@ $1$ & $1$ & $1$ & & \\ \hline
 \vspace{-0.75cm}
 
 \begin{exercise}
-Untersuchen Sie für alle bisherigen Wahrheitstabellen, die \textbf{Anzahl der Eingänge} und die \textbf{Anzahl der verschiedenen Belegungen} (Anzahl der Zeilen). Tragen Sie dann das Ergebnis in die nachfolgenden Tabelle ein. Können Sie auch für vier, fünf und sechs Eingänge die Anzahl bestimmen? Wie lautet die Formel für $n$ Eingänge? 
+Wie viele Belegungen ($=$ Anzahl der Zeilen) hat eine Wahrheitstabelle mit einem Eingang, zwei Eingängen, \dots, sechs Eingängen? Tragen Sie die Ergebnisse in die nachfolgenden Tabelle ein.
 
 \begin{table}[htb]
 \centering
-\begin{tblr}{|c|c|}
+\begin{tblr}{|c|c|c|}
 \hline
-\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} \\ \hline[2pt]
-1 &\\ \hline
-2 &\\ \hline
-3 &\\ \hline
-4 &\\ \hline
-5 &\\ \hline
-6 &\\ \hline
+\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} & \textbf{Anzahl Belegungen als $2$-er Potenz} \\ \hline[2pt]
+1 & & \\ \hline
+2 & & \\ \hline
+3 & & \\ \hline
+4 & & \\ \hline
+5 & & \\ \hline
+6 & & \\ \hline
 \end{tblr}
 \end{table}
 
-Formel:
+Leiten Sie nun eine Formel für $n$ Eingänge her. \textbf{Tipp}: Stellen Sie die Ergebnisse aus der Tabelle eventuell zunächst als $2$-er Potenzen dar. Formel:
+
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
 \newpage
 
 \begin{exercise}
-Studieren Sie abermals alle bisherigen Wahrheitstabellen. Legen Sie dieses Mal den Fokus auf die Belegungen. Versuchen Sie daraus abzuleiten, wie Sie \textbf{systematisch} alle möglichen Belegungen für die Eingänge auflisten können. Erstellen Sie dann die Wahrheitstabellen für vier und fünf Eingänge mit allen Belegungen.
+Studieren Sie abermals alle bisherigen Wahrheitstabellen. Legen Sie dieses Mal den Fokus auf die Belegungen. Versuchen Sie daraus abzuleiten, wie Sie \textbf{systematisch} alle möglichen \textbf{Belegungen} für die \textbf{Eingänge} auflisten können. Erstellen Sie dann die Wahrheitstabellen für vier und fünf Eingänge mit allen Belegungen.
+\textbf{Tipp}: Betrachten Sie die \textbf{Spalten} der bisherigen Wahrheitstabellen.
 
 \begin{table}[H]
 \centering
-\begin{minipage}{0.35\textwidth}
+\begin{minipage}{0.4\textwidth}
 \centering
-\begin{tblr}{|c|[4pt]c|c|[4pt]c|c|c|}
+\begin{tblr}{|c|}
 \hline
-$E_0$ & $E_1$ & $E_0$ & $E_2$ & $E_1$	& $E_0$ \\ \hline[2pt]
-$0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\ \hline
-$1$ & $0$ & $1$ & $0$ & $0$ & $1$ \\ \hline
-& $1$ & $0$ & $0$ & $1$ & $0$ \\ \hline
-& $1$ & $1$ & $0$ & $1$ & $1$ \\ \hline
-& & & $1$ & $0$ & $0$ \\ \hline
-& & & $1$ & $0$ & $1$ \\ \hline
-& & & $1$ & $1$ & $0$ \\ \hline
-& & & $1$ & $1$ & $1$ \\ \hline
+$E_0$ \\ \hline[2pt]
+$0$ \\ \hline
+$1$ \\ \hline
 \end{tblr}
-\caption{Drei Wahrheitstabellen.}
-\vspace{1cm}
+\hspace{0.01cm}
+\begin{tblr}{|c|c|}
+\hline
+$E_1$ & $E_0$ \\ \hline[2pt]
+$0$ & $0$ \\ \hline
+$0$ & $1$ \\ \hline
+$1$ & $0$ \\ \hline
+$1$ & $1$ \\ \hline
+\end{tblr}
+\hspace{0.01cm}
+\begin{tblr}{|c|c|c|}
+\hline
+$E_2$ & $E_1$	 & $E_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ \\ \hline
+$0$ & $0$ & $1$ \\ \hline
+$0$ & $1$ & $0$ \\ \hline
+$0$ & $1$ & $1$ \\ \hline
+$1$ & $0$ & $0$ \\ \hline
+$1$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $0$ \\ \hline
+$1$ & $1$ & $1$ \\ \hline
+\end{tblr}
+
+\vspace{2cm}
+
 \begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
 \hline
 $E_3$ & $E_2$	& $E_1$ & $E_0$ \\ \hline[2pt]
@@ -258,7 +277,7 @@ $E_3$ & $E_2$	& $E_1$ & $E_0$ \\ \hline[2pt]
 \end{tblr}
 \end{minipage}
 \hfill
-\begin{minipage}{0.6\textwidth}
+\begin{minipage}{0.55\textwidth}
 \centering
 \begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
 \hline

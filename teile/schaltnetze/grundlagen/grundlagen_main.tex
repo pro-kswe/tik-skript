@@ -37,7 +37,7 @@ Durch die Rangfolge aus \autoref{arithmetische-operatoren-rangfolge} wissen wir,
 
 \begin{enumerate}
 \item Berechne das Produkt von $4 \cdot 5$ (\say{Punkt-vor-Strich-Regel}).
-\item Addiere zum Produkt die Zahl $5$.
+\item Addiere zum Produkt die Zahl $2$.
 \item Dividiere nun die Summe durch $3$.
 \end{enumerate}
 
@@ -146,6 +146,23 @@ Abschliessend verbinden wir noch den \textbf{Ausgang} des \texttt{UND}-Gattes mi
 Falls eine Boolesche Formel bereits Klammern besitzt, dann werden diese nicht aufgelöst. Klammern haben immer den \textbf{höchsten} Rang.
 \end{important}
 
+\subsection{Vereinfachte Darstellung}
+
+Ein \texttt{NOT}-Gatter vor einem Eingang können wir auch vereinfacht darstellen. Dadurch erreichen wir eine kompakte Darstellung des Schaltnetzes.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[and port] (AND1) {}
+(AND1.in 1) node[anchor=east] {$E_0$} 
+(AND1.in 2) node[anchor=east] {$E_1$}
+(AND1.out) node[anchor=west] {$A_0$};
+\node at (AND1.bin 1) [ocirc, left]{};
+\end{circuitikz}
+\caption{Der Kreis am oberen Eingang des \texttt{UND}-Gatters stellt das \texttt{NICHT}-Gatter dar.}
+\label{bsp1-schaltnetz-kompakt-negation}
+\end{figure}
+
 \newpage
 
 \subsection{Übungen}
@@ -154,63 +171,99 @@ Sie müssen für die Schaltnetze kein Lineal verwenden. Eine saubere Darstellung
 
 \begin{exercise}
 Übersetzen Sie die Boolesche Formel $A_0 = E_0 \vee \neg E_1$ in ein Schaltnetz.
-\fillwithgrid{1in}
+\fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}
+\begin{solution}[print=true]
 $A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
 \begin{figure}[htb]
 \centering
+\begin{minipage}{0.6\textwidth}
+\centering
 \begin{circuitikz}
-\draw (0,0) node[buffer port] (A) {}
-(A.in 1) node[anchor=east] {$E_1$}; 
-\node at (A.bout) [ocirc, right]{};
-\draw (A.out) -- ++(0.5,0) node[or port, anchor=in 2] (B) {};
-\draw (A.in 1) ++ (0, 1) node[anchor=east] {$E_0$} -- (0.5,1) |- (B.in 1);
-\draw (B.out) node[anchor=west] {$A_0$};
+\draw (0,-1) node[not port] (NOT1) {}
+(NOT1.in 1) node[anchor=east] {$E_1$}; 
+\draw (NOT1.out) -- ++(0.5, 0) node[or port, anchor=in 2] (OR1) {};
+\draw (NOT1.in 1) ++ (0, 1) node[anchor=east] {$E_0$} -- (0.5, 0) |- (OR1.in 1);
+\draw (OR1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,0) node[or port] (OR1) {}
+(OR1.in 1) node[anchor=east] {$E_0$} 
+(OR1.in 2) node[anchor=east] {$E_1$}
+(OR1.out) node[anchor=west] {$A_0$};
+\node at (OR1.bin 2) [ocirc, left]{};
+\end{circuitikz}
+\caption*{Alternative Darstellung}
+\end{minipage}
 \end{figure}
 \end{solution}
 
 \begin{exercise}
 \label{ex-nand-schaltnetz}
 Übersetzen Sie die Boolesche Formel $A_0 = \neg (E_0 \wedge E_1)$ in ein Schaltnetz.
-\fillwithgrid{1in}
+\fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}
+\begin{solution}[print=true]
+$A_0 = \neg (E_0 \wedge E_1)$
 \begin{figure}[htb]
 \centering
+\begin{minipage}{0.5\textwidth}
+\centering
 \begin{circuitikz}
-\draw node[and port] (A) {} 
-(A.in 1) node[anchor=east] {$E_0$}
-(A.in 2) node[anchor=east] {$E_1$}
-(A.out) node[buffer port, anchor=west] (B) {}
-(B.in 1) node[anchor=east] {}; 
-\node at (B.bout) [ocirc, right]{};
-\draw (B.out) node[anchor=west] {$A_0$};
+\draw (0, 0) node[and port] (AND1) {} 
+(AND1.in 1) node[anchor=east] {$E_0$}
+(AND1.in 2) node[anchor=east] {$E_1$};
+\draw (2, 0) node[not port] (NOT1) {};
+\draw (NOT1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) -- (NOT1.in 1) node[anchor=east] {};
 \end{circuitikz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[nand port] (A) {};
+\end{circuitikz}
+\caption*{Das Schaltnetz entspricht dem \texttt{NAND}-Gatter.}
+\end{minipage}
 \end{figure}
 \end{solution}
 
 \begin{exercise}
 \label{ex-nor-schaltnetz}
 Übersetzen Sie die Boolesche Formel $A_0 = \neg (E_0 \vee E_1)$ in ein Schaltnetz.
-\fillwithgrid{1in}
+\fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}
+\begin{solution}[print=true]
+$A_0 = \neg (E_0 \vee E_1)$
 \begin{figure}[htb]
 \centering
+\begin{minipage}{0.5\textwidth}
+\centering
 \begin{circuitikz}
-\draw node[or port] (A) {} 
-(A.in 1) node[anchor=east] {$E_0$}
-(A.in 2) node[anchor=east] {$E_1$}
-(A.out) node[buffer port, anchor=west] (B) {}
-(B.in 1) node[anchor=east] {}; 
-\node at (B.bout) [ocirc, right]{};
-\draw (B.out) node[anchor=west] {$A_0$};
+\draw (0, 0) node[or port] (OR1) {} 
+(OR1.in 1) node[anchor=east] {$E_0$}
+(OR1.in 2) node[anchor=east] {$E_1$};
+\draw (2, 0) node[not port] (NOT1) {};
+\draw (NOT1.out) node[anchor=west] {$A_0$};
+\draw (OR1.out) -- (NOT1.in 1) node[anchor=east] {};
 \end{circuitikz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[nor port] (A) {};
+\end{circuitikz}
+\caption*{Das Schaltnetz entspricht dem \texttt{NOR}-Gatter.}
+\end{minipage}
 \end{figure}
 \end{solution}
 
@@ -220,30 +273,30 @@ $A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
-\begin{solution}
+\begin{solution}[print=true]
 $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)$
 \begin{figure}[htb]
 \centering
+\begin{minipage}{0.5\textwidth}
+\centering
 \begin{circuitikz}
-\draw (-2, 1) node[and port] (A) {};
-\draw (-2, -1) node[and port] (B) {}; 
-\draw (0,0) node[or port] (C) {}; 
-\draw (A.out) |- (C.in 1);
-\draw (B.out) |- (C.in 2);
-\draw (C.out) node[anchor=west] {$A_0$};
-\draw (-4,-0.5) node[buffer port] (D) {};
-\node at (D.bout) [ocirc, right]{};
-\draw (-4,0.5) node[buffer port] (E) {};
-\node at (E.bout) [ocirc, right]{};
-\draw (D.out) |- (B.in 1);
-\draw (E.out) |- (A.in 2);
-\draw (-7, 0.5) node (E1) {$E_0$};
-\draw (E1) (-6.25,  0.5) node[circle, fill, inner sep=1pt] (E1cross) {} |- (D.in 1);
-\draw (E1) to (-6.25, 0.5) |- (A.in 1);
-\draw (-7, -0.75) node (E2) {$E_1$};
-\draw (E2) (-6,  -0.75) node[circle, fill, inner sep=1pt] (E2cross) {} |- (E.in 1);
-\draw (E2) to (-6, -0.75) |- (B.in 2);
+\draw (-3, 0.5) node[not port] (NOT1) {};
+\draw (-3, -0.5) node[and port] (NOT2) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
 \end{circuitikz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[xor port] (A) {};
+\end{circuitikz}
+\caption*{Das Schaltnetz entspricht dem \texttt{XOR}-Gatter.}
+\end{minipage}
 \end{figure}
 \end{solution}
 
@@ -252,8 +305,10 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \v
 \begin{exercise}
 \label{ex-xnor-schaltnetz}
 Übersetzen Sie die Boolesche Formel $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$ in ein Schaltnetz.
-\fillwithgrid{3in}
+\fillwithgrid{2.5in}
 \end{exercise}
+\begin{solution}
+\end{solution}
 
 \begin{solution}
 $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
@@ -283,21 +338,20 @@ $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\n
 \end{solution}
 
 \begin{exercise}\label{exercise-xor-nor-nand-xnor}
-Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb ist es möglich, \textbf{das Schaltnetz} direkt als eigenes \textbf{Logikgatter} zu kaufen. \say{Hinter} dem Logikgatter \say{versteckt} sich quasi ein Schaltnetz mit \texttt{UND}-, \texttt{ODER}- und \texttt{NICHT}-Gattern. 
-
-Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{table-exercise-extended-logic-gates} benutzt. Füllen Sie \autoref{table-exercise-extended-logic-gates} wie folgt aus:
+Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb ist es möglich, \textbf{das Schaltnetz} direkt als eigenes \textbf{Logikgatter} zu kaufen. Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{table-exercise-extended-logic-gates} benutzt. Füllen Sie \autoref{table-exercise-extended-logic-gates} wie folgt aus:
 
 \begin{enumerate}
-\item[a)] Tragen Sie für jedes Logikgatter das dazugehörige Schaltnetz ein. Sie müssen nicht das Schaltnetz zeichnen, sondern mit Übung \ref{ex-nand-schaltnetz}, Übung \ref{ex-nor-schaltnetz}, Übung \ref{ex-xor-schaltnetz} oder Übung \ref{ex-xnor-schaltnetz} auf das dazugehörige Schaltnetz aus den vorherigen Übungen verweisen.
-
-\item[b)] Fügen Sie in die Spalte Beschreibung für jedes Logikgatter einen Satz hinzu, welcher erklärt, wann die \say{Glühlampe} leuchtet. Sie finden alle Logikgatter auch in Logicly.
+\item[a)] Fügen Sie unter \say{Beschreibung} für jedes Logikgatter einen Satz hinzu, welcher erklärt, wann die \say{Glühlampe} leuchtet. \textbf{Simulieren} Sie dazu die Logikgatter mit 
+\item[b)] Tragen Sie für jedes Logikgatter das \textbf{dazugehörige Schaltnetz} ein, in dem Sie auf die vorherigen Übungen verweisen (\textbf{Übung \ref{ex-nand-schaltnetz}}, \textbf{Übung \ref{ex-nor-schaltnetz}}, \textbf{Übung \ref{ex-xor-schaltnetz}} oder \textbf{Übung \ref{ex-xnor-schaltnetz}}).
+\textbf{Logicly}.
 \end{enumerate}
 
-\begin{table}[htb]
+\begin{table}[H]
 \centering
-\begin{tblr}{|Q[c, m, 2.7cm]|Q[c, m, 2.5cm]|c|Q[c, m, 3cm]|Q[c, m, 3cm]|}
+\begin{tblr}{|Q[c, m, 3cm]|Q[c, m, 2.5cm]|c|Q[c, m, 6cm]|}
 \hline
-\textbf{Bezeichnung} & \textbf{Darstellung} & \textbf{Schaltnetz} &  \textbf{Formel} & \textbf{Beschreibung} \\ \hline
+\textbf{Bezeichnung} & \textbf{Darstellung} & \textbf{Schaltnetz} &  \textbf{Formel} \\ \hline[2pt]
+\SetCell[r=2]{m}
 {
 \textbf{\texttt{XOR}} \\
 (e\textbf{x}clusive \textbf{or}, \\ dt. entweder oder)
@@ -305,7 +359,12 @@ Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{tab
 &
 \begin{circuitikz}
 \draw (0, 0) node[xor port] (A) {};
-\end{circuitikz} \\ \hline
+\end{circuitikz}
+&
+&
+\\ \hline
+ & { \SetCell[c=3]{l} \textbf{Beschreibung}: \\ ~}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
 {
 \textbf{\texttt{NAND}} \\
 (\textbf{n}ot \textbf{and})
@@ -313,7 +372,12 @@ Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{tab
 &
 \begin{circuitikz}
 \draw (0, 0) node[nand port] (A) {};
-\end{circuitikz} \\ \hline
+\end{circuitikz}
+&
+&
+\\ \hline
+ & { \SetCell[c=3]{l} \textbf{Beschreibung}: \\ ~}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
 {
 \textbf{\texttt{XNOR}} \\
 (e\textbf{x}clusive \textbf{n}ot \textbf{or}, dt. Äquivalenz)
@@ -321,7 +385,12 @@ Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{tab
 &
 \begin{circuitikz}
 \draw (0, 0) node[xnor port] (A) {};
-\end{circuitikz} \\ \hline
+\end{circuitikz}
+&
+&
+\\ \hline
+ & { \SetCell[c=3]{l} \textbf{Beschreibung}: \\ ~}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
 {
 \textbf{\texttt{NOR}} \\
 (\textbf{n}ot \textbf{or})
@@ -329,7 +398,11 @@ Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{tab
 &
 \begin{circuitikz}
 \draw (0, 0) node[nor port] (A) {};
-\end{circuitikz} \\ \hline
+\end{circuitikz}
+&
+&
+\\ \hline
+ & { \SetCell[c=3]{l} \textbf{Beschreibung}: \\ ~}& & \\ \hline[1pt]
 \end{tblr}
 \caption{Häufige Logikgatter, welche aus Grundgattern zusammengesetzt sind.}
 \label{table-exercise-extended-logic-gates}
@@ -340,15 +413,15 @@ Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{tab
 
 \section{Ausfüllen von Wahrheitstabellen}
 
-Wir zeigen nun, wie wir eine Wahrheitstabelle ausfüllen. Entweder nutzen wir die Boolesche Formel oder das Schaltnetz. Wir zeigen beide Varianten an einem Beispiel.
+Im Folgenden wird gezeigt, wie eine Wahrheitstabelle für eine boolesche Formel erstellt wird.
 
 \begin{example}
 \label{example-wahrheitstabelle-ausfuellen-bsp}
-Wir zeigen, wie wir die Wahrheitstabelle für
+Die folgende boolesche Formel ist gegeben:
 \begin{align}
 A_0 = (\neg E_0) \wedge E_1
 \end{align}
-ausfüllen. In \autoref{table-wahrheitstabelle-bsp-leer} ist die Vorlage abgebildet.
+Wir erstellen nun die zugehörige Wahrheitstabelle (siehe \autoref{table-wahrheitstabelle-bsp-leer}).
 
 \begin{table}[htb]
 \centering
@@ -364,16 +437,16 @@ $1$     	& $1$     	&  ?	\\ \hline
 \label{table-wahrheitstabelle-bsp-leer}
 \end{table}
 
-Wir haben zwei Eingänge, somit vier Zeilen. Für jede Belegung untersuchen wir, ob der Ausgang $0$ oder $1$ ergibt. Wir können dies Schritt-für-Schritt durchführen.
+Wir haben zwei Eingänge, somit vier Zeilen. Für jede Belegung prüfen wir, ob der Ausgang $0$ oder $1$ ist. Wir können das Schritt-für-Schritt machen.
 \end{example}
 
 \begin{important}[Zeilenanzahl einer Wahrheitstabelle]
-Eine Wahrheitstabelle mit \textbf{zwei Eingängen} besitzt \textbf{vier Zeilen}. Eine Wahrheitstabelle mit \textbf{drei Eingängen} besitzt \textbf{acht Zeilen}. Eine Wahrheitstabelle mit $n$ Eingängen besitzt $2^n$ Zeilen.
+Eine Wahrheitstabelle mit \textbf{zwei Eingängen} hat \textbf{vier Zeilen}. Eine Wahrheitstabelle mit \textbf{drei Eingängen} hat \textbf{acht Zeilen}. Eine Wahrheitstabelle mit $n$ Eingängen hat $2^n$ Zeilen.
 \end{important}
 
 \subsection{Das Ausfüllen der Wahrheitstabelle mithilfe des Schaltnetzes}
 
-Dazu notieren wir nacheinander jede Belegung in das Schaltnetz und lassen die Werte durch das Schaltnetz \say{fliessen}. Wir tragen dann den Wert am Ausgang in die Wahrheitstabelle ein.
+Ist das passende Schaltnetz zur booleschen Formel vorhanden, dann notieren wir nacheinander jede Belegung in das Schaltnetz und lassen die Werte durch das Schaltnetz \say{fliessen}. Wir tragen dann den Wert am Ausgang in die Wahrheitstabelle ein.
 
 \begin{example}
 \label{example-wahrheitstabelle-ausfuellen-bsp-schaltnetz}
@@ -404,29 +477,7 @@ Wir setzen \autoref{example-wahrheitstabelle-ausfuellen-bsp} fort. Dazu füllen 
 \begin{minipage}{0.475\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0,1) node (Header) {\textbf{2. Belegung: $E_0 = 0$ und $E_1 = 1$}};
-\draw (0,0) node[not port] (NOT1) {}
-(NOT1.in 1) node[anchor=east] {$E_0$}; 
-\draw (NOT1.out) -- ++(0.5,0) node[and port, anchor=in 1] (AND1) {};
-\draw (NOT1.in 1) ++ (0, -1) node[anchor=east] {$E_1$} -- (0.5,-1) |- (AND1.in 2);
-\draw (AND1.out) node[anchor=west] {$A_0$};
-\node at (-1.75,0.25) {$0$};
-\node at (-1.75,-1.25) {$1$};
-\node at (0.15,0.25) {$1$};
-\node at (0.75,0.25) {$1$};
-\node at (0.75,-0.8) {$1$};
-\node at (2.75,0.1) {$1$};
-\end{circuitikz}
-\caption*{Das \texttt{NICHT} macht aus der $0$ von Eingang $E_0$ eine $1$. Am \texttt{UND} liegt deshalb oben eine $1$ unten eine $1$ an. Dies ergibt am Ausgang $1$.}
-\end{minipage}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\begin{minipage}{0.475\textwidth}
-\centering
-\begin{circuitikz}
-\draw (0,1) node (Header) {\textbf{3. Belegung: $E_0 = 1$ und $E_1 = 0$}};
+\draw (0,1) node (Header) {\textbf{2. Belegung: $E_0 = 1$ und $E_1 = 0$}};
 \draw (0,0) node[not port] (NOT1) {}
 (NOT1.in 1) node[anchor=east] {$E_0$}; 
 \draw (NOT1.out) -- ++(0.5,0) node[and port, anchor=in 1] (AND1) {};
@@ -440,6 +491,28 @@ Wir setzen \autoref{example-wahrheitstabelle-ausfuellen-bsp} fort. Dazu füllen 
 \node at (2.75,0.1) {$0$};
 \end{circuitikz}
 \caption*{Das \texttt{NICHT} macht aus der $1$ von $E_0$ eine $0$. Am \texttt{UND} liegt deshalb oben eine $0$ und unten eine $0$ an. Dies ergibt am Ausgang $0$.}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.475\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,1) node (Header) {\textbf{3. Belegung: $E_0 = 0$ und $E_1 = 1$}};
+\draw (0,0) node[not port] (NOT1) {}
+(NOT1.in 1) node[anchor=east] {$E_0$}; 
+\draw (NOT1.out) -- ++(0.5,0) node[and port, anchor=in 1] (AND1) {};
+\draw (NOT1.in 1) ++ (0, -1) node[anchor=east] {$E_1$} -- (0.5,-1) |- (AND1.in 2);
+\draw (AND1.out) node[anchor=west] {$A_0$};
+\node at (-1.75,0.25) {$0$};
+\node at (-1.75,-1.25) {$1$};
+\node at (0.15,0.25) {$1$};
+\node at (0.75,0.25) {$1$};
+\node at (0.75,-0.8) {$1$};
+\node at (2.75,0.1) {$1$};
+\end{circuitikz}
+\caption*{Das \texttt{NICHT} macht aus der $0$ von $E_0$ eine $1$. Am \texttt{UND} liegt deshalb oben eine $1$ unten eine $1$ an. Dies ergibt am Ausgang $1$.}
 \end{minipage}
 \hfill
 \begin{minipage}{0.475\textwidth}
@@ -458,38 +531,38 @@ Wir setzen \autoref{example-wahrheitstabelle-ausfuellen-bsp} fort. Dazu füllen 
 \node at (0.75,-0.8) {$1$};
 \node at (2.75,0.1) {$0$};
 \end{circuitikz}
-\caption{Das \texttt{NICHT} macht aus der $1$ von $E_0$ eine $0$. Am \texttt{UND} liegt deshalb oben eine $0$ und unten eine $1$ an. Dies ergibt am Ausgang $1$.}
+\caption{Das \texttt{NICHT} macht aus der $1$ von $E_0$ eine $0$. Am \texttt{UND} liegt deshalb oben eine $0$ und unten eine $1$ an. Dies ergibt am Ausgang $0$.}
 \end{minipage}
 \end{figure}
 \end{example}
 
-\subsection{Das Ausfüllen der Wahrheitstabelle mithilfe der Booleschen Formel}
+\subsection{Das Ausfüllen der Wahrheitstabelle mithilfe der booleschen Formel}
 
-Wir setzen jede Belegung in die Formel ein und werten die Formel dann aus. Dies kennen Sie bereits aus der Mathematik, wie folgendes Beispiel zeigt.
+Ist eine Boolesche Formel gegeben, so kann man die Wahrheitstabelle ausfüllen, indem man jede Belegung in die Formel einsetzt und dann die Formel auswertet. Dieses Prinzip kennen Sie bereits aus der Mathematik, wie das folgende Beispiel zeigt.
 
 \begin{example}
-Wir können das Volumen einer Kugel mit der Formel $V = \frac{4}{3} \cdot \pi \cdot r^3$ berechnen. Möchten wir nun für den Radius $\qty{2}{\centi\metre}$ das Volumen berechnen, dann setzen wir den Wert in die Formel ein und rechnen das Ergebnis aus.
+Wir können das Volumen einer Kugel mit der Formel $V = \frac{4}{3} \cdot \pi \cdot r^3$ berechnen. Wenn wir nun das Volumen für den Radius $\qty{2}{\centi\metre}$ berechnen wollen, setzen wir den Wert in die Formel ein und berechnen das Ergebnis.
 \begin{align}
 r = \qty{2}{\centi\metre} \Rightarrow V = \frac{4}{3} \cdot \pi \cdot (\qty{2}{\centi\metre})^3 \approx \qty{33,51}{\cubic\centi\metre}
 \end{align}
 \end{example}
 
-Das gleiche Prinzip wenden wir nun auf Boolesche Formeln an. Wir ersetzen die Eingänge in der Formel durch eine Belegung und rechnen das Ergebnis aus.
+Das gleiche Prinzip wenden wir nun auf boolesche Formeln an. Wir ersetzen die Eingänge in der Formel durch eine Belegung und berechnen das Ergebnis.
 
 \begin{example}
-Wir setzen \autoref{example-wahrheitstabelle-ausfuellen-bsp} fort und ermitteln für $A_0 = \neg E_0 \wedge E_1 = (\neg E_0) \wedge E_1$ die fehlenden Werte der Wahrheitstabelle.
+Wir setzen \autoref{example-wahrheitstabelle-ausfuellen-bsp} erneut fort und bestimmen für $A_0 = \neg E_0 \wedge E_1 = (\neg E_0) \wedge E_1$ die fehlenden Werte der Wahrheitstabelle.
 \begin{itemize}
 \item $E_0 = 0$ und $E_1 = 0 \Rightarrow A_0 = (\overbrace{\neg 0}^{\text{Def.~}\texttt{NICHT}}) \wedge 0 = (1) \wedge 0 = \overbrace{1 \wedge 0}^{\text{Def.~}\texttt{UND}} = 0$.
-\item $E_0 = 0$ und $E_1 = 1 \Rightarrow A_0 = (\neg 0) \wedge 1 = (1) \wedge 1 = 1 \wedge 1 = 1$. 
-\item $E_0 = 1$ und $E_1 = 0 \Rightarrow A_0 = (\neg 1) \wedge 0 = (0) \wedge 0 = 0 \wedge 0 = 0$. 
+\item $E_0 = 1$ und $E_1 = 0 \Rightarrow A_0 = (\neg 1) \wedge 0 = (0) \wedge 0 = 0 \wedge 0 = 0$.
+\item $E_0 = 0$ und $E_1 = 1 \Rightarrow A_0 = (\neg 0) \wedge 1 = (1) \wedge 1 = 1 \wedge 1 = 1$.
 \item $E_0 = 1$ und $E_1 = 1 \Rightarrow A_0 = (\neg 1) \wedge 1 = (0) \wedge 1 = 0 \wedge 1 = 0$. 
 \end{itemize}
 \end{example}
 
-Egal mit welcher Methode wir arbeiten, wir erhalten die gleichen Ergebnisse für die Ausgänge einer Wahrheitstabelle.
+Unabhängig davon, welche Methode wir anwenden, erhalten wir die gleichen Ergebnisse für die Ausgänge einer Wahrheitstabelle.
 
 \begin{example}
-Sowohl die Methode mit dem Schaltnetz, als auch die Methode mit der Booleschen Formel ergeben die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-bsp-voll}.
+Sowohl die Methode mit dem Schaltnetz, als auch die Methode mit der booleschen Formel ergeben die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-bsp-voll}.
 
 \begin{table}[htb]
 \centering
@@ -497,8 +570,8 @@ Sowohl die Methode mit dem Schaltnetz, als auch die Methode mit der Booleschen F
 \hline
 $E_1$ & $E_0$ & $A_0 = \neg E_0 \wedge E_1$ \\ \hline[2pt]
 $0$    	&  $0$     	&  0	\\ \hline
-$0$     	& $1$     	&  1	\\ \hline
-$1$ 		& $0$      	&  0 	\\ \hline
+$0$     	& $1$     	&  0	\\ \hline
+$1$ 		& $0$      	&  1 	\\ \hline
 $1$     	& $1$     	&  0	\\ \hline
 \end{tblr}
 \caption{Die vier Werte für den Ausgang $A_0$ wurden berechnet.}
@@ -508,10 +581,10 @@ $1$     	& $1$     	&  0	\\ \hline
 
 \subsection{Übungen}
 
-Sie müssen die Wahrheitstabelle nicht mit Lineal zeichnen. Eine saubere Darstellung der Spalten und Zeilen ist ausreichend.
+Achten Sie auf eine saubere Darstellung der Wahrheitstabelle!
 
 \begin{exercise}
-Erstellen Sie für die Boolesche Formel $A_0 = E_0 \vee \neg E_1$ die dazugehörige Wahrheitstabelle.
+Erstellen Sie für die boolesche Formel $A_0 = E_0 \vee \neg E_1$ die dazugehörige Wahrheitstabelle.
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 

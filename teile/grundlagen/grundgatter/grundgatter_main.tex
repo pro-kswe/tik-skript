@@ -178,44 +178,42 @@ to (5.5, -1) to[lamp, label=$A_0$] (2.5, -1) to[battery1=\SI{5}{V}] (0,-1) to (0
 \label{circuit-not-schaltplan}
 \end{figure}
 
-\vspace{-0.5cm}
-
 \section{Übungen}
 
-\begin{exercise}\label{uebung-raum}
-In \autoref{figure-logikgatter-uebung-oder} gibt es zwei Schalter, mit denen das Licht eingeschaltet werden kann. Das Licht wird erst ausgeschaltet, wenn beide Schalter ausgeschaltet sind. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
+\begin{exercise}\label{uebung-autobeleuchtung}
+\autoref{figure-logikgatter-uebung-oder} zeigt zwei Fahrzeugtüren. Solange eine Autotür geöffnet ist, soll das Licht im Auto eingeschaltet sein. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
 
 \begin{figure}[htb]
 \centering
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.275\textwidth}
 \centering
-\includegraphics[height=2.5cm]{logikgatter_uebung_oder}
-\caption{Übung \ref{uebung-raum}}
+\includegraphics[height=2cm]{logikgatter_uebung_oder}
+\caption{Übung \ref{uebung-autobeleuchtung}}
 \label{figure-logikgatter-uebung-oder}
 \end{minipage}
 \hfill
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.275\textwidth}
 \centering
-\includegraphics[height=2.5cm]{logikgatter_uebung_und}
-\caption{Übung \ref{uebung-sensor}}
+\includegraphics[height=2cm]{logikgatter_uebung_und}
+\caption{Übung \ref{uebung-alarm}}
 \label{figure-logikgatter-uebung-und}
+\centering
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\centering
+\includegraphics[height=2cm]{logikgatter_uebung_nicht}
+\caption{Übung \ref{uebung-kuehlschrank}}
+\label{figure-logikgatter-uebung-nicht}
 \centering
 \end{minipage}
 \end{figure}
 \end{exercise}
 
-\vspace{-0.75cm}
-
-\begin{exercise}\label{uebung-sensor}
-In einem Museum befindet sich ein Bewegungsmelder (siehe \autoref{figure-logikgatter-uebung-und}). Der Bewegungsmelder soll nur nachts einen Alarm auslösen. Dazu schaltet der Nachtwächter das Überwachungssystem mit einem Schalter \say{scharf}. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
+\begin{exercise}\label{uebung-alarm}
+In einem Museum ist ein Bewegungsmelder (siehe \autoref{figure-logikgatter-uebung-und}) installiert. Der Bewegungsmelder soll nur nachts einen Alarm auslösen. Dazu schaltet der Nachtwächter das Überwachungssystem mit einem Schalter \say{scharf}. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
 \end{exercise}
 
-\begin{exercise}
-Finden Sie ein Beispiel aus dem \textbf{Alltag} für das \texttt{NICHT}-Gatter. Beschreiben Sie die Situation.
-
-% Die Kronjuwelen liegen auf einem Gewichtssensor. Wenn man die Kronjuwelen wegnimmt, dann soll ein Alarm ertönen. Dafür kann man ein NICHT-Gatter verwenden. Wenn der Gewichtssensor kein Gewicht ermittelt, dann ertönt der Alarm.
-
-% Wenn der Notausschalter in der Werkstatt nicht gedrückt ist, dann fliesst der Strom. Wenn der Schalter gedrückt wird, dann ist der Strom unterbrochen.
-
-\fillwithgrid{\stretch{1}}
+\begin{exercise}\label{uebung-kuehlschrank}
+Das Licht in einem Kühlschrank (siehe \autoref{figure-logikgatter-uebung-nicht}) leuchtet nur, wenn die Tür geöffnet ist. Dazu betätigt die Tür einen Schalter, wenn sie geschlossen ist. Tragen Sie das entsprechende Logikgatter für diese Situation ein.
 \end{exercise}

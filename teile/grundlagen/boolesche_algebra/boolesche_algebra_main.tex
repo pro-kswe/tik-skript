@@ -84,21 +84,27 @@ colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
 \end{exercise}
 
 \begin{exercise}
-Wie in der Mathematik gibt es auch in der booleschen Algebra verschiedene \say{Rechengesetze}. In dieser Aufgabe sollen Sie erste Gesetzmässigkeiten entdecken. Übertragen Sie dazu die booleschen Formeln in die entsprechenden Logikgatter, Eingänge und Ausgänge. Verwenden Sie dazu Logicly. Anstelle der Schalter können Sie auch direkt einen Eingang mit \num{0} oder \num{1} verwenden. Füllen Sie dann die Tabelle aus.
+Welche Gesetze gelten in der booleschen Algebra? Übertragen Sie die booleschen Formeln in Logicly. Ergänzen Sie anschliessend die Gleichungen in der Tabelle.
+\begin{itemize}
+\item Eingänge ($E_0$ bzw. $E_1$) sind Schalter. Ausgänge ($A_0$) sind Glühlampen.
+\item \num{0} bedeutet \say{Low Constant}, \num{1} bedeutet \say{Hight Constant}
+\end{itemize}
+
+\num{0} bedeutet, dass kein Strom fliesst. \num{1} bedeutet, dass Strom fliesst.
 
 \begin{table}[htb]
 \centering
 \begin{tblr}{
 colspec={|c|Q[c, l, 4cm]|Q[c, l, 4cm]|},
-stretch=2
+stretch=1.5
 }
 \hline
-\textbf{Neutralitätsgesetze} & $A_0 = E_0 \wedge 1 =$ & $A_0 = E_0 \vee 0 =$\\ \hline
 \textbf{Extremalgesetze} & $A_0 = E_0 \wedge 0 =$ & $A_0 = E_0 \vee 1 =$\\ \hline
 \textbf{Dualitätsgesetze} & $A_0 = \neg 0 =$ & $A_0 = \neg 1 =$\\ \hline
+\textbf{Neutralitätsgesetze} & $A_0 = E_0 \wedge 1 =$ & $A_0 = E_0 \vee 0 =$\\ \hline
 \textbf{Idempotenzgesetze} & $A_0 = E_0 \wedge E_0 =$ & $A_0 = E_0 \vee E_0 =$\\ \hline
 \textbf{Kommutativgesetze} & $A_0 = E_0 \wedge E_1 =$ & $A_0 = E_0 \vee E_1 =$\\ \hline
 \end{tblr}
 \caption{Gesetze der booleschen Algebra (Teil 1).}
-\end{table} 
+\end{table}
 \end{exercise}
