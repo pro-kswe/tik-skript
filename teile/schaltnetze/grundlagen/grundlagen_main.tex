@@ -277,20 +277,29 @@ $A_0 = \neg (E_0 \vee E_1)$
 $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)$
 \begin{figure}[htb]
 \centering
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.7\textwidth}
 \centering
 \begin{circuitikz}
-\draw (-3, 0.5) node[not port] (NOT1) {};
-\draw (-3, -0.5) node[and port] (NOT2) {};
+\draw (-4.5, 0.5) node[not port] (NOT1) {};
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-4.5, -0.5) node[not port] (NOT2) {};
 \draw (-2, -1) node[and port] (AND2) {};
 \draw (0, 0) node[or port] (OR1) {};
 \draw (OR1.out) node[anchor=west] {$A_0$};
 \draw (AND1.out) |- (OR1.in 1);
 \draw (AND2.out) |- (OR1.in 2);
+\draw (-7.25, 1) node (E0) {$E_0$};
+\draw (-7.25, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-6.5,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND2.in 2);
+\draw (E1cross) |- (NOT1.in 1);
+\draw (E0cross) |- (NOT2.in 1);
+\draw (NOT1.out) |- (AND1.in 2);
+\draw (NOT2.out) |- (AND2.in 1);
 \end{circuitikz}
 \end{minipage}
 \hfill
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.25\textwidth}
 \centering
 \begin{circuitikz}
 \draw (0, 0) node[xor port] (A) {};
@@ -310,30 +319,39 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \v
 \begin{solution}
 \end{solution}
 
-\begin{solution}
+\begin{solution}[print=true]
 $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
 \begin{figure}[htb]
 \centering
+\begin{minipage}{0.65\textwidth}
+\centering
 \begin{circuitikz}
-\draw (-2, 1) node[and port] (A) {};
-\draw (-2, -1) node[and port] (B) {}; 
-\draw (0,0) node[or port] (C) {}; 
-\draw (A.out) |- (C.in 1);
-\draw (B.out) |- (C.in 2);
-\draw (C.out) node[anchor=west] {$A_0$};
-\draw (-4,-0.5) node[buffer port] (D) {};
-\node at (D.bout) [ocirc, right]{};
-\draw (-4,-1.5) node[buffer port] (E) {};
-\node at (E.bout) [ocirc, right]{};
-\draw (D.out) |- (B.in 1);
-\draw (E.out) |- (B.in 2);
-\draw (-7, 0.5) node (E1) {$E_0$};
-\draw (E1) (-6.25,  0.5) node[circle, fill, inner sep=1pt] (E1cross) {} |- (D.in 1);
-\draw (E1) to (-6.25, 0.5) |- (A.in 1);
-\draw (-7, -0.75) node (E2) {$E_1$};
-\draw (E2) (-6,  -0.75) node[circle, fill, inner sep=1pt] (E2cross) {} |- (E.in 1);
-\draw (E2) to (-6, -0.75) |- (A.in 2);
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-4.5, -1.5) node[not port] (NOT1) {};
+\draw (-4.5, -0.5) node[not port] (NOT2) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (-7.25, 1) node (E0) {$E_0$};
+\draw (-7.25, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-6.5,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND1.in 2);
+\draw (E1cross) |- (NOT1.in 1);
+\draw (E0cross) |- (NOT2.in 1);
+\draw (NOT2.out) |- (AND2.in 1);
+\draw (NOT1.out) |- (AND2.in 2);
 \end{circuitikz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[xnor port] (A) {};
+\end{circuitikz}
+\caption*{Das Schaltnetz entspricht dem \texttt{XNOR}-Gatter.}
+\end{minipage}
 \end{figure}
 \end{solution}
 
