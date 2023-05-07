@@ -10,15 +10,15 @@
 \chapter{Grundlagen}
 \label{chapter-schaltnetze-grundlagen}
 
-Damit wir komplexere elektronische Bauteile erstellen können, müssen wir Logikgatter miteinander kombinieren. Wir sprechen von \textbf{Schaltnetzen}. Die Lernziele lauten:\\
+Um komplexere elektronische Bauteile herstellen zu können, müssen wir Logikgatter miteinander kombinieren. Wir sprechen von \textbf{Schaltnetzen}. Die Lernziele sind:\\
 
 \newcommand{\schaltnetzeGrundlagenLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
 \item Sie erklären, was ein Schaltnetz ist.
-\item Sie nennen die Rangfolge der Booleschen Operatoren $\wedge$, $\vee$, und $\neg$.
-\item Sie erstellen für eine Boolesche Formel das dazugehörige Schaltnetz.
-\item Sie erstellen für eine Boolesche Formel die dazugehörige Wahrheitstabelle. 
+\item Sie nennen die Rangfolge der booleschen Operatoren $\wedge$, $\vee$, und $\neg$.
+\item Sie erstellen zu einer booleschen Formel das zugehörige Schaltnetz.
+\item Sie erstellen zu einer booleschen Formel die zugehörige Wahrheitstabelle. 
 \end{todolist}
 \end{minipage}
 }
@@ -29,9 +29,9 @@ Damit wir komplexere elektronische Bauteile erstellen können, müssen wir Logik
 
 \section{Rangfolge der Booleschen Operatoren}
 
-Aus der Mathematik kennen Sie bereits die Rangfolge der arithmetischen Operatoren ($+$, $\cdot$, $-$, $\div$) und Klammern. Durch diese Rangfolge ist eindeutig definiert, wie eine Berechnung durchzuführen ist. \autoref{eq:mathe:bsp} zeigt ein Beispiel.
+Aus der Mathematik kennen Sie bereits die Rangfolge der arithmetischen Operatoren ($+$, $\cdot$, $-$, $\div$) und der Klammern. Diese Rangfolge legt eindeutig fest, wie eine Berechnung durchzuführen ist. Ein Beispiel zeugt \autoref{eq:mathe:bsp}.
 \begin{align}
-(2 + 4 \cdot 5) \div 3 \label{eq:mathe:bsp}
+(2 + 4 \cdot 5) \div 3 = (2 + (4 \cdot 5)) \div 3 \label{eq:mathe:bsp}
 \end{align}
 Durch die Rangfolge aus \autoref{arithmetische-operatoren-rangfolge} wissen wir, dass die Gleichung wie folgt zu berechnen ist:
 
@@ -41,7 +41,7 @@ Durch die Rangfolge aus \autoref{arithmetische-operatoren-rangfolge} wissen wir,
 \item Dividiere nun die Summe durch $3$.
 \end{enumerate}
 
-Die Reihenfolge der Berechnungen können wir kompakter als $(2 + (4 \cdot 5)) \div 3$ notieren. Auch für \textbf{Boolesche Operatoren} gibt es eine \textbf{Rangfolge} (siehe \autoref{boolesche-operatoren-rangfolge}), damit bei \textbf{Booleschen Formeln} mit \textbf{mehr als einem Operator} die Reihenfolge eindeutig definiert ist.
+Auch für \textbf{boolesche Operatoren} gibt es eine \textbf{Rangfolge} (siehe \autoref{boolesche-operatoren-rangfolge}), damit bei \textbf{booleschen Formeln} mit \textbf{mehr als einem Operator} die Reihenfolge eindeutig definiert ist.
 
 \begin{figure}[ht]
 \centering
@@ -73,18 +73,18 @@ $\vee$ & $4$ \\ \hline
 \end{minipage}
 \end{figure}
 
-Wir zeigen im nächsten Abschnitt, wie wir mit der Rangfolge der Booleschen Operatoren umgehen.
+Wir zeigen im nächsten Abschnitt, wie wir mit der Rangfolge der booleschen Operatoren umgehen.
 
 \section{Konstruktion von Schaltnetzen}
 
-Wir zeigen nun an einem Beispiel, wie wir ein Schaltnetz für eine Boolesche Formel erstellen.
+Wir zeigen nun an einem Beispiel, wie wir ein Schaltnetz für eine boolesche Formel erstellen.
 
 \begin{example}
 Wir übersetzen die \autoref{eq:bsp1} in ein Schaltnetz.
 \begin{align}
 A_0 = \neg E_0 \wedge E_1 \label{eq:bsp1}
 \end{align}
-Wir können für eine Formel zunächst die Klammern gemäss der Rangfolge der Booleschen Operatoren hinzufügen. Aus \autoref{eq:bsp1} entsteht \autoref{eq:bsp1-klammern}.
+Für eine boolesche Formel können wir zunächst die Klammern in der Rangfolge der booleschen Operatoren hinzufügen. \autoref{eq:bsp1} ergibt \autoref{eq:bsp1-klammern}.
 \begin{align}
 A_0 = (\neg E_0) \wedge E_1 \label{eq:bsp1-klammern}
 \end{align}
@@ -92,13 +92,13 @@ Für \autoref{eq:bsp1-klammern} erstellen wir das Schaltnetz.
 
 \paragraph{Schaltnetz}
 
-\autoref{eq:bsp1-klammern} besteht aus zwei Eingängen ($E_0$ und $E_1$). Wir zeichnen zunächst beide Eingänge.
+\autoref{eq:bsp1-klammern} hat zwei Eingänge ($E_0$ und $E_1$). Wir zeichnen zunächst beide Eingänge.
 
 \begin{important}
-In einer Formel können mehr als 2 Eingänge vorkommen. Es kann auch sein, dass ein Eingang mehrfach verwendet wird. Wir zeichnen jeden Eingang jedoch nur \textbf{einmal}.
+Eine Formel kann mehr als 2 Eingänge enthalten. Es ist auch möglich, dass ein Eingang mehrfach verwendet wird. Wir zeichnen jeden Eingang jedoch nur \textbf{einmal}.
 \end{important}
 
-Wir zeichnen zuerst $\neg E_0$, da dieser Teil in einer Klammer steht und somit einen höheren Rang als $\wedge$ hat. Dies bedeutet, wir müssen von $E_0$ \textbf{ausgehend} ein \texttt{NICHT}-Gatter zeichnen. Wir erhalten folgendes Ergebnis:
+Wir zeichnen zuerst $\neg E_0$, da dieser Teil in einer Klammer steht und somit einen höheren Rang als $\wedge$ hat. Das bedeutet, dass wir ausgehend von $E_0$ ein \texttt{NICHT}-Gatter zeichnen müssen. Wir erhalten folgendes Ergebnis:
 
 \begin{figure}[htb]
 \centering
@@ -109,7 +109,7 @@ Wir zeichnen zuerst $\neg E_0$, da dieser Teil in einer Klammer steht und somit 
 \end{circuitikz}
 \end{figure}
 
-Wir benötigen ein \texttt{UND}-Gatter, da in der Formel $\wedge$ vorhanden ist. Links von $\wedge$ steht $(\neg E_0)$. Wir müssen somit den \textbf{Ausgang} von $(\neg E_0)$ mit einem \textbf{Eingang} des \texttt{UND}-Gatters verbinden. Auf der rechten Seite von $\wedge$ steht $E_1$. Wir können somit direkt von $E_1$ \textbf{ausgehend} die Leitung mit dem \textbf{anderen} Eingang des \texttt{UND}-Gatters verbinden. Wir erhalten das Schaltnetz aus \autoref{bsp1-schaltnetz-zwischenstand}.
+Wir benötigen ein \texttt{UND}-Gatter, da in der Formel $\wedge$ vorkommt. Links von $\wedge$ steht $(\neg E_0)$. Wir müssen also den \textbf{Ausgang} von $(\neg E_0)$ mit einem \textbf{Eingang} des \texttt{UND}-Gatters verbinden. Rechts von $\wedge$ steht $E_1$. Wir können also direkt \textbf{von $E_1$ aus} die Leitung mit dem \textbf{anderen} Eingang des \texttt{UND}-Gatters verbinden. Wir erhalten das Schaltnetz aus \autoref{bsp1-schaltnetz-zwischenstand}.
 
 \begin{figure}[htb]
 \centering
@@ -139,16 +139,16 @@ Wir benötigen ein \texttt{UND}-Gatter, da in der Formel $\wedge$ vorhanden ist.
 \end{minipage}
 \end{figure}
 
-Abschliessend verbinden wir noch den \textbf{Ausgang} des \texttt{UND}-Gattes mit der Beschriftung $A_0$. Das finale Schaltnetz ist in \autoref{bsp1-schaltnetz} dargestellt.
+Abschliessend verbinden wir noch den \textbf{Ausgang} des \texttt{UND}-Gattes mit der Beschriftung $A_0$. Das endgültige Schaltnetz ist in \autoref{bsp1-schaltnetz} dargestellt.
 \end{example}
 
 \begin{important}
-Falls eine Boolesche Formel bereits Klammern besitzt, dann werden diese nicht aufgelöst. Klammern haben immer den \textbf{höchsten} Rang.
+Wenn eine boolesche Formel bereits Klammern enthält, werden diese nicht aufgelöst. Klammern haben immer den \textbf{höchsten} Rang.
 \end{important}
 
 \subsection{Vereinfachte Darstellung}
 
-Ein \texttt{NOT}-Gatter vor einem Eingang können wir auch vereinfacht darstellen. Dadurch erreichen wir eine kompakte Darstellung des Schaltnetzes.
+Ein \texttt{NOT}-Gatter vor einem Eingang (siehe \autoref{bsp1-schaltnetz}) können wir auch vereinfacht darstellen. Dadurch erreichen wir eine kompakter Darstellung von Schaltnetzen.
 
 \begin{figure}[htb]
 \centering
@@ -157,7 +157,7 @@ Ein \texttt{NOT}-Gatter vor einem Eingang können wir auch vereinfacht darstelle
 (AND1.in 1) node[anchor=east] {$E_0$} 
 (AND1.in 2) node[anchor=east] {$E_1$}
 (AND1.out) node[anchor=west] {$A_0$};
-\node at (AND1.bin 1) [ocirc, left]{};
+\node at (AND1.bin 1) [notcirc, left]{};
 \end{circuitikz}
 \caption{Der Kreis am oberen Eingang des \texttt{UND}-Gatters stellt das \texttt{NICHT}-Gatter dar.}
 \label{bsp1-schaltnetz-kompakt-negation}
@@ -167,16 +167,16 @@ Ein \texttt{NOT}-Gatter vor einem Eingang können wir auch vereinfacht darstelle
 
 \subsection{Übungen}
 
-Sie müssen für die Schaltnetze kein Lineal verwenden. Eine saubere Darstellung ist ausreichend.
+Übersetzen Sie \textbf{pro Übung} die vorgegebene \textbf{boolesche Formel} in das entsprechende \textbf{Schaltnetz}. Sie müssen für die Schaltnetze kein Lineal verwenden. Eine \textbf{saubere Darstellung} ist ausreichend.
 
 \begin{exercise}
-Übersetzen Sie die Boolesche Formel $A_0 = E_0 \vee \neg E_1$ in ein Schaltnetz.
+$A_0 = E_0 \vee \neg E_1$
 \fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}[print=true]
+\begin{solution}
 $A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.6\textwidth}
 \centering
@@ -201,15 +201,16 @@ $A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
 \caption*{Alternative Darstellung}
 \end{minipage}
 \end{figure}
+\vfill
 \end{solution}
 
 \begin{exercise}
 \label{ex-nand-schaltnetz}
-Übersetzen Sie die Boolesche Formel $A_0 = \neg (E_0 \wedge E_1)$ in ein Schaltnetz.
+$A_0 = \neg (E_0 \wedge E_1)$
 \fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}[print=true]
+\begin{solution}
 $A_0 = \neg (E_0 \wedge E_1)$
 \begin{figure}[htb]
 \centering
@@ -237,11 +238,11 @@ $A_0 = \neg (E_0 \wedge E_1)$
 
 \begin{exercise}
 \label{ex-nor-schaltnetz}
-Übersetzen Sie die Boolesche Formel $A_0 = \neg (E_0 \vee E_1)$ in ein Schaltnetz.
+$A_0 = \neg (E_0 \vee E_1)$
 \fillwithgrid{0.8in}
 \end{exercise}
 
-\begin{solution}[print=true]
+\begin{solution}
 $A_0 = \neg (E_0 \vee E_1)$
 \begin{figure}[htb]
 \centering
@@ -269,11 +270,11 @@ $A_0 = \neg (E_0 \vee E_1)$
 
 \begin{exercise}
 \label{ex-xor-schaltnetz}
-Übersetzen Sie die Boolesche Formel $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1$ in ein Schaltnetz.
+$A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1$
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
-\begin{solution}[print=true]
+\begin{solution}
 $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)$
 \begin{figure}[htb]
 \centering
@@ -313,13 +314,13 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \v
 
 \begin{exercise}
 \label{ex-xnor-schaltnetz}
-Übersetzen Sie die Boolesche Formel $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$ in ein Schaltnetz.
+$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$
 \fillwithgrid{2.5in}
 \end{exercise}
 \begin{solution}
 \end{solution}
 
-\begin{solution}[print=true]
+\begin{solution}
 $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
 \begin{figure}[htb]
 \centering
@@ -359,9 +360,8 @@ $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\n
 Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb ist es möglich, \textbf{das Schaltnetz} direkt als eigenes \textbf{Logikgatter} zu kaufen. Für die Logikgatter werden die Bezeichnungen und Darstellungen aus \autoref{table-exercise-extended-logic-gates} benutzt. Füllen Sie \autoref{table-exercise-extended-logic-gates} wie folgt aus:
 
 \begin{enumerate}
-\item[a)] Fügen Sie unter \say{Beschreibung} für jedes Logikgatter einen Satz hinzu, welcher erklärt, wann die \say{Glühlampe} leuchtet. \textbf{Simulieren} Sie dazu die Logikgatter mit 
+\item[a)] Fügen Sie unter \say{Beschreibung} für jedes Logikgatter einen Satz hinzu, welcher erklärt, wann die \say{Glühlampe} leuchtet. \textbf{Simulieren} Sie dazu die Logikgatter mit \textbf{Logicly}.
 \item[b)] Tragen Sie für jedes Logikgatter das \textbf{dazugehörige Schaltnetz} ein, in dem Sie auf die vorherigen Übungen verweisen (\textbf{Übung \ref{ex-nand-schaltnetz}}, \textbf{Übung \ref{ex-nor-schaltnetz}}, \textbf{Übung \ref{ex-xor-schaltnetz}} oder \textbf{Übung \ref{ex-xnor-schaltnetz}}).
-\textbf{Logicly}.
 \end{enumerate}
 
 \begin{table}[H]
@@ -458,7 +458,7 @@ $1$     	& $1$     	&  ?	\\ \hline
 Wir haben zwei Eingänge, somit vier Zeilen. Für jede Belegung prüfen wir, ob der Ausgang $0$ oder $1$ ist. Wir können das Schritt-für-Schritt machen.
 \end{example}
 
-\begin{important}[Zeilenanzahl einer Wahrheitstabelle]
+\begin{important}
 Eine Wahrheitstabelle mit \textbf{zwei Eingängen} hat \textbf{vier Zeilen}. Eine Wahrheitstabelle mit \textbf{drei Eingängen} hat \textbf{acht Zeilen}. Eine Wahrheitstabelle mit $n$ Eingängen hat $2^n$ Zeilen.
 \end{important}
 
@@ -599,11 +599,28 @@ $1$     	& $1$     	&  0	\\ \hline
 
 \subsection{Übungen}
 
-Achten Sie auf eine saubere Darstellung der Wahrheitstabelle!
+Erstellen Sie pro Übung für die vorgegebene boolesche Formel die entsprechende Wahrheitstabelle. Achten Sie auf eine saubere Darstellung der Spalten und Zeilen!
 
 \begin{exercise}
-Erstellen Sie für die boolesche Formel $A_0 = E_0 \vee \neg E_1$ die dazugehörige Wahrheitstabelle.
-\fillwithgrid{\stretch{1}}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,-1) node[not port] (NOT1) {}
+(NOT1.in 1) node[anchor=east] {$E_1$}; 
+\draw (NOT1.out) -- ++(0.5, 0) node[or port, anchor=in 2] (OR1) {};
+\draw (NOT1.in 1) ++ (0, 1) node[anchor=east] {$E_0$} -- (0.5, 0) |- (OR1.in 1);
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+\caption*{$A_0 = E_0 \vee \neg E_1$}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\fillwithgrid{1in}
+\end{minipage}
+\end{figure}
 \end{exercise}
 
 \begin{solution}
@@ -624,8 +641,26 @@ $1$		& 	$1$     	& 	$1$     					\\ \hline
 \newpage
 
 \begin{exercise}
-Erstellen Sie für die Boolesche Formel $A_0 = \neg (E_0 \wedge E_1)$ die dazugehörige Wahrheitstabelle.
-\fillwithgrid{1.75in}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[and port] (AND1) {} 
+(AND1.in 1) node[anchor=east] {$E_0$}
+(AND1.in 2) node[anchor=east] {$E_1$};
+\draw (2, 0) node[not port] (NOT1) {};
+\draw (NOT1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) -- (NOT1.in 1) node[anchor=east] {};
+\end{circuitikz}
+\caption*{$A_0 = \neg (E_0 \wedge E_1)$}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\fillwithgrid{1in}
+\end{minipage}
+\end{figure}
 \end{exercise}
 
 \begin{solution}
@@ -643,8 +678,26 @@ $1$		& 	$1$     	& 	$0$     						\\ \hline
 \end{solution}
 
 \begin{exercise}
-Erstellen Sie für die Boolesche Formel $A_0 = \neg (E_0 \vee E_1)$ die dazugehörige Wahrheitstabelle.
-\fillwithgrid{1.75in}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[and port] (AND1) {} 
+(AND1.in 1) node[anchor=east] {$E_0$}
+(AND1.in 2) node[anchor=east] {$E_1$};
+\draw (2, 0) node[not port] (NOT1) {};
+\draw (NOT1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) -- (NOT1.in 1) node[anchor=east] {};
+\end{circuitikz}
+\caption*{$A_0 = \neg (E_0 \vee E_1)$}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\fillwithgrid{1in}
+\end{minipage}
+\end{figure}
 \end{exercise}
 
 \begin{solution}
@@ -662,8 +715,38 @@ $1$		& 	$1$     	& 	$0$     						\\ \hline
 \end{solution}
 
 \begin{exercise}
-Erstellen Sie für die Boolesche Formel $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1$ die dazugehörige Wahrheitstabelle.
-\fillwithgrid{1.75in}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\adjustbox{max width=\textwidth}{%
+\begin{circuitikz}
+\draw (-4.5, 0.5) node[not port] (NOT1) {};
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-4.5, -0.5) node[not port] (NOT2) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (-7.25, 1) node (E0) {$E_0$};
+\draw (-7.25, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-6.5,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND2.in 2);
+\draw (E1cross) |- (NOT1.in 1);
+\draw (E0cross) |- (NOT2.in 1);
+\draw (NOT1.out) |- (AND1.in 2);
+\draw (NOT2.out) |- (AND2.in 1);
+\end{circuitikz}
+}
+\caption*{$A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1$}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\fillwithgrid{1in}
+\end{minipage}
+\end{figure}
 \end{exercise}
 
 \begin{solution}
@@ -682,8 +765,38 @@ $1$		& 	$1$     	& 	$0$	\\ \hline
 \end{solution}
 
 \begin{exercise}
-Erstellen Sie für die Boolesche Formel$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$ die dazugehörige Wahrheitstabelle.
-\fillwithgrid{1.75in}
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.35\textwidth}
+\centering
+\adjustbox{max width=\textwidth}{%
+\begin{circuitikz}
+\draw (-4.5, 0.5) node[not port] (NOT1) {};
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-4.5, -0.5) node[not port] (NOT2) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (-7.25, 1) node (E0) {$E_0$};
+\draw (-7.25, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-6.5,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND2.in 2);
+\draw (E1cross) |- (NOT1.in 1);
+\draw (E0cross) |- (NOT2.in 1);
+\draw (NOT1.out) |- (AND1.in 2);
+\draw (NOT2.out) |- (AND2.in 1);
+\end{circuitikz}
+}
+\caption*{$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\centering
+\fillwithgrid{1in}
+\end{minipage}
+\end{figure}
 \end{exercise}
 
 \begin{solution}
@@ -700,3 +813,8 @@ $1$		& 	$1$     	& 	$1$	\\ \hline
 \end{tblr}
 \end{table}
 \end{solution}
+
+\begin{exercise}
+$A_0 = (\neg E_0 \vee E_1 \vee E_2) \wedge \neg(E_0 \vee E_3)$
+\fillwithgrid{\stretch{1}}
+\end{exercise}
