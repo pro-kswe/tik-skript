@@ -599,7 +599,7 @@ $1$     	& $1$     	&  0	\\ \hline
 
 \subsection{Übungen}
 
-Erstellen Sie pro Übung für die vorgegebene boolesche Formel die entsprechende Wahrheitstabelle. Achten Sie auf eine saubere Darstellung der Spalten und Zeilen!
+Erstellen Sie \textbf{pro Übung} für die vorgegebene \textbf{boolesche Formel} die entsprechende \textbf{Wahrheitstabelle}. Achten Sie auf eine \textbf{saubere Darstellung} der Spalten und Zeilen!
 
 \begin{exercise}
 \begin{figure}[H]
@@ -683,12 +683,12 @@ $1$		& 	$1$     	& 	$0$     						\\ \hline
 \begin{minipage}{0.35\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0, 0) node[and port] (AND1) {} 
-(AND1.in 1) node[anchor=east] {$E_0$}
-(AND1.in 2) node[anchor=east] {$E_1$};
+\draw (0, 0) node[or port] (OR1) {} 
+(OR1.in 1) node[anchor=east] {$E_0$}
+(OR1.in 2) node[anchor=east] {$E_1$};
 \draw (2, 0) node[not port] (NOT1) {};
 \draw (NOT1.out) node[anchor=west] {$A_0$};
-\draw (AND1.out) -- (NOT1.in 1) node[anchor=east] {};
+\draw (OR1.out) -- (NOT1.in 1) node[anchor=east] {};
 \end{circuitikz}
 \caption*{$A_0 = \neg (E_0 \vee E_1)$}
 \end{minipage}
@@ -771,8 +771,8 @@ $1$		& 	$1$     	& 	$0$	\\ \hline
 \centering
 \adjustbox{max width=\textwidth}{%
 \begin{circuitikz}
-\draw (-4.5, 0.5) node[not port] (NOT1) {};
 \draw (-2, 1) node[and port] (AND1) {};
+\draw (-4.5, -1.5) node[not port] (NOT1) {};
 \draw (-4.5, -0.5) node[not port] (NOT2) {};
 \draw (-2, -1) node[and port] (AND2) {};
 \draw (0, 0) node[or port] (OR1) {};
@@ -782,11 +782,11 @@ $1$		& 	$1$     	& 	$0$	\\ \hline
 \draw (-7.25, 1) node (E0) {$E_0$};
 \draw (-7.25, -1) node (E1) {$E_1$};
 \draw (E0)[xshift = 0.25cm] |- (-6.5,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
-\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND2.in 2);
+\draw (E1)[xshift = 0.25cm] |- (-6.75,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND1.in 2);
 \draw (E1cross) |- (NOT1.in 1);
 \draw (E0cross) |- (NOT2.in 1);
-\draw (NOT1.out) |- (AND1.in 2);
 \draw (NOT2.out) |- (AND2.in 1);
+\draw (NOT1.out) |- (AND2.in 2);
 \end{circuitikz}
 }
 \caption*{$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$}

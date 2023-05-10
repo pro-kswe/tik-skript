@@ -10,12 +10,12 @@
 \chapter{\acs{KV}-Diagramme}
 \label{chapter-kv-diagramme}
 
-Boolesche Formeln in \ac{DNF} können sehr umfangreich sein. Wir zeigen nun, wie wir mit einem grafischen Verfahren eine vereinfachte Formel in \ac{DNF} erstellen können. Die Lernziele lauten:\\
+Boolesche Formeln in \ac{DNF} können sehr umfangreich sein. Wir zeigen nun, wie wir mit einem grafischen Verfahren eine vereinfachte Formel in \ac{DNF} erstellen können. Die Lernziele sind:\\
 
 \newcommand{\kvDiagrammeLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
-\item Sie erstellen eine Boolesche Formeln in \ac{DNF} mithilfe eines \acs{KV}-Diagramms.
+\item Sie erstellen eine kompakte boolesche Formel in \ac{DNF} mithilfe eines \acs{KV}-Diagramms.
 \end{todolist}
 \end{minipage}
 }
@@ -26,9 +26,9 @@ Boolesche Formeln in \ac{DNF} können sehr umfangreich sein. Wir zeigen nun, wie
 
 \section{Was heisst vereinfachen?}
 
-Wir möchten weiterhin Boolesche Formeln in \acs{DNF} aus einer Wahrheitstabelle erstellen. Jedoch soll die \textbf{Anzahl} der \textbf{Konjunktionen} und \textbf{Disjunktionen} in der Formel möglichst gering sein.
+Wir wollen weiterhin boolesche Formeln in \acs{DNF} aus einer Wahrheitstabelle erstellen. Die \textbf{Anzahl} der \textbf{Konjunktionen} und \textbf{Disjunktionen} in der Formel sollte jedoch so gering wie möglich sein.
 \begin{example}
-Die Boolesche Formel $A_0 = (E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (E_0 \wedge E_1 \wedge \neg E_2)$ können wir zum Beispiel durch die Anwendung der Booleschen Gesetze vereinfachen. Wir erhalten:
+Die boolesche Formel $A_0 = (E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (E_0 \wedge E_1 \wedge \neg E_2)$ können wir beispielsweise durch Anwendung der booleschen Gesetze vereinfachen. Wir erhalten:
 \begin{center}
 $A_0 = (E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (E_0 \wedge E_1 \wedge \neg E_2) = (E_0 \wedge E_2) \vee (E_0 \wedge E_1)$
 \end{center}
@@ -36,26 +36,26 @@ $A_0 = (E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (E
 
 \section{Konstruktion einer disjunktiven Normalform mit einem \acs{KV}-Diagramm}
 
-Wir können für \textbf{jede} Wahrheitstabelle mit eine vereinfachte Boolesche Formel erstellen:
+Wir können für \textbf{jede} Wahrheitstabelle mit eine vereinfachte voolesche Formel erstellen:
 
-\begin{important}[Eine vereinfachte Boolesche Formel in \acs{DNF} erstellen:]
-Für jeden Ausgang $A$:
+\begin{important}
+Für \textbf{jeden Ausgang} $A$:
 \begin{enumerate}
-\item[1.)] Bestimme die Anzahl der Eingänge ($=e$) in der Wahrheitstabelle.
-\item[2.)] Bestimme die Anzahl der Zeilen ($=z$) in der Wahrheitstabelle.
-\item[3.)] Verwende das \acs{KV}-Diagramm für $e$ Eingänge mit $z$ Zellen.
-\item[4.)] Suche alle Zeilen in der Wahrheitstabelle, bei denen der Ausgang $1$ ist.
-\item[5.)] Übertrage jede $1$ in das \acs{KV}-Diagramm in die dazugehörige Zelle.
-\item[6.)] Bilde im \acs{KV}-Diagramm möglichst grosse Blöcke. Die Blockgrösse muss eine $2$er-Potenz sein (d.h. $1$, $2$, $4$, $8$, $\dots$).
-\item[7.)] Erstelle pro Block eine Teilformel mithilfe von Negierungen und Konjunktionen.
-\item[8.)] Für den Ausgang $A$: verknüpfe die Teilformeln aus 7.) mit Disjunktionen.
+\item[1.)] Bestimme die \textbf{Anzahl der Eingänge} ($=e$) in der Wahrheitstabelle.
+\item[2.)] Bestimme die \textbf{Anzahl der Zeilen} ($=z$) in der Wahrheitstabelle.
+\item[3.)] Verwende das \textbf{\acs{KV}-Diagramm} für $\mathbf{e}$ \textbf{Eingänge} mit $\mathbf{z}$ \textbf{Zellen}.
+\item[4.)] Suche \textbf{alle Zeilen} in der \textbf{Wahrheitstabelle}, deren \textbf{Ausgang} $\mathbf{1}$ ist.
+\item[5.)] Trage jede $\mathbf{1}$ im \acs{KV}-Diagramm in die \textbf{entsprechende Zelle} ein.
+\item[6.)] Bilde im \acs{KV}-Diagramm möglichst \textbf{grosse Blöcke}. Die \textbf{Blockgrösse} muss eine $\mathbf{2}$\textbf{er-Potenz} sein (d.h. $1$, $2$, $4$, $8$, $\dots$).
+\item[7.)] Erstelle \textbf{pro Block} eine Teilformel mithilfe von \textbf{Negationen} und \textbf{Konjunktionen}.
+\item[8.)] Für den Ausgang $A$: Verknüpfe die \textbf{Teilformeln} aus 7.) mit \textbf{Disjunktionen}.
 \end{enumerate}
 \end{important}
 
-Wir zeigen nun an einem Beispiel, wie wir mithilfe eines \ac{KV}-Diagramms für eine gegebene Wahrheitstabelle die dazugehörige Boolesche Formel in \ac{DNF} erzeugen kann.
+Wir zeigen nun an einem Beispiel, wie wir mithilfe eines \ac{KV}-Diagramms für eine gegebene Wahrheitstabelle die zugehörige boolesche Formel in \ac{DNF} erzeugen kann.
 
 \begin{example}
-Die Wahrheitstabelle aus \autoref{table-kv-bsp-1} hat drei Eingänge und $2^3 = 8$ Zeilen. Wir verwenden deshalb das dazugehörige \ac{KV}-Diagramm für drei Eingänge, welches aus acht Zellen besteht.
+Die Wahrheitstabelle in \autoref{table-kv-bsp-1} hat drei Eingänge und $2^3 = 8$ Zeilen. Wir verwenden daher das entsprechende \ac{KV}-Diagramm für drei Eingänge, das aus acht Zellen besteht.
 
 \begin{figure}[htb]
 \centering
@@ -93,7 +93,7 @@ $E_2$ & $E_1$ & $E_0$ & $A_0 = \text{???}$ \\ \hline[2pt]
 \end{minipage}
 \end{figure}
 
-Nun suchen wir in der Wahrheitstabelle diejenigen Zeilen, welche am Ausgang eine $1$ besitzen. Wir übertragen dann diese Einsen in die passende Zelle im \ac{KV}-Diagramm.
+Nun suchen wir in der Wahrheitstabelle die Zeilen, die am Ausgang eine $1$ haben. Diese Einsen werden dann in die entsprechende Zelle des \ac{KV}-Diagramms übertragen.
 
 \begin{figure}[htb]
 \centering
@@ -141,18 +141,18 @@ $E_2$ & $E_1$ & $E_0$ & $A_0 = \text{???}$ \\ \cline[2pt]{1-4}
    \node[grp={green}{0.9}{0.9}](c011) at (2.5, 0.5) {};
   }
 \end{tikzpicture}
-\caption{Jede farbige Zelle entspricht einer Zeile in der Wahrheitstabelle. Wir können die Position der Einsen dadurch herausfinden, in dem wir die Teilformel der entsprechenden Zeile betrachten, so wie wir es bei der \protect\say{normalen} Konstruktion einer Booleschen Formeln in \protect\acs{DNF} kennengelernt haben.}
+\caption{Jede farbige Zelle entspricht einer Zeile in der Wahrheitstabelle. Wir können die Position der Einsen dadurch herausfinden, indem wir die Teilformel der entsprechenden Zeile betrachten, so wie wir es von der \protect\say{normalen} Konstruktion einer booleschen Formel in \protect\acs{DNF} kennen.}
 \label{figure-kv-diagramm-bsp-2}
 \end{minipage}
 \end{figure}
 
-Die Zeile \circled{3} in der Wahrheitstabelle entspricht zum Beispiel der Teilformel $\neg E_2 \wedge E_1 \wedge E_0$. Wir müssen also im \acs{KV}-Diagramm die Zelle suchen, die durch $\neg E_2$, $E_1$ und $E_0$ abgedeckt ist. Dies ist durch die blaue Zelle in \autoref{figure-kv-diagramm-bsp-2} gegeben. Für die Zeilen \circled{1}, \circled{2} und \circled{4} können wir auf die gleiche Weise verfahren.
+Zeile \circled{3} der Wahrheitstabelle entspricht der Teilformel $\neg E_2 \wedge E_1 \wedge E_0$. Wir müssen also im \acs{KV}-Diagramm die Zelle suchen, die von $\neg E_2$, $E_1$ und $E_0$ abgedeckt wird. Dies ist durch die blaue Zelle in \autoref{figure-kv-diagramm-bsp-2} gegeben. Für die Zeilen \circled{1}, \circled{2} und \circled{4} können wir ebenso verfahren.
 
 \begin{important}
 Wir übertragen \textbf{keine} Nullen in das \ac{KV}-Diagramm!
 \end{important}
 
-Nachdem alle Einsen korrekt übertragen sind, müssen wir möglichst \textbf{grosse Blöcke} bilden. Ein Block ist eine Zusammenfassung von Einsen. Dabei muss die Anzahl der Einsen pro Block eine $2$er-Potenz sein ($1$, $2$, $4$, $8$, $\dots$). Im \ac{KV}-Diagramm aus \autoref{figure-kv-diagramm-bsp-2} schaffen wir es nicht, alle Einsen in einen Block zu packen. Wir bilden deshalb zwei $2$er-Blöcke (siehe \autoref{figure-kv-diagramm-bsp-3}).
+Nachdem alle Einsen korrekt übertragen wurden, müssen wir möglichst \textbf{grosse Blöcke} bilden. Ein Block ist eine Gruppe von Einsen. Die Anzahl der Einsen pro Block muss eine $2$er-Potenz sein ($1$, $2$, $4$, $8$, $\dots$). Im \ac{KV}-Diagramm in \autoref{figure-kv-diagramm-bsp-2} können wir nicht alle Einsen in einen Block packen. Deshalb bilden wir zwei $2$er-Blöcke (siehe \autoref{figure-kv-diagramm-bsp-3}).
 
 \begin{figure}[htb]
 \centering
@@ -173,20 +173,20 @@ Nachdem alle Einsen korrekt übertragen sind, müssen wir möglichst \textbf{gro
   \draw[latex-, thick] (1.75,1.5) -- (5,1.5)  node[anchor=west] {$T_1$};
   \draw[latex-, thick] (2.75,0.5) -- (5,0.5)  node[anchor=west] {$T_2$};
 \end{tikzpicture}
-\caption{Die beiden $2$er-Blöcke umfassen jeweils zwei Zellen.}
+\caption{Die beiden $2$er-Blöcke bestehen jeweils aus zwei Zellen.}
 \label{figure-kv-diagramm-bsp-3}
 \end{figure}
 
 \newpage
 
-Für jeden Block bilden wir nun \textbf{eine Teilformel}. Pro Block bestimmen wir alle \textbf{gemeinsamen Eingänge} und verknüpfen diese mit einer \textbf{Konjunktion}. Anschliessend werden die Teilformeln mit einer \textbf{Disjunktion} zur Booleschen Formel in \ac{DNF} für $A_0$ zusammengesetzt.
+Für jeden Block bilden wir nun \textbf{eine Teilformel}. Pro Block bestimmen wir alle \textbf{gemeinsamen Eingänge} und verknüpfen diese mit \textbf{Konjunktionen}. Anschliessend werden die Teilformeln mit \textbf{Disjunktionen} zur booleschen Formel in \ac{DNF} für $A_0$ zusammengesetzt.
 
 \begin{itemize}
 \item $T_1 = \neg E_1 \wedge \neg E_2$
 \begin{itemize}
-\item $\neg E_0 \notin T_1$: nur die \textbf{erste} Eins in diesem Block \say{besitzt} Eingang $\neg E_0$
-\item $E_0 \notin T_1$: nur die \textbf{zweite} Eins in diesem Block \say{besitzt} Eingang $E_0$
-\item $E_1 \notin T_1$ und $E_2 \notin T_1$: keine Eins \say{besitzt} in diesem Block einen dieser Eingänge
+\item $\neg E_0 \notin T_1$: nur die \textbf{erste} Eins in diesem Block \say{besitzt} den Eingang $\neg E_0$
+\item $E_0 \notin T_1$: nur die \textbf{zweite} Eins in diesem Block \say{besitzt} den Eingang $E_0$
+\item $E_1 \notin T_1$ und $E_2 \notin T_1$: keine Eins \say{besitzt} einen dieser Eingänge in diesem Block 
 \end{itemize}
 \item $T_2 = E_0 \wedge E_1$
 \end{itemize}
@@ -218,9 +218,9 @@ Wir beschränken uns hier auf die Verwendung von \ac{KV}-Diagrammen mit bis zu \
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{2}{$A$}{{$E_0$}{$E_1$}}{}{
-	\node (negE1) at (0.5, 2.25) {\tiny $\neg E_1$};
-	\node (negE0) at (-0.35, 1.5) {\tiny $\neg E_0$};
+\karnaughmap{2}{$A$}{{$E_1$}{$E_0$}}{}{
+	\node (negE1) at (0.5, 2.25) {\tiny $\neg E_0$};
+	\node (negE0) at (-0.35, 1.5) {\tiny $\neg E_1$};
   }
 \end{tikzpicture}
 \caption{\num{2} Eingänge}
@@ -232,7 +232,7 @@ Wir beschränken uns hier auf die Verwendung von \ac{KV}-Diagrammen mit bis zu \
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{3}{$A$}{{$E_0$}{$E_1$}{$E_2$}}{}{
+\karnaughmap{3}{$A$}{{$E_2$}{$E_1$}{$E_0$}}{}{
 	\node (negE01) at (0.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE02) at (3.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE11) at (-0.35, 1.5) {\tiny $\neg E_1$};
@@ -247,15 +247,15 @@ Wir beschränken uns hier auf die Verwendung von \ac{KV}-Diagrammen mit bis zu \
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{4}{$A$}{{$E_0$}{$E_1$}{$E_2$}{$E_3$}}{}{
-	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_0$};
-	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_0$};
-	\node (negE11) at (0.5, -.25) {\tiny $\neg E_1$};
-     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_1$};
-	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_2$};
-	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_2$};
-	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_3$};
-	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_3$};
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
   }
 \end{tikzpicture}
 \caption{\num{4} Eingänge}
@@ -267,24 +267,26 @@ Wir beschränken uns hier auf die Verwendung von \ac{KV}-Diagrammen mit bis zu \
 
 \section{Regeln zur Blockbildung}
 
-Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen und zeigen ein paar spezielle Möglichkeiten für eine Blockbildung.
+Wir fassen hier nochmals die wichtigsten Regeln zur Blockbildung zusammen und zeigen einige spezielle Möglichkeiten der Blockbildung auf.
 
 \begin{enumerate}
 \item Blöcke dürfen \textbf{nicht} diagonal gebildet werden.
-\item Die Blockgrösse muss eine $2$er-Potenz sein.
-\item Ein Block sollte so gross wie möglich sein.
-\item Jede Eins muss \textbf{mindestens} in einem Block vorhanden sein.
+\item Die Blockgrösse muss eine \textbf{$\mathbf{2}$er-Potenz} sein.
+\item Ein Block muss so gross wie möglich sein.
+\item Jede Eins muss \textbf{mindestens} in einem Block vorkommen.
 \item Blöcke \textbf{dürfen} sich überlappen.
-\item Blöcke \textbf{dürfen} (unter gewissen Bedingungen) über den \say{Rand} gebildet werden.
+\item Blöcke \textbf{dürfen} (unter bestimmten Bedingungen) über den \say{Rand} gebildet werden.
 \item Je weniger Blöcke, desto besser.
 \end{enumerate}
+
+\subsection{Ausgewählte Beispiele}
 
 \begin{figure}[htb]
 \centering
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{3}{$A$}{{$E_0$}{$E_1$}{$E_2$}}{11~~ 1111}{
+\karnaughmap{3}{$A$}{{$E_2$}{$E_1$}{$E_0$}}{11~~ 1111}{
 	\node (negE01) at (0.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE02) at (3.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE11) at (-0.35, 1.5) {\tiny $\neg E_1$};
@@ -299,7 +301,7 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{3}{$A$}{{$E_0$}{$E_1$}{$E_2$}}{1~1~ 1~1~}{
+\karnaughmap{3}{$A$}{{$E_2$}{$E_1$}{$E_0$}}{1~1~ 1~1~}{
 	\node (negE01) at (0.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE02) at (3.5, 2.25) {\tiny $\neg E_0$};
 	\node (negE11) at (-0.35, 1.5) {\tiny $\neg E_1$};
@@ -317,15 +319,15 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{4}{$A$}{{$E_0$}{$E_1$}{$E_2$}{$E_3$}}{0110 0110 0110 0110}{
-	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_0$};
-	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_0$};
-	\node (negE11) at (0.5, -.25) {\tiny $\neg E_1$};
-     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_1$};
-	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_2$};
-	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_2$};
-	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_3$};
-	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_3$};
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{~11~ ~11~ ~11~ ~11~}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
   }
 \end{tikzpicture}
 \caption{\num{4} Eingänge}
@@ -335,15 +337,15 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{4}{$A$}{{$E_0$}{$E_1$}{$E_2$}{$E_3$}}{1000 1000 1000 1000}{
-	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_0$};
-	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_0$};
-	\node (negE11) at (0.5, -.25) {\tiny $\neg E_1$};
-     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_1$};
-	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_2$};
-	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_2$};
-	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_3$};
-	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_3$};
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{1~~~ 1~~~ 1~~~ 1~~~}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
   }
 \end{tikzpicture}
 \caption{\num{4} Eingänge}
@@ -356,15 +358,15 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{4}{$A$}{{$E_0$}{$E_1$}{$E_2$}{$E_3$}}{1000 1000 0000 1000}{
-	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_0$};
-	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_0$};
-	\node (negE11) at (0.5, -.25) {\tiny $\neg E_1$};
-     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_1$};
-	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_2$};
-	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_2$};
-	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_3$};
-	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_3$};
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{1~~~ 1~~~ ~~~~ 1~~~}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
   }
 \end{tikzpicture}
 \caption{\num{4} Eingänge}
@@ -374,15 +376,15 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{tikzpicture}[karnaugh]
-\karnaughmap{4}{$A$}{{$E_0$}{$E_1$}{$E_2$}{$E_3$}}{1011 1010 1011 1010}{
-	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_0$};
-	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_0$};
-	\node (negE11) at (0.5, -.25) {\tiny $\neg E_1$};
-     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_1$};
-	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_2$};
-	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_2$};
-	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_3$};
-	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_3$};
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{1~11 1~1~ 1~11 1~1~}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
   }
 \end{tikzpicture}
 \caption{\num{4} Eingänge}
@@ -394,10 +396,11 @@ Wir fassen hier die wichtigsten Vorschriften zur Blockbildung nochmals zusammen 
 
 \section{Übungen}
 
-Stellen Sie die Blöcke im \ac{KV}-Diagramm \textbf{sauber} dar und notieren Sie \textbf{pro Block} die \textbf{Teilformel}.
+Erstellen Sie \textbf{pro Übung} für \textbf{jeden Ausgang} die \textbf{kompakte boolesche Formel} in \ac{DNF} mithilfe des entsprechenden \ac{KV}-Diagramms. Stellen Sie die Blöcke im \ac{KV}-Diagramm \textbf{sauber} dar.
+
+TODO: NOCH ZWEI ÜBUNGEN: 4 Zellen und 16 Zellen
 
 \begin{exercise}
-Erstellen Sie für den Ausgang $A_0$ (siehe \autoref{table-exercise-kv-1}) mithilfe des passenden \ac{KV}-Diagramms eine Boolesche Formel in \ac{DNF}.
 
 \begin{table}[htb]
 \centering
@@ -415,20 +418,20 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 1 & 1 & 0 & 1 \\ \hline
 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
-\caption{Wahrheitstabelle}
+\caption*{Wahrheitstabelle}
 \label{table-exercise-kv-1}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{2.5in}
+\fillwithgrid	{3in}
 \end{minipage}
 \end{table}
-\fillwithgrid	{0.75in}
 \end{exercise}
 
+\vfill
+
 \begin{exercise}
-Erstellen Sie für den Ausgang $A_0$ (siehe \autoref{table-exercise-kv-2}) mithilfe des passenden \ac{KV}-Diagramms eine Boolesche Formel in \ac{DNF}.
 \begin{table}[htb]
 \centering
 \begin{minipage}{0.3\textwidth}
@@ -445,20 +448,20 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 1 & 1 & 0 & 1 \\ \hline
 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
-\caption{Wahrheitstabelle}
+\caption*{Wahrheitstabelle}
 \label{table-exercise-kv-2}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{2.5in}
+\fillwithgrid	{3in}
 \end{minipage}
 \end{table}
-\fillwithgrid	{0.75in}
 \end{exercise}
 
+\newpage
+
 \begin{exercise}
-Erstellen Sie für den Ausgang $A_0$ und $A_1$ (siehe \autoref{table-exercise-kv-3}) mithilfe der passenden \ac{KV}-Diagramme eine Boolesche Formel in \ac{DNF}.
 \begin{table}[htb]
 \centering
 \begin{minipage}{0.3\textwidth}
@@ -483,14 +486,13 @@ $E_3$ & $E_2$ & $E_1$ & $E_0$ & $A_0$ & $A_1$ \\ \hline[2pt]
 1 & 1 & 1 & 0 & 1 & 1 \\ \hline
 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
-\caption{Wahrheitstabelle}
+\caption*{Wahrheitstabelle}
 \label{table-exercise-kv-3}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{5in}
+\fillwithgrid	{4.5in}
 \end{minipage}
 \end{table}
-\fillwithgrid	{\stretch{1}}
 \end{exercise}
