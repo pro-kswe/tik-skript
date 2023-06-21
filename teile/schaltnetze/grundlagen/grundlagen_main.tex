@@ -175,8 +175,10 @@ $A_0 = E_0 \vee \neg E_1$
 \end{exercise}
 
 \begin{solution}
-$A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
 \begin{figure}[H]
+\begin{flalign*}
+A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)&&
+\end{flalign*}
 \centering
 \begin{minipage}{0.6\textwidth}
 \centering
@@ -196,12 +198,11 @@ $A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
 (OR1.in 1) node[anchor=east] {$E_0$} 
 (OR1.in 2) node[anchor=east] {$E_1$}
 (OR1.out) node[anchor=west] {$A_0$};
-\node at (OR1.bin 2) [ocirc, left]{};
+\node at (OR1.bin 2) [notcirc, left]{};
 \end{circuitikz}
 \caption*{Alternative Darstellung}
 \end{minipage}
 \end{figure}
-\vfill
 \end{solution}
 
 \begin{exercise}
@@ -211,8 +212,10 @@ $A_0 = \neg (E_0 \wedge E_1)$
 \end{exercise}
 
 \begin{solution}
-$A_0 = \neg (E_0 \wedge E_1)$
 \begin{figure}[htb]
+\begin{flalign*}
+A_0 = \neg (E_0 \wedge E_1)&&
+\end{flalign*}
 \centering
 \begin{minipage}{0.5\textwidth}
 \centering
@@ -229,7 +232,10 @@ $A_0 = \neg (E_0 \wedge E_1)$
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0, 0) node[nand port] (A) {};
+\draw (0, 0) node[nand port] (NAND1) {}
+(NAND1.in 1) node[anchor=east] {$E_0$} 
+(NAND1.in 2) node[anchor=east] {$E_1$}
+(NAND1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
 \caption*{Das Schaltnetz entspricht dem \texttt{NAND}-Gatter.}
 \end{minipage}
@@ -243,8 +249,10 @@ $A_0 = \neg (E_0 \vee E_1)$
 \end{exercise}
 
 \begin{solution}
-$A_0 = \neg (E_0 \vee E_1)$
-\begin{figure}[htb]
+\begin{figure}[H]
+\begin{flalign*}
+A_0 = \neg (E_0 \vee E_1)&&
+\end{flalign*}
 \centering
 \begin{minipage}{0.5\textwidth}
 \centering
@@ -261,7 +269,10 @@ $A_0 = \neg (E_0 \vee E_1)$
 \begin{minipage}{0.45\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0, 0) node[nor port] (A) {};
+\draw (0, 0) node[nor port] (NOR1) {}
+(NOR1.in 1) node[anchor=east] {$E_0$} 
+(NOR1.in 2) node[anchor=east] {$E_1$}
+(NOR1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
 \caption*{Das Schaltnetz entspricht dem \texttt{NOR}-Gatter.}
 \end{minipage}
@@ -275,10 +286,12 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1$
 \end{exercise}
 
 \begin{solution}
-$A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)$
-\begin{figure}[htb]
+\begin{figure}[H]
+\begin{flalign*}
+A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)&&
+\end{flalign*}
 \centering
-\begin{minipage}{0.7\textwidth}
+\begin{minipage}{0.6\textwidth}
 \centering
 \begin{circuitikz}
 \draw (-4.5, 0.5) node[not port] (NOT1) {};
@@ -300,12 +313,36 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \v
 \end{circuitikz}
 \end{minipage}
 \hfill
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.35\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0, 0) node[xor port] (A) {};
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (-4.5, 1) node (E0) {$E_0$};
+\draw (-4.5, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-4.25,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-4,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND2.in 2);
+\node at (AND1.bin 2) [notcirc, left]{};
+\node at (AND2.bin 1) [notcirc, left]{};
+\draw (E1cross) |- (AND1.in 2);
+\draw (E0cross) |- (AND2.in 1);
 \end{circuitikz}
-\caption*{Das Schaltnetz entspricht dem \texttt{XOR}-Gatter.}
+\caption*{Alternative Darstellung}
+\end{minipage}
+\hfill
+\begin{minipage}{\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[xor port] (XOR1) {}
+(XOR1.in 1) node[anchor=east] {$E_0$} 
+(XOR1.in 2) node[anchor=east] {$E_1$}
+(XOR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+\caption*{Die Schaltnetze entsprechen dem \texttt{XOR}-Gatter.}
 \end{minipage}
 \end{figure}
 \end{solution}
@@ -317,14 +354,14 @@ $A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \v
 $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1$
 \fillwithgrid{2.5in}
 \end{exercise}
-\begin{solution}
-\end{solution}
 
 \begin{solution}
-$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
-\begin{figure}[htb]
+\begin{figure}[H]
+\begin{flalign*}
+A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))&&
+\end{flalign*}
 \centering
-\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.6\textwidth}
 \centering
 \begin{circuitikz}
 \draw (-2, 1) node[and port] (AND1) {};
@@ -346,10 +383,34 @@ $A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\n
 \end{circuitikz}
 \end{minipage}
 \hfill
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.35\textwidth}
 \centering
 \begin{circuitikz}
-\draw (0, 0) node[xnor port] (A) {};
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-2, -1) node[and port] (AND2) {};
+\draw (0, 0) node[or port] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (-4.5, 1) node (E0) {$E_0$};
+\draw (-4.5, -1) node (E1) {$E_1$};
+\draw (E0)[xshift = 0.25cm] |- (-4.25,  1) node[circle, fill, inner sep=1pt] (E0cross) {} |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (-4,  -1) node[circle, fill, inner sep=1pt] (E1cross) {} |- (AND1.in 2);
+\node at (AND2.bin 1) [notcirc, left]{};
+\node at (AND2.bin 2) [notcirc, left]{};
+\draw (E0cross) |- (AND2.in 1);
+\draw (E1cross) |- (AND2.in 2);
+\end{circuitikz}
+\caption*{Alternative Darstellung}
+\end{minipage}
+\hfill
+\begin{minipage}{\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0, 0) node[xnor port] (XNOR1) {}
+(XNOR1.in 1) node[anchor=east] {$E_0$} 
+(XNOR1.in 2) node[anchor=east] {$E_1$}
+(XNOR1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
 \caption*{Das Schaltnetz entspricht dem \texttt{XNOR}-Gatter.}
 \end{minipage}
@@ -375,7 +436,7 @@ Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb i
 (e\textbf{x}clusive \textbf{or}, \\ dt. entweder oder)
 }
 &
-\begin{circuitikz}
+\begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0, 0) node[xor port] (A) {};
 \end{circuitikz}
 &
@@ -388,7 +449,7 @@ Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb i
 (\textbf{n}ot \textbf{and})
 }
 &
-\begin{circuitikz}
+\begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0, 0) node[nand port] (A) {};
 \end{circuitikz}
 &
@@ -401,7 +462,7 @@ Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb i
 (e\textbf{x}clusive \textbf{n}ot \textbf{or}, dt. Äquivalenz)
 }
 &
-\begin{circuitikz}
+\begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0, 0) node[xnor port] (A) {};
 \end{circuitikz}
 &
@@ -414,7 +475,7 @@ Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb i
 (\textbf{n}ot \textbf{or})
 }
 &
-\begin{circuitikz}
+\begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0, 0) node[nor port] (A) {};
 \end{circuitikz}
 &
@@ -426,6 +487,90 @@ Die Schaltnetze aus den letzten vier Übungen kommen sehr häufig vor. Deshalb i
 \label{table-exercise-extended-logic-gates}
 \end{table}
 \end{exercise}
+
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{|Q[c, m, 2.9cm]|Q[c, m, 3.25cm]|c|Q[c, m, 5.15cm]|}
+\hline
+\textbf{Bezeichnung} & \textbf{Darstellung} & \textbf{Schaltnetz} &  \textbf{Formel} \\ \hline[2pt]
+\SetCell[r=2]{m}
+{
+\textbf{\texttt{XOR}} \\
+(e\textbf{x}clusive \textbf{or}, \\ dt. entweder oder)
+}
+&
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0, 0) node[xor port] (XOR1) {}
+(XOR1.in 1) node[anchor=east] {$E_0$} 
+(XOR1.in 2) node[anchor=east] {$E_1$}
+(XOR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+&
+Übung \ref{ex-xor-schaltnetz}
+&\begin{align*}
+A_0 & = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1) \\
+& = E_0 \oplus E_1 = E_0 \text{~XOR~} E_1
+\end{align*}
+\\ \hline
+ & { \SetCell[c=3]{l} \small \textbf{Beschreibung}: $A_0$ leuchtet, wenn entweder $E_0$ oder $E_1$ eingeschaltet ist.}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
+{
+\textbf{\texttt{NAND}} \\
+(\textbf{n}ot \textbf{and})
+}
+&
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0, 0) node[nand port] (NAND1) {}
+(NAND1.in 1) node[anchor=east] {$E_0$} 
+(NAND1.in 2) node[anchor=east] {$E_1$}
+(NAND1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+&
+Übung \ref{ex-nand-schaltnetz}
+&
+$A_0 = \neg (E_0 \wedge E_1)$
+\\ \hline
+ & { \SetCell[c=3]{l} \small\textbf{Beschreibung}: Es darf höchstens ein Schalter eingeschaltet sein,\\ damit $A_0$ leuchtet.}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
+{
+\textbf{\texttt{XNOR}} \\
+(e\textbf{x}clusive \textbf{n}ot \textbf{or}, dt. Äquivalenz)
+}
+&
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0, 0) node[xnor port] (XNOR1) {}
+(XNOR1.in 1) node[anchor=east] {$E_0$} 
+(XNOR1.in 2) node[anchor=east] {$E_1$}
+(XNOR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+&
+Übung \ref{ex-xnor-schaltnetz}
+&
+$A_0 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
+\\ \hline
+ & { \SetCell[c=3]{l} \small \textbf{Beschreibung}: Entweder sind beide Schalter ein-\\ oder ausgeschaltet, so dass $A_0$ leuchtet.}& & \\ \hline[1pt]
+\SetCell[r=2]{m}
+{
+\textbf{\texttt{NOR}} \\
+(\textbf{n}ot \textbf{or})
+}
+&
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0, 0) node[nor port] (NOR1) {}
+(NOR1.in 1) node[anchor=east] {$E_0$} 
+(NOR1.in 2) node[anchor=east] {$E_1$}
+(NOR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+&
+Übung \ref{ex-nor-schaltnetz}
+&
+$A_0 = \neg (E_0 \vee E_1)$
+\\ \hline
+ & { \SetCell[c=3]{l} \small\textbf{Beschreibung}: Damit $A_0$ leuchtet, darf kein Schalter eingeschaltet sein.}& & \\ \hline[1pt]
+\end{tblr}
+\end{table}
+\end{solution}
 
 \newpage
 
@@ -624,8 +769,10 @@ Erstellen Sie \textbf{pro Übung} für die vorgegebene \textbf{boolesche Formel}
 \end{exercise}
 
 \begin{solution}
-$A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)$
-\begin{table}[htb]
+\begin{table}[H]
+\begin{flalign*}
+A_0 = E_0 \vee \neg E_1 = E_0 \vee (\neg E_1)&&
+\end{flalign*}
 \centering
 \begin{tblr}{|c|c||c|}
 \hline
@@ -664,7 +811,7 @@ $1$		& 	$1$     	& 	$1$     					\\ \hline
 \end{exercise}
 
 \begin{solution}
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \begin{tblr}{|c|c||c|}
 \hline
@@ -701,7 +848,7 @@ $1$		& 	$1$     	& 	$0$     						\\ \hline
 \end{exercise}
 
 \begin{solution}
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \begin{tblr}{|c|c||c|}
 \hline
@@ -750,8 +897,10 @@ $1$		& 	$1$     	& 	$0$     						\\ \hline
 \end{exercise}
 
 \begin{solution}
-$A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)$
-\begin{table}[htb]
+\begin{table}[H]
+\begin{flalign*}
+A_0 = E_0 \wedge \neg E_1 \vee \neg E_0 \wedge E_1 = (E_0 \wedge (\neg E_1)) \vee ((\neg E_0) \wedge E_1)&&
+\end{flalign*}
 \centering
 \begin{tblr}{|c|c||c|}
 \hline
@@ -800,8 +949,10 @@ $1$		& 	$1$     	& 	$0$	\\ \hline
 \end{exercise}
 
 \begin{solution}
-$A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))$
-\begin{table}[htb]
+\begin{table}[H]
+\begin{flalign*}
+A_0 = E_0 \wedge E_1 \vee \neg E_0 \wedge \neg E_1 = (E_0 \wedge E_1) \vee ((\neg E_0) \wedge (\neg E_1))&&
+\end{flalign*}
 \centering
 \begin{tblr}{|c|c||c|}
 \hline
@@ -818,3 +969,31 @@ $1$		& 	$1$     	& 	$1$	\\ \hline
 $A_0 = (\neg E_0 \vee E_1 \vee E_2) \wedge \neg(E_0 \vee E_3)$
 \fillwithgrid{\stretch{1}}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\begin{flalign*}
+A_0 = (\neg E_0 \vee E_1 \vee E_2) \wedge \neg(E_0 \vee E_3) = ((\neg E_0) \vee E_1 \vee E_2) \wedge \neg(E_0 \vee E_3)&&
+\end{flalign*}
+\centering
+\begin{tblr}{|c|c|c|c||c|}
+\hline
+$E_3$ & $E_2$ & $E_1$ & $E_0$ & $A_0 = (\neg E_0 \vee E_1 \vee E_2) \wedge \neg(E_0 \vee E_3)$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & $0$ & $1$ \\ \hline
+$0$ & $0$ & $0$ & $1$ & $0$ \\ \hline
+$0$ & $0$ & $1$ & $0$ & $1$ \\ \hline
+$0$ & $0$ & $1$ & $1$ & $0$ \\ \hline
+$0$ & $1$ & $0$ & $0$ & $1$ \\ \hline
+$0$ & $0$ & $0$ & $1$ & $0$ \\ \hline
+$0$ & $1$ & $1$ & $0$ & $1$ \\ \hline
+$0$ & $1$ & $1$ & $1$ & $0$ \\ \hline
+$1$ & $0$ & $0$ & $0$ & $0$ \\ \hline
+$1$ & $0$ & $0$ & $1$ & $0$ \\ \hline
+$1$ & $0$ & $1$ & $0$ & $0$ \\ \hline
+$1$ & $0$ & $1$ & $1$ & $0$ \\ \hline
+$1$ & $1$ & $0$ & $0$ & $0$ \\ \hline
+$1$ & $1$ & $0$ & $1$ & $0$ \\ \hline
+$1$ & $1$ & $1$ & $0$ & $0$ \\ \hline
+$1$ & $1$ & $1$ & $1$ & $0$ \\ \hline
+\end{tblr}
+\end{table}
+\end{solution}

@@ -10,12 +10,12 @@
 \chapter{Volladdierer}
 \label{chapter-volladdierer}
 
-Ein Halbaddierer reicht für die Addition von zwei mehrstelligen Dualzahlen nicht aus. Wir müssen in der Lage sein, drei einstellige Dualzahlen zu addieren. Die Lernziele für dieses Kapitel lauten:\\
+Ein Halbaddierer reicht nicht aus, um zwei mehrstellige Dualzahlen zu addieren. Wir müssen in der Lage sein, drei Binärziffern zu addieren. Die Lernziele dieses Kapitels sind:\\
 
 \newcommand{\volladdiererLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
-\item Sie erstellen ein Schaltnetz, welches drei einstellige Dualzahlen addieren kann.
+\item Sie erstellen ein Schaltnetz, das drei Binärziffern addieren kann.
 \item Sie definieren, was ein Volladdierer ist.
 \item Sie erklären die Notwendigkeit eines Volladdierers für die Addition mehrstelliger Dualzahlen.
 \item Sie konstruieren einen Volladdierer unter der Verwendung von Halbaddierern.
@@ -29,7 +29,7 @@ Ein Halbaddierer reicht für die Addition von zwei mehrstelligen Dualzahlen nich
 
 \section{Konstruktion des Volladdierers}
 
-Wir realisieren nun die Addition von \textbf{drei} Binär\textbf{ziffern} durch ein Schaltnetz. Dies kommt bei der schriftlichen Addition von zwei mehrstelligen Dualzahlen fast in jeder Spalte vor, wie in folgendem Beispiel zu sehen.
+Wir realisieren nun die Addition von \textbf{drei} Binär\textbf{ziffern} durch ein Schaltnetz. Dies geschieht bei der schriftlichen Addition von zwei mehrstelligen Dualzahlen in fast jeder Spalte, wie das folgende Beispiel zeigt.
 
 \begin{figure}[htb]
 \centering
@@ -45,19 +45,19 @@ Wir realisieren nun die Addition von \textbf{drei} Binär\textbf{ziffern} durch 
     		& 	& \textbf{1} & \textbf{0} & \textbf{1} & 1 & [5mm]	\text{1. Summand} \\
 	+      & 	& \textbf{0} & \textbf{1} & \textbf{1} & 1 &      	\text{2. Summand} \\ 
 		& 1 	& \textbf{1} & \textbf{1} & \textbf{1} &    &         	\text{Überträge} \\
-        		& 1 	& 0 & 0 & 0 & 0 &      	 \text{Summe} \\                                                  
+        		& 1 	& 0 & 0 & 1 & 0 &      	 \text{Summe} \\                                                  
     };
     \draw[-,color=black, semithick] (m-3-1.south west) -- (m-3-6.south east);
 \end{tikzpicture}
 \end{equation*}
 \end{figure}
 
-Die Addition besteht nun aus folgenden Komponenten:
+Die Addition setzt sich nun aus folgenden Komponenten zusammen:
 
 \begin{itemize}
 \item Die drei Summanden Bit $x$, Bit $y$ und der \textbf{ein}gehende Übertrag $c_{\text{in}}$ aus der \textbf{vorherigen} Spalte.
 \item Das Bit $s$ für das Ergebnis der Addition (Summe).
-\item Der \textbf{aus}gehende Übertrag $c_{\text{out}}$ für die \textbf{nächste} Spalte, welcher bei der Addition entsteht.
+\item Der \textbf{aus}gehende Übertrag $c_{\text{out}}$ für die \textbf{nächste} Spalte, der bei der Addition erzeugt wird.
 \end{itemize}
 
 Wir können nun wie bei einem Halbaddierer vorgehen und das Schaltnetz für die Addition von drei Binärziffern erstellen.
@@ -69,12 +69,13 @@ Wir können nun wie bei einem Halbaddierer vorgehen und das Schaltnetz für die 
 Lösen Sie die Übungen in der vorgegebenen Reihenfolge.
 
 \begin{exercise}\label{exercise-addition-drei-binarziffern-wahrheitstabelle}
-Füllen Sie die Wahrheitstabelle (siehe \autoref{table-addition-drei-binarziffern}). Die Wahrheitstabelle soll alle acht Kombinationen für die Addition von drei Binärziffern darstellen.
+Füllen Sie die Wahrheitstabelle (siehe \autoref{table-addition-drei-binarziffern}) aus. Die Wahrheitstabelle muss alle acht Kombinationen für die Addition von drei Binärziffern enthalten.
 
 \begin{table}[htb]
 \centering
 \begin{tblr}{|Q[c, m, 2cm]|Q[c, m, 2cm]|Q[c, m, 2cm]||Q[c, m, 2cm]|Q[c, m, 2cm]|}
 \hline
+\SetCell[c=3]{c} Eingänge & & & \SetCell[c=2]{c} Ausgänge \\ \hline
 Bit $x$ & Bit $y$ & $c_{\text{in}}$ & Summe $s$ & $c_{\text{out}}$ \\ \hline[2pt]
 0 & 0 & 0 & & \\ \hline
 0 & 0 & 1 & & \\ \hline
@@ -90,9 +91,8 @@ Bit $x$ & Bit $y$ & $c_{\text{in}}$ & Summe $s$ & $c_{\text{out}}$ \\ \hline[2pt
 \end{table}
 \end{exercise}
 
-
 \begin{exercise}\label{exercise-addition-drei-binarziffern-dnf}
-Erstellen Sie für die Wahrheitstabelle aus Übung \ref{exercise-addition-drei-binarziffern-wahrheitstabelle} (siehe \autoref{table-addition-drei-binarziffern}) eine \textbf{vereinfachte} Boolesche Formel in \ac{DNF}. Sie müssen also für $s$ und $c_{\text{out}}$ \textbf{jeweils} eine Boolesche Formel in \ac{DNF} erstellen. Verwenden Sie dazu \textbf{zwei} \ac{KV}-Diagramme. Jedes Diagramm besitzt \textbf{drei} Eingänge.
+Erstellen Sie für die Wahrheitstabelle aus Übung \ref{exercise-addition-drei-binarziffern-wahrheitstabelle} (siehe \autoref{table-addition-drei-binarziffern}) eine \textbf{vereinfachte} boolesche Formel in \ac{DNF}. Sie müssen also für $s$ und $c_{\text{out}}$ \textbf{jeweils} eine boolesche Formel in \ac{DNF} erstellen. Verwenden Sie dazu \textbf{zwei} \ac{KV}-Diagramme. Jedes Diagramm hat \textbf{drei} Eingänge.
 
 \fillwithgrid{\stretch{1}}
 
@@ -101,14 +101,14 @@ Erstellen Sie für die Wahrheitstabelle aus Übung \ref{exercise-addition-drei-b
 \newpage
 
 \begin{exercise}
-Zeichen Sie für die Booleschen Formeln aus Übung \ref{exercise-addition-drei-binarziffern-dnf} das dazugehörige Schaltnetz. Es ist \textbf{ein} Schaltnetz mit \textbf{drei} Eingängen und \textbf{zwei Ausgängen}.
+Zeichen Sie zu den booleschen Formeln aus Übung \ref{exercise-addition-drei-binarziffern-dnf} das zugehörige Schaltnetz. Es handelt sich um \textbf{ein} Schaltnetz mit \textbf{drei} Eingängen und \textbf{zwei Ausgängen}.
 
-\fillwithgrid{4in}
+\fillwithgrid{5.5in}
 
 \end{exercise}
 
 \begin{exercise}
-Zeichnen Sie erneut das Schaltnetz für einen Volladdierer. Verwenden Sie dieses Mal jedoch nur \textbf{zwei Halbaddierer} und \textbf{ein \texttt{XOR}-Gatter}.
+Zeichnen Sie erneut das Schaltnetz für einen Volladdierer. Verwenden Sie diesmal jedoch nur \textbf{zwei Halbaddierer} und \textbf{ein \texttt{OR}-Gatter}.
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
@@ -116,26 +116,26 @@ Zeichnen Sie erneut das Schaltnetz für einen Volladdierer. Verwenden Sie dieses
 
 \section{Der Volladdierer}
 
-Bei der Addition von zwei mehrstelligen Dualzahlen muss ein Übertrag aus der vorherigen Stelle berücksichtigt werden. Wir nennen dies einen \textbf{eingehenden Übertrag} (eng. carry in, kurz $c_{\text{in}}$). 
+Bei der Addition von zwei Dualzahlen muss ein Übertrag aus der vorhergehenden Stelle berücksichtigen werden. Wir nennen dies einen \textbf{eingehenden Übertrag} (engl. carry in, abgekürzt $c_{\text{in}}$). 
 
-\begin{definition}
-Ein Schaltnetz, welches \textbf{drei} \textbf{einstellige} Dualzahlen (drei Binärziffern) addieren kann, nennt man \textbf{Volladdierer} (eng. full adder, kurz \acs{FA}). Die dritte Binärziffer entspricht dabei dem eingehenden Übertrag aus der vorherigen Stelle. Die beiden Ausgänge stellen die Summe, sowie den ausgehenden Übertrag (eng. carry out, kurz $c_{\text{out}}$) dar.
+\begin{definition}[Volladdierer]
+Ein Schaltnetz, das \textbf{drei} \textbf{einstellige} Dualzahlen (drei Binärziffern) addieren kann, wir als \textbf{Volladdierer} (engl. full adder, abgekürzt \acs{FA}) bezeichnet. Die dritte Binärziffer entspricht dabei dem eingehenden Übertrag aus der vorhergehenden Stelle. Die beiden Ausgänge stellen die Summe, sowie den ausgehenden Übertrag ($c_{\text{out}}$) dar.
 \end{definition}
 
-Es gibt mehrere Möglichkeiten, wie man ein Schaltnetz für einen Volladdierer konstruieren kann. In \autoref{full-adder-schaltnetz-1} ist eine Möglichkeit dargestellt.
+Es gibt mehrere Möglichkeiten, ein Schaltnetz für einen Volladdierer zu konstruieren. \autoref{full-adder-schaltnetz-1} zeigt eine Möglichkeit.
 
 \begin{figure}[ht]
 \centering
 \begin{circuitikz}
 \draw (0,0) node[xor port] (XOR1) {};
 \draw (0, -1.5) node[and port] (AND1) {};
-\draw (-3,0) node (x) {$x$};
+\draw (-5,0) node (x) {$x$};
 \draw (x) to (-2,  0) node[circle, fill, inner sep=1pt] (xcross) {} |- (XOR1.in 1);
 \draw (-2,  0) |- (AND1.in 1);
-\draw (-3,-0.5) node (y) {$y$};
+\draw (-5,-0.5) node (y) {$y$};
 \draw (y) to (-2.5,  -0.5) node[circle, fill, inner sep=1pt] (ycross) {} |- (XOR1.in 2);
 \draw (-2.5, -0.5) |- (AND1.in 2);
-\draw (-3,-2.5) node (ci) {$c_{\text{in}}$};
+\draw (-5,-2.5) node (ci) {$c_{\text{in}}$};
 
 \draw (3,0) node[xor port] (XOR2) {};
 \draw (3, -1.5) node[and port] (AND2) {};
@@ -148,33 +148,35 @@ Es gibt mehrere Möglichkeiten, wie man ein Schaltnetz für einen Volladdierer k
 \draw (5, -2) node[or port] (OR1) {};
 \draw (AND2.out) |- (OR1.in 1);
 \draw (AND1.out) |- (OR1.in 2);
-\draw (XOR2.out) to (5, 0) node[anchor=west] {$s$};
-\draw (OR1.out) node[anchor=west] {$c_{\text{out}}$};
+\draw (XOR2.out) to (6, 0) node[anchor=west] {$s$};
+\draw (OR1.out) -+(6, -2) node[anchor=west] {$c_{\text{out}}$};
 \end{circuitikz}
-\caption{Das Schaltnetz stellt einen Volladdierer dar. Es kann 3 Binärziffern addieren.}
+\caption{Das Schaltnetz stellt einen Volladdierer (\protect\say{White Box}) dar.}
 \label{full-adder-schaltnetz-1}
 \end{figure}
 
-Unabhängig davon, wie wir das Schaltnetz für den Volladdierer (eng. full adder, kurz \ac{FA}) konstruieren, verwenden wir nun die Darstellung aus \autoref{figure-fa-block} für den Volladdierer.
+Unabhängig davon, wie wir das Schaltnetz für den Volladdierer (\ac{FA}) konstruieren, wir verwenden nun die Darstellung aus \autoref{figure-fa-block} für den Volladdierer.
 
 \begin{figure}[htb]
 \centering
 \begin{circuitikz}[american]
-	\draw (0,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0] (FA) {\acs{FA}};
-	\draw (FA.pin 1) -- ++(-0.5,0) coordinate(extpin) node[left] (x) {$x$};
-	\draw (FA.pin 2) -- ++(-0.5,0) coordinate(extpin) node[left] (y) {$y$};
-	\draw (FA.pin 3) -- ++(-0.5,0) coordinate(extpin) node[left] (ci) {$c_{\text{in}}$};
-	\draw (FA.pin 4) -- ++(0.5,0) coordinate(extpin) node[right] (co) {$c_{\text{out}}$};
-	\draw (FA.pin 6) -- ++(0.5,0) coordinate(extpin) node[right] (s) {$s$};
+	\ctikzset{multipoles/dipchip/width=2}
+	\draw (0,0) node[dipchip, num pins=6, hide numbers, no topmark, draw only pins={1-4, 6}] (FA1) {\textbf{\acs{FA}}};
+	\node [right] at (FA1.bpin 1) {$x$};
+	\node [right] at (FA1.bpin 2) {$y$};
+	\node [right] at (FA1.bpin 3) {$c_{\text{in}}$};
+
+	\node [left] at (FA1.bpin 6) {$s$};
+	\node [left] at (FA1.bpin 4) {$c_{\text{out}}$};
 \end{circuitikz}
-\caption{Ein Volladdierer mit drei Eingängen ($x$, $y$ und $c_{\text{in}}$) und zwei Ausgängen ($s$ und $c_{\text{out}}$).}
+\caption{Ein Volladdierer (\protect\say{Black Box}) mit drei Eingängen und zwei Ausgängen.}
 \label{figure-fa-block}
 \end{figure}
 
 \subsection{Übungen}
 
 \begin{exercise}
-Ein Halbaddierer kann bei einer Addition von zwei \textbf{mehrstelligen} Dualzahlen die Addition in der \textbf{ersten} Spalte durchführen. Für alle anderen Spalten wird jeweils ein Volladdierer benötigt. Notieren Sie jeweils die Anzahl der Halb- und Volladdierer für folgende Additionen:
+Ein Halbaddierer kann die Addition von zwei \textbf{mehrstelligen} Dualzahlen die Addition in der \textbf{ersten} Spalte durchführen. Für alle weiteren Spalten wird jeweils ein Volladdierer benötigt. Notieren Sie jeweils die Anzahl der Halb- und Volladdierer für die folgenden Additionen:
 
 \begin{multicols}{3}
 \begin{itemize}
@@ -186,7 +188,7 @@ Ein Halbaddierer kann bei einer Addition von zwei \textbf{mehrstelligen} Dualzah
 \end{exercise}
 
 \begin{exercise}
-Stellen Sie den Ablauf der Addition von zwei beliebigen \num{3}-Bit-Dualzahlen grafisch dar. Die Bits der beiden Summanden werden durch $x_i$ und $y_i$ notiert. Die Bits der Summe werden mit $s_i$ abgekürzt. Stellen Sie auch eingehende und ausgehende Überträge dar. Tragen Sie in die Rechtecke entweder \ac{HA} ein, falls ein Halbaddierer oder \ac{FA}, falls ein Volladdierer benötigt wird.
+Stellen Sie den Ablauf der Addition zweier beliebiger \num{3}-Bit-Dualzahlen grafisch dar. Die Bits der beiden Summanden werden mit $x_i$ und $y_i$ bezeichnet. Die Bits der Summe werden mit $s_i$ abgekürzt. Stellen Sie auch eingehende und ausgehende Überträge dar. In die Rechtecke ist entweder \ac{HA} für Halbaddierer oder \ac{FA} für Volladdierer einzutragen.
 
 \begin{figure}[H]
 \centering

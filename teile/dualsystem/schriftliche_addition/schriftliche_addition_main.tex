@@ -10,7 +10,7 @@
 \chapter{Schriftliche Addition von Dualzahlen}
 \label{chapter-schriftliche-addition-dualzahlen}
 
-Wir zeigen in diesem Kapitel, wie wir zwei Dualzahlen schriftlich addieren. Das Lernziel lautet:\\
+In diesem Kapitel zeigen wir, wie wir zwei Dualzahlen schriftlich addieren. Das Lernziel ist:\\
 
 \newcommand{\schriftlicheAdditionDualzahlenLernziele}{
 \protect\begin{minipage}{\textwidth}
@@ -26,7 +26,7 @@ Wir zeigen in diesem Kapitel, wie wir zwei Dualzahlen schriftlich addieren. Das 
 
 \section{Verfahren}
 
-Wir erinnern uns zunächst daran, wie wir das schriftliche Addieren von zwei Dezimalzahlen erlernt haben (\autoref{example-addition-dezimalzahlen}). Dazu addieren spaltenweise von rechts nach links und beachten die Überträge.
+Erinnern wir uns zunächst daran, wie wir gelernt haben, zwei Dezimalzahlen schriftlich zu addieren (\autoref{example-addition-dezimalzahlen}). Dazu addieren wir spaltenweise von rechts nach links.
 
 \begin{figure}[htb]
 \centering
@@ -34,7 +34,7 @@ Wir erinnern uns zunächst daran, wie wir das schriftliche Addieren von zwei Dez
 \centering
 \begin{example}
 \label{example-addition-dezimalzahlen}
-Wir addieren die Zahlen \num{1025} und \num{23987} schriftlich.
+Wir addieren schriftlich die Zahlen $1025$ und $23987$.
 \begin{equation*}
 \begin{tikzpicture}[
     row 3/.style={font=\scriptsize},
@@ -54,7 +54,6 @@ Wir addieren die Zahlen \num{1025} und \num{23987} schriftlich.
 
 \end{tikzpicture}
 \end{equation*}
-\vspace{-0.5cm}
 \end{example}
 \end{minipage}
 \hfill\vline\hfill
@@ -62,7 +61,7 @@ Wir addieren die Zahlen \num{1025} und \num{23987} schriftlich.
 \centering
 \begin{example}
 \label{example-addition-dualzahlen}
-Wir addieren die Dualzahlen $1011_2$ und $110_2$ schriftlich.
+Wir addieren schriftlich die Dualzahlen $1011_2$ und $110_2$.
 \begin{equation*}
 \begin{tikzpicture}[
     row 3/.style={font=\scriptsize},
@@ -80,12 +79,11 @@ Wir addieren die Dualzahlen $1011_2$ und $110_2$ schriftlich.
     \draw[-,color=black, semithick] (m-3-1.south west) -- (m-3-6.south east);
 \end{tikzpicture}
 \end{equation*}
-\vspace{-0.5cm}
 \end{example}
 \end{minipage}
 \end{figure}
 
-Für die schriftliche Addition von zwei Dualzahlen müssen wir verstehen, wie zwei Binärziffern addiert werden. Es gibt vier Möglichkeiten, um zwei Binärziffern zu addieren:
+Um zwei Dualzahlen schriftlich addieren zu können, müssen wir verstehen, wie zwei Binärziffern addiert werden. Es gibt vier Möglichkeiten, um zwei Binärziffern zu addieren:
 
 \begin{figure}[ht]
 \centering
@@ -131,38 +129,115 @@ Für die schriftliche Addition von zwei Dualzahlen müssen wir verstehen, wie zw
 \end{minipage}
 \end{figure}
 
-\vspace{-0.5cm}
-
-Bei der Addition von \textbf{zwei Einsen} erfolgt ein Übertrag von \num{1} sonst \num{0}. 
+Bei der Addition von \textbf{zwei Einsen} erfolgt ein Übertrag von $1$, sonst $0$. 
 
 \begin{important}
-Mehrstellige Dualzahlen werden nun (wie im Dezimalsystem auch) von rechts nach links addiert. Spalte für Spalte werden die Binärziffern addiert und der Übertrag beachtet.
+Mehrstellige Dualzahlen werden nun (wie im Dezimalsystem auch) von rechts nach links addiert. Die Dualzahlen werden spaltenweise addiert und der Übertrag berücksichtigt.
 \end{important}
 
-In \autoref{example-addition-dualzahlen} wird eine vierstellige Dualzahl und eine dreistellige Dualzahl addiert.
+In \autoref{example-addition-dualzahlen} werden eine vierstellige Dualzahl und eine dreistellige Dualzahl addiert.
+
+\vfill
+
+\newpage
+
+Viel häufiger ist die Addition von drei Binärziffern. Die Regeln lassen sich aus der Addition zweier Binärziffern ableiten. Wir unterscheiden die Addition von drei Nullen, einer Eins und zwei Nullen, zwei Einsen und einer Null sowie drei Einsen.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.15\textwidth}
+\centering
+\begin{tblr}{ccc}
+  & & 0 \\
++ & &0 \\
+ & {\scriptsize 0} & {\scriptsize 0} \\
+\hline
+ & & 0 \\
+\end{tblr}
+\end{minipage}
+\hfill	
+\begin{minipage}{0.15\textwidth}
+\centering
+\begin{tblr}{ccc}
+  & & 0 \\
++ & &1 \\
+ & {\scriptsize 0} & {\scriptsize 0} \\
+\hline
+ & & 1 \\
+\end{tblr}
+\end{minipage}
+\hfill
+\begin{minipage}{0.15\textwidth}
+\centering
+\begin{tblr}{ccc}
+  & & 0 \\
++ & &0 \\
+ & {\scriptsize 0} & {\scriptsize 1} \\
+\hline
+ & & 1 \\
+\end{tblr}
+\end{minipage}
+\hfill
+\begin{minipage}{0.15\textwidth}
+\centering
+\begin{tblr}{ccc}
+  & & 1 \\
++ & &1 \\
+ & {\scriptsize 1} & {\scriptsize 0}\\
+\hline
+ & & 0 \\
+\end{tblr}
+\end{minipage}
+\hfill
+\begin{minipage}{0.15\textwidth}
+\centering
+\begin{tblr}{ccc}
+  & & 1 \\
++ & &1 \\
+ & {\scriptsize 1} & {\scriptsize 1} \\
+\hline
+ & & 1 \\
+\end{tblr}
+\end{minipage}
+\caption{Beispiele für die Addition von drei Binärziffern.}
+\end{figure}
 
 \begin{important}
-Falls \textbf{drei} Einsen addiert werden müssen (dies kann durch einen Übertrag passieren), dann ergibt dies in der Summe \num{1} und im Übertrag auch eine \num{1}.	
+Wenn \textbf{drei} Einsen addiert werden müssen, ist die Summe \textbf{und} der Übertrag $1$.	
 \end{important}
-
-\vspace{-0.5cm}
 
 \section{Übungen}
 
 \begin{exercise}
+
+Addieren Sie die beiden vorgegebenen Dualzahlen schriftlich. Überprüfen Sie das Ergebnis durch die entsprechende dezimale Addition.
+
+\begin{multicols}{2}
 \begin{enumerate}
-\item Addieren Sie schriftlich $1010_2$ und $1101_2$.
 
-\fillwithgrid	{1in}
+\item $1010_2$ und $1101_2$\\
+\begin{minipage}{\linewidth}
+\fillwithgrid	{1.25in}
+\end{minipage}
 
-\item Addieren Sie schriftlich $1010111_2$ und $11101_2$.
+\item $1010111_2$ und $11101_2$\\
+\begin{minipage}{\linewidth}
+\fillwithgrid	{1.25in}
+\end{minipage}
 
-\fillwithgrid	{1in}
+\item $1111_2$ und $111111_2$\\
+\begin{minipage}{\linewidth}
+\fillwithgrid	{1.25in}
+\end{minipage}
+
+\item $111000_2$ und $1000111_2$\\
+\begin{minipage}{\linewidth}
+\fillwithgrid	{1.25in}
+\end{minipage}
 
 \end{enumerate}
+\end{multicols}
 \end{exercise}
-
-\vspace{-0.75cm}
 
 \begin{exercise}
 Stellen Sie die vier Möglichkeiten der Additionen von zwei Binär\textbf{ziffern} tabellarisch dar.
@@ -179,10 +254,10 @@ Bit & Bit & Summe & Übertrag \\ \hline[2pt]
 \end{table}
 \end{exercise}
 
-\vspace{-0.75cm}
+\newpage
 
 \begin{exercise}
-Stellen Sie den Ablauf der Addition von zwei beliebigen \num{3}-Bit-Dualzahlen grafisch dar. Die Bits der beiden Summanden werden durch $x_i$ und $y_i$ notiert. Die Bits der Summe werden mit $s_i$ abgekürzt. Ein Übertrag (eng. carry) wird durch $c_i$ dargestellt. Tragen Sie die Bezeichnungen in rechte Grafik ein.
+Stellen Sie den Ablauf der Addition von zwei beliebigen \num{3}-Bit-Dualzahlen grafisch dar. Die Bits der beiden Summanden werden durch $x_i$ und $y_i$ notiert. Die Bits der Summe werden mit $s_i$ abgekürzt. Ein Übertrag (engl. carry) wird durch $c_i$ dargestellt. Tragen Sie die Bezeichnungen in rechte Grafik ein.
 
 \begin{figure}[H]
 \centering
@@ -286,17 +361,20 @@ Stellen Sie den Ablauf der Addition von zwei beliebigen \num{3}-Bit-Dualzahlen g
 %\end{figure}
 \end{exercise}
 
-\vspace{-0.5cm}
-
 \begin{exercise}
 \begin{enumerate}
-\item Wie können wir die Subtraktion zweier Dezimalzahlen durch eine Addition ausdrücken?
+\item Wie können wir die Subtraktion zweier Dezimalzahlen durch eine Addition und eine Gegenzahl ausdrücken?
 
-\fillwithgrid	{0.5in}
+\fillwithgrid	{0.75in}
 
 \item Wie können wir die Multiplikation zweier Dezimalzahlen durch Addition\textbf{en} ausdrücken?
 
-\fillwithgrid	{\stretch{1}}
+\fillwithgrid	{0.75in}
 
 \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Bisher wurden nur positive Zahlen betrachtet. Ein Addiernetz muss aber auch mit negativen Zahlen umgehen können (z.B. bei der Subtraktion). Wie können negative Zahlen als Dualzahlen dargestellt werden? Stellen Sie Ihre Überlegungen dar, indem Sie die Zahlen $-7$ bis $7$ als Dualzahlen darstellen.
+\fillwithgrid	{\stretch{1}}
 \end{exercise}

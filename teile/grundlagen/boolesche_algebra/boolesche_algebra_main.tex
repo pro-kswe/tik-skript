@@ -82,6 +82,41 @@ colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
 \end{tblr}
 \end{table}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{
+colspec={|Q[c, m]|[2pt]c|[2pt]c|[2pt]c|}
+}
+\hline
+& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline[2pt]
+\textbf{\small Boolesche Formel} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$ \\ \hline
+\textbf{\small Boolesche Operation} & {Konjunktion \\ $E_0 \wedge E_1$} & {Disjunktion \\ $E_0 \vee E_1$} & {Negation \\ $\neg E_0$} \\ \hline
+\textbf{\small Boolescher Operator} & $\wedge$ & $\vee$ & $\neg$ \\ \hline
+\textbf{\small Logikgatter} &        
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[and port] (AND1) {}
+(AND1.in 1) node[anchor=east] {$E_0$} 
+(AND1.in 2) node[anchor=east] {$E_1$}
+(AND1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &               
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[or port] (OR1) {}
+(OR1.in 1) node[anchor=east] {$E_0$} 
+(OR1.in 2) node[anchor=east] {$E_1$}
+(OR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[european not port] (NOT1) {}
+(NOT1.in) node[anchor=east] {$E_0$} 
+(NOT1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      \\ \hline
+\end{tblr}
+\end{table}
+\end{solution}
 
 \begin{exercise}
 Welche Gesetze gelten in der booleschen Algebra? Übertragen Sie die booleschen Formeln in Logicly. Ergänzen Sie anschliessend die Gleichungen in der Tabelle.
@@ -108,3 +143,19 @@ stretch=1.5
 \caption{Gesetze der booleschen Algebra (Teil 1).}
 \end{table}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{
+colspec={|c|Q[c, l, 4cm]|Q[c, l, 4cm]|},
+stretch=1.5
+}
+\hline
+\textbf{Extremalgesetze} & $A_0 = E_0 \wedge 0 = 0$ & $A_0 = E_0 \vee 1 = 1$\\ \hline
+\textbf{Dualitätsgesetze} & $A_0 = \neg 0 = 1$ & $A_0 = \neg 1 = 0$\\ \hline
+\textbf{Neutralitätsgesetze} & $A_0 = E_0 \wedge 1 = E_0$ & $A_0 = E_0 \vee 0 = E_0$\\ \hline
+\textbf{Idempotenzgesetze} & $A_0 = E_0 \wedge E_0 = E_0$ & $A_0 = E_0 \vee E_0 = E_0$\\ \hline
+\textbf{Kommutativgesetze} & $A_0 = E_0 \wedge E_1 = E_1 \wedge E_0$ & $A_0 = E_0 \vee E_1 = E_1 \vee E_0$\\ \hline
+\end{tblr}
+\end{table}
+\end{solution}

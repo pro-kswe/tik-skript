@@ -143,21 +143,21 @@ colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
 & \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline[2pt]
 \textbf{\small Boolesche Formel} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$            \\ \hline
 \textbf{\small Logikgatter} &        
-\begin{circuitikz}
+\begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0,0) node[and port] (AND1) {}
 (AND1.in 1) node[anchor=east] {$E_0$} 
 (AND1.in 2) node[anchor=east] {$E_1$}
 (AND1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
       &               
-      \begin{circuitikz}
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0,0) node[or port] (OR1) {}
 (OR1.in 1) node[anchor=east] {$E_0$} 
 (OR1.in 2) node[anchor=east] {$E_1$}
 (OR1.out) node[anchor=west] {$A_0$};
 \end{circuitikz}
       &
-      \begin{circuitikz}
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
 \draw (0,0) node[european not port] (NOT1) {}
 (NOT1.in) node[anchor=east] {$E_0$} 
 (NOT1.out) node[anchor=west] {$A_0$};
@@ -167,6 +167,65 @@ colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
 \end{tblr}
 \end{table}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{
+colspec={|Q[c, m]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|[2pt]Q[c, m, 3.5cm]|}
+}
+\hline
+& \textbf{UND} & \textbf{ODER} & \textbf{NICHT} \\ \hline[2pt]
+\textbf{\small Boolesche Formel} & $A_0 = E_0 \wedge E_1$ & $A_0 = E_0 \vee E_1$ & $A_0 = \neg E_0$            \\ \hline
+\textbf{\small Logikgatter} &        
+\begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[and port] (AND1) {}
+(AND1.in 1) node[anchor=east] {$E_0$} 
+(AND1.in 2) node[anchor=east] {$E_1$}
+(AND1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &               
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[or port] (OR1) {}
+(OR1.in 1) node[anchor=east] {$E_0$} 
+(OR1.in 2) node[anchor=east] {$E_1$}
+(OR1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      &
+      \begin{circuitikz}[baseline={(current bounding box.center)}]
+\draw (0,0) node[european not port] (NOT1) {}
+(NOT1.in) node[anchor=east] {$E_0$} 
+(NOT1.out) node[anchor=west] {$A_0$};
+\end{circuitikz}
+      \\ \hline
+\textbf{\small Wahrheitstabelle}         &
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ \\ \hline
+$0$ & $1$ & $0$ \\ \hline
+$1$ & $0$ & $0$ \\ \hline
+$1$ & $1$ & $1$ \\ \hline
+\end{tblr}
+&
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ \\ \hline
+$0$ & $1$ & $1$ \\ \hline
+$1$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $1$ \\ \hline
+\end{tblr}
+&
+\begin{tblr}{|c||c|}
+\hline
+$E_0$ & $A_0$ \\ \hline[2pt]
+$0$ & $1$ \\ \hline
+$1$ & $0$ \\ \hline
+\end{tblr}
+\\ \hline
+\end{tblr}
+\end{table}
+\end{solution}
 
 \vspace{-0.75cm}
 
@@ -189,17 +248,35 @@ $1$ & $1$ & $1$ & & \\ \hline
 \end{tblr}
 \end{table}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{|c|c|c||c|c|}
+\hline
+$E_2$ & $E_1$	& $E_0$ & $A_0 = E_0 \wedge E_1 \wedge E_2$ & $A_1 = E_0 \vee E_1 \vee E_2$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & $0$ & $0$ \\ \hline
+$0$ & $0$ & $1$ & $0$ & $1$ \\ \hline
+$0$ & $1$ & $0$ & $0$ & $1$ \\ \hline
+$0$ & $1$ & $1$ & $0$ & $1$ \\ \hline
+$1$ & $0$ & $0$ & $0$ & $1$ \\ \hline
+$1$ & $0$ & $1$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $0$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $1$ & $1$ & $1$ \\ \hline
+\end{tblr}
+\end{table}
+\end{solution}
+
 
 \vspace{-0.75cm}
 
 \begin{exercise}
-Wie viele \textbf{Belegungen ($=$ Anzahl der Zeilen)} hat eine Wahrheitstabelle mit \textbf{einem Eingang}, \textbf{zwei Eingängen}, \dots, \textbf{sechs Eingängen}? Tragen Sie die Ergebnisse in die \textbf{zweite Spalte} der nachfolgenden Tabelle ein.
+Wie viele verschiedene \textbf{Belegungen ($=$ Anzahl der Zeilen)} hat eine Wahrheitstabelle mit \textbf{einem Eingang}, \textbf{zwei Eingängen}, \dots, \textbf{sechs Eingängen}? Tragen Sie die Ergebnisse in die \textbf{zweite Spalte} der nachfolgenden Tabelle ein.
 
 \begin{table}[htb]
 \centering
 \begin{tblr}{|c|c|c|}
 \hline
-\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} & \textbf{Anzahl Belegungen als $2$-er Potenz} \\ \hline[2pt]
+\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} & \textbf{Anzahl Belegungen als $\mathbf{2}$-er Potenz} \\ \hline[2pt]
 1 & & \\ \hline
 2 & & \\ \hline
 3 & & \\ \hline
@@ -213,6 +290,22 @@ Leiten Sie nun eine Formel für $n$ Eingänge her. \textbf{Tipp}: Stellen Sie di
 
 \fillwithgrid{\stretch{1}}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{tblr}{|c|c|c|}
+\hline
+\textbf{Anzahl Eingänge} & \textbf{Anzahl Belegungen} & \textbf{Anzahl Belegungen als $2$-er Potenz} \\ \hline[2pt]
+$1$ & $2$ & $2^1$ \\ \hline
+$2$ & $4$ & $2^2$ \\ \hline
+$3$ & $8$ & $2^3$ \\ \hline
+$4$ & $16$ & $2^4$ \\ \hline
+$5$ & $32$ & $2^5$ \\ \hline
+$6$ & $64$ & $2^6$ \\ \hline
+\end{tblr}
+\end{table}
+Formel: Bei $n$ Eingängen gibt es $2^n$ verschiedene Belegungen.
+\end{solution}
 
 \newpage
 
@@ -318,3 +411,72 @@ $E_4$ & $E_3$	& $E_2$ & $E_1$ & $E_0$ \\ \hline[2pt]
 \end{minipage}
 \end{table}
 \end{exercise}
+\begin{solution}
+\begin{table}[H]
+\centering
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
+\hline
+$E_3$ & $E_2$	& $E_1$ & $E_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & $0$\\ \hline
+$0$ & $0$ & $0$ & $1$\\ \hline
+$0$ & $0$ & $1$ & $0$\\ \hline
+$0$ & $0$ & $1$ & $1$\\ \hline
+$0$ & $1$ & $0$ & $0$\\ \hline
+$0$ & $0$ & $0$ & $1$\\ \hline
+$0$ & $1$ & $1$ & $0$\\ \hline
+$0$ & $1$ & $1$ & $1$\\ \hline
+$1$ & $0$ & $0$ & $0$\\ \hline
+$1$ & $0$ & $0$ & $1$\\ \hline
+$1$ & $0$ & $1$ & $0$\\ \hline
+$1$ & $0$ & $1$ & $1$\\ \hline
+$1$ & $1$ & $0$ & $0$\\ \hline
+$1$ & $1$ & $0$ & $1$\\ \hline
+$1$ & $1$ & $1$ & $0$\\ \hline
+$1$ & $1$ & $1$ & $1$\\ \hline
+\end{tblr}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\centering
+\begin{tblr}{|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|Q[c, m, 1cm]|}
+\hline
+$E_4$ & $E_3$	& $E_2$ & $E_1$ & $E_0$ \\ \hline[2pt]
+$0$ & $0$ & $0$ & $0$ & $0$\\ \hline
+$0$ & $0$ & $0$ & $0$ & $1$\\ \hline
+$0$ & $0$ & $0$ & $1$ & $0$\\ \hline
+$0$ & $0$ & $0$ & $1$ & $1$\\ \hline
+$0$ & $0$ & $1$ & $0$ & $0$\\ \hline
+$0$ & $0$ & $0$ & $0$ & $1$\\ \hline
+$0$ & $0$ & $1$ & $1$ & $0$\\ \hline
+$0$ & $0$ & $1$ & $1$ & $1$\\ \hline
+$0$ & $1$ & $0$ & $0$ & $0$\\ \hline
+$0$ & $1$ & $0$ & $0$ & $1$\\ \hline
+$0$ & $1$ & $0$ & $1$ & $0$\\ \hline
+$0$ & $1$ & $0$ & $1$ & $1$\\ \hline
+$0$ & $1$ & $1$ & $0$ & $0$\\ \hline
+$0$ & $1$ & $1$ & $0$ & $1$\\ \hline
+$0$ & $1$ & $1$ & $1$ & $0$\\ \hline
+$0$ & $1$ & $1$ & $1$ & $1$\\ \hline
+$1$ & $0$ & $0$ & $0$ & $0$\\ \hline
+$1$ & $0$ & $0$ & $0$ & $1$\\ \hline
+$1$ & $0$ & $0$ & $1$ & $0$\\ \hline
+$1$ & $0$ & $0$ & $1$ & $1$\\ \hline
+$1$ & $0$ & $1$ & $0$ & $0$\\ \hline
+$1$ & $0$ & $0$ & $0$ & $1$\\ \hline
+$1$ & $0$ & $1$ & $1$ & $0$\\ \hline
+$1$ & $0$ & $1$ & $1$ & $1$\\ \hline
+$1$ & $1$ & $0$ & $0$ & $0$\\ \hline
+$1$ & $1$ & $0$ & $0$ & $1$\\ \hline
+$1$ & $1$ & $0$ & $1$ & $0$\\ \hline
+$1$ & $1$ & $0$ & $1$ & $1$\\ \hline
+$1$ & $1$ & $1$ & $0$ & $0$\\ \hline
+$1$ & $1$ & $1$ & $0$ & $1$\\ \hline
+$1$ & $1$ & $1$ & $1$ & $0$\\ \hline
+$1$ & $1$ & $1$ & $1$ & $1$\\ \hline
+\end{tblr}
+\end{minipage}
+\end{table}
+\end{solution}
+

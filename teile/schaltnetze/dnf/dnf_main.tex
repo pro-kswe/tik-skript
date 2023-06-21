@@ -32,15 +32,15 @@ Wir können für \textbf{jede} Wahrheitstabelle eine boolesche Formel nach den f
 \begin{important}
 Für \textbf{jeden Ausgang} $A$:
 \begin{enumerate}
-\item[1.)] Suche \textbf{alle Zeilen} mit \textbf{Ausgang} $\mathbf{1}$.
-\item[2.)] Für jede Zeile aus 1.): Verknüpfe die \textbf{Eingänge} dieser Zeile mit \textbf{Konjunktionen} (\texttt{UND}-Operator). Wenn der \textbf{Eingang} $\mathbf{E}$ den \textbf{Wert} $\mathbf{1}$ hat, dann notiere $\mathbf{E}$. Andernfalls (der Eingang hat den Wert $\mathbf{0}$) notiere $\mathbf{\neg E}$.
+\item[1.)] Suche \textbf{alle Zeilen} mit \textbf{Ausgang $\mathbf{1}$}.
+\item[2.)] Für jede Zeile aus 1.): Verknüpfe die \textbf{Eingänge} dieser Zeile mit \textbf{Konjunktionen} (\texttt{UND}-Operator). Wenn der \textbf{Eingang $\mathbf{E}$} den \textbf{Wert $\mathbf{1}$} hat, dann notiere $\mathbf{E}$. Andernfalls (der Eingang hat den Wert $\mathbf{0}$) notiere $\mathbf{\neg E}$.
 \item[3.)] Verknüpfe die \textbf{Zeilen} aus 2.) mit \textbf{Disjunktionen} (\texttt{ODER}-Operator).
 \end{enumerate}
 \end{important}
 
 Dieses \say{Rezept} führt zu booleschen Formeln der folgenden Form:
 \begin{align*}
-A _1 = \overbrace{(E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion1}\vee \overbrace{(E_0 \wedge \neg E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion2}\vee \cdots \tikzmark{disjunktion3}\vee \overbrace{(\neg E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}}
+A _0 = \overbrace{(E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion1}\vee \overbrace{(E_0 \wedge \neg E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}} \tikzmark{disjunktion2}\vee \cdots \tikzmark{disjunktion3}\vee \overbrace{(\neg E_0 \wedge E_1 \wedge \cdots \wedge E_n)}^{\text{Konjuktionen}}
 \begin{tikzpicture}[overlay, remember picture, shorten <=1mm, font=\footnotesize]
 \draw[latex-] ([xshift=1.0ex] pic cs:disjunktion1) -- ++ (0,-0.5) node[below] {\text{Disjunktion}};
 \draw[latex-] ([xshift=1.0ex] pic cs:disjunktion2) -- ++ (0.5,-0.5) node[below] {};
@@ -61,7 +61,7 @@ Wir zeigen nun an einem Beispiel, wie wir eine boolesche Formeln in \ac{DNF} kon
 \newpage
 
 \begin{example}
-Für die Wahrheitstabelle in \autoref{dnf-bsp1} konstruieren wir eine boolesche Formel in \ac{DNF}. Dazu markieren wir alle Ausgänge, die den Wert $1$ haben (siehe \autoref{dnf-bsp1-schritt-1}).
+Für die Wahrheitstabelle aus \autoref{dnf-bsp1} konstruieren wir eine boolesche Formel in \ac{DNF}. Dazu markieren wir alle Ausgänge, die den Wert $1$ haben (siehe \autoref{dnf-bsp1-schritt-1}).
 
 \begin{table}[htb]
 \centering
@@ -119,12 +119,12 @@ Mit der booleschen Formel in \ac{DNF} können wir wieder das zugehörige Schaltn
 Erstellen Sie \textbf{pro Übung} für \textbf{jeden Ausgang} die \textbf{boolesche Formel} in \ac{DNF}. Stellen Sie \textbf{alle Schritte sauber} dar. Zeichnen Sie dann das \textbf{entsprechende Schaltnetz}.
 
 \begin{exercise}
-\begin{table}[htb]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.4\textwidth}
 \centering
 \begin{tblr}{
-colspec = {|c|c||c|}
+colspec = {|c|c||c|c}
 }
 \hline
 $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
@@ -141,10 +141,123 @@ $1$ & $1$  & $1$  \\ \hline
 Boolesche Formel in \ac{DNF}:
 \fillwithgrid{1.25in}
 \end{minipage}
-\end{table}
+\end{figure}
 Schaltnetz:
 \fillwithgrid{\stretch{1}}
 \end{exercise}
+
+\begin{solution}
+\begin{figure}[H]
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c||c|},
+cell{3}{3} = {yellow!25},
+cell{4}{3} = {yellow!25},
+cell{5}{3} = {yellow!25}
+}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  \\ \hline
+$1$  & $0$  & $1$  \\ \hline
+$1$ & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption*{Wahrheitstabelle}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{flalign*}
+\begin{rcases}
+E_0 \wedge \neg E_1\\
+\neg E_0 \wedge E_1\\
+E_0 \wedge E_1
+\end{rcases} & A_0 = (E_0 \wedge \neg E_1) \vee (\neg E_0 \wedge E_1) \vee (E_0 \wedge E_1) && 
+\end{flalign*}
+\caption*{Boolesche Formel in \ac{DNF}}
+\end{minipage}
+\vspace{0.5cm}
+\begin{minipage}{0.6\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 1.5) node[and port] (AND1) {};
+\draw (-2, 0) node[and port] (AND2) {};
+\draw (-2, -1.5) node[and port] (AND3) {};
+
+\node at (AND1.bin 2) [notcirc, left]{};
+\node at (AND2.bin 1) [notcirc, left]{};
+
+\draw (0, 0.5) node[or port] (OR1) {};
+\draw (2, 0) node[or port] (OR2) {};
+\draw (OR2.out) node[anchor=west] {$A_0$};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (OR1.out) |- (OR2.in 1);
+\draw (AND3.out) |- (OR2.in 2);
+
+\draw (-5, 1) node (E0) {$E_0$};
+\draw (-5, -1) node (E1) {$E_1$};
+
+\node[circle, fill, inner sep=1pt] (E0cross1) at (-4.25,  1) {};
+\node[circle, fill, inner sep=1pt] (E0cross2) at (-4.25,  0.225) {};
+
+\draw (E0)[xshift = 0.25cm] |- (E0cross1) |- (AND1.in 1);
+\draw (E0cross1) |- (E0cross2);
+\draw (E0cross1) |- (AND2.in 1);
+\draw (E0cross2) |- (AND3.in 1);
+
+\node[circle, fill, inner sep=1pt] (E1cross1) at (-4,  -1) {};
+\node[circle, fill, inner sep=1pt] (E1cross2) at (-4,  -0.225) {};
+
+\draw (E1)[xshift = 0.25cm] |- (E1cross1) |- (AND1.in 2);
+\draw (E1cross1) |- (E1cross2);
+\draw (E1cross2) |- (AND2.in 2);
+\draw (E1cross1) |- (AND3.in 2);
+
+\end{circuitikz}
+\caption*{Schaltnetz}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 1.5) node[and port] (AND1) {};
+\draw (-2, 0) node[and port] (AND2) {};
+\draw (-2, -1.5) node[and port] (AND3) {};
+
+\node at (AND1.bin 2) [notcirc, left]{};
+\node at (AND2.bin 1) [notcirc, left]{};
+
+\draw (0, 0) node[or port, number inputs=3] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+
+\draw (-5, 1) node (E0) {$E_0$};
+\draw (-5, -1) node (E1) {$E_1$};
+
+\node[circle, fill, inner sep=1pt] (E0cross1) at (-4.25,  1) {};
+\node[circle, fill, inner sep=1pt] (E0cross2) at (-4.25,  0.225) {};
+
+\draw (E0)[xshift = 0.25cm] |- (E0cross1) |- (AND1.in 1);
+\draw (E0cross1) |- (E0cross2);
+\draw (E0cross1) |- (AND2.in 1);
+\draw (E0cross2) |- (AND3.in 1);
+
+\node[circle, fill, inner sep=1pt] (E1cross1) at (-4,  -1) {};
+\node[circle, fill, inner sep=1pt] (E1cross2) at (-4,  -0.225) {};
+
+\draw (E1)[xshift = 0.25cm] |- (E1cross1) |- (AND1.in 2);
+\draw (E1cross1) |- (E1cross2);
+\draw (E1cross2) |- (AND2.in 2);
+\draw (E1cross1) |- (AND3.in 2);
+\end{circuitikz}
+\caption*{Alternatives Schaltnetz mit einem \texttt{ODER}-Gatter mit drei Eingängen.}
+\end{minipage}
+\end{figure}
+\end{solution}
 
 \newpage
 
@@ -205,7 +318,7 @@ Die Schaltnetze für die beiden folgenden Aufgaben können sehr gross sein. Sie 
 \end{figure}
 
 \begin{exercise}
-\begin{table}[htb]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.4\textwidth}
 \centering
@@ -231,15 +344,119 @@ $1$  & $1$  & $1$  & $1$  \\ \hline
 Boolesche Formel in \ac{DNF}:
 \fillwithgrid{2.5in}
 \end{minipage}
-\end{table}
+\end{figure}
 Schaltnetz:
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
+\begin{solution}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c|c||c|},
+cell{5}{4} = {yellow!25},
+cell{7}{4} = {yellow!25},
+cell{8}{4} = {yellow!25},
+cell{9}{4} = {yellow!25}
+}
+\hline
+$E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  & $0$  \\ \hline
+$0$  & $0$  & $1$  & $0$  \\ \hline
+$0$  & $1$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  & $1$  \\ \hline
+$1$  & $0$  & $0$  & $0$  \\ \hline
+$1$  & $0$  & $1$  & $1$  \\ \hline
+$1$  & $1$  & $0$  & $1$  \\ \hline
+$1$  & $1$  & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption*{Wahrheitstabelle}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 2) node[and port, number inputs=3] (AND1) {};
+\draw (-2, 0.75) node[and port, number inputs=3] (AND2) {};
+\draw (-2, -0.75) node[and port, number inputs=3] (AND3) {};
+\draw (-2, -2) node[and port, number inputs=3] (AND4) {};
+
+\draw (1, 0) node[or port, number inputs=4] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+
+\node (AND1outCross) at (AND1.out)[xshift = 0.5cm] {};
+\draw (AND1.out) |- (AND1outCross.center) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+\node (AND4outCross) at (AND4.out)[xshift = 0.5cm] {};
+\draw (AND4.out) |- (AND4outCross.center) |- (OR1.in 4);
+
+\draw (-7, 1.5) node (E0) {$E_0$};
+\draw (-7, 0) node (E1) {$E_1$};
+\draw (-7, -1.5) node (E2) {$E_2$};
+
+\node[circle, fill, inner sep=1pt] (E0cross1) at (-6,  1.5) {};
+\node[circle, fill, inner sep=1pt] (E0cross2) at (-6,  1.05) {};
+\node[circle, fill, inner sep=1pt] (E0cross3) at (-6,  -0.45) {};
+\draw (E0)[xshift = 0.25cm] |- (E0cross1);
+\draw (E0cross1) |- (AND1.bin 1);
+\draw (E0cross1) |- (E0cross2);
+\draw (E0cross2) |- (AND2.bin 1);
+\draw (E0cross2) |- (E0cross3);
+\draw (E0cross3) |- (AND3.bin 1);
+\draw (E0cross3) |- (AND4.bin 1);
+
+\node[circle, fill, inner sep=1pt] (E1cross1) at (-5.5,  0) {};
+\node[circle, fill, inner sep=1pt] (E1cross2) at (-5.5,  0.75) {};
+\node[circle, fill, inner sep=1pt] (E1cross3) at (-5.5,  -0.75) {};
+\draw (E1)[xshift = 0.25cm] |- (E1cross1);
+\draw (E1cross1) |- (E1cross2);
+\draw (E1cross2) |- (AND1.bin 2);
+\draw (E1cross2) |- (AND2.bin 2);
+\draw (E1cross1) |- (E1cross3);
+\draw (E1cross3) |- (AND3.bin 2);
+\draw (E1cross3) |- (AND4.bin 2);
+
+\node[circle, fill, inner sep=1pt] (E2cross1) at (-5,  -1.5) {};
+\node[circle, fill, inner sep=1pt] (E2cross2) at (-5,  -1.05) {};
+\node[circle, fill, inner sep=1pt] (E2cross3) at (-5,  0.45) {};
+\draw (E2)[xshift = 0.25cm] |- (E2cross1);
+\draw (E2cross1) |- (E2cross2);
+\draw (E2cross1) |- (AND4.bin 3);
+\draw (E2cross2) |- (AND3.bin 3);
+\draw (E2cross2) |- (E2cross3);
+\draw (E2cross3) |- (AND1.bin 3);
+\draw (E2cross3) |- (AND2.bin 3);
+
+\node at (AND1.bin 3) [notcirc, left]{};
+\node at (AND2.bin 2) [notcirc, left]{};
+\node at (AND3.bin 1) [notcirc, left]{};
+
+\end{circuitikz}
+\caption*{Schaltnetz}
+\end{minipage}
+\vspace{0.5cm}
+\begin{minipage}{\textwidth}
+\centering
+\begin{align*}
+\begin{rcases}
+E_0 \wedge E_1 \wedge \neg E_2 \\
+E_0 \wedge \neg E_1 \wedge E_2 \\
+\neg E_0 \wedge E_1 \wedge E_2 \\
+E_0 \wedge E_1 \wedge E_2 \\
+\end{rcases} & A_0 = (E_0 \wedge E_1 \wedge \neg E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (\neg E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge E_1 \wedge E_2)
+\end{align*}
+\caption*{Boolesche Formel in \ac{DNF}}
+\end{minipage}
+\end{figure}
+\end{solution}
+
 \newpage
 
 \begin{exercise}
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \begin{minipage}{0.4\textwidth}
 \centering
@@ -270,8 +487,131 @@ Schaltnetz:
 \fillwithgrid{\stretch{1}}
 \end{exercise}
 
+\begin{solution}
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c|c||c|},
+cell{3}{4} = {yellow!25},
+cell{6}{4} = {yellow!25},
+cell{7}{4} = {yellow!25},
+cell{8}{4} = {yellow!25},
+cell{9}{4} = {yellow!25}
+}
+\hline
+$E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $0$  & $0$  \\ \hline
+$0$  & $0$  & $1$  & $1$  \\ \hline
+$0$  & $1$  & $0$  & $0$  \\ \hline
+$0$  & $1$  & $1$  & $0$  \\ \hline
+$1$  & $0$  & $0$  & $1$  \\ \hline
+$1$  & $0$  & $1$  & $1$  \\ \hline
+$1$  & $1$  & $0$  & $1$  \\ \hline
+$1$  & $1$  & $1$  & $1$  \\ \hline
+\end{tblr}
+\caption*{Wahrheitstabelle}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 2) node[and port, number inputs=3] (AND1) {};
+\draw (-2, 1) node[and port, number inputs=3] (AND2) {};
+\draw (-2, 0) node[and port, number inputs=3] (AND3) {};
+\draw (-2, -1) node[and port, number inputs=3] (AND4) {};
+\draw (-2, -2) node[and port, number inputs=3] (AND5) {};
+
+\draw (1, 0) node[or port, number inputs=5] (OR1) {};
+\draw (OR1.out) node[anchor=west] {$A_0$};
+
+\node (AND1outCross) at (AND1.out)[xshift = 0.5cm] {};
+\draw (AND1.out) |- (AND1outCross.center) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+\node (AND4outCross) at (AND4.out)[xshift = 0.5cm] {};
+\draw (AND4.out) |- (AND4outCross.center) |- (OR1.in 4);
+\node (AND5outCross) at (AND5.out)[xshift = 0.75cm] {};
+\draw (AND5.out) |- (AND5outCross.center) |- (OR1.in 5);
+
+\draw (-7, 1.5) node (E0) {$E_0$};
+\draw (-7, 0) node (E1) {$E_1$};
+\draw (-7, -1.5) node (E2) {$E_2$};
+
+\node[circle, fill, inner sep=1pt] (E0cross1) at (-6,  1.5) {};
+\node[circle, fill, inner sep=1pt] (E0cross2) at (-6,  1.305) {};
+\node[circle, fill, inner sep=1pt] (E0cross3) at (-6,  0.3) {};
+\node[circle, fill, inner sep=1pt] (E0cross4) at (-6,  -0.705) {};
+\draw (E0)[xshift = 0.25cm] |- (E0cross1);
+\draw (E0cross1) |- (AND1.bin 1);
+\draw (E0cross1) |- (E0cross2);
+\draw (E0cross2) |- (AND2.bin 1);
+\draw (E0cross2) |- (E0cross3);
+\draw (E0cross3) |- (AND3.bin 1);
+\draw (E0cross3) |- (E0cross4);
+\draw (E0cross4) |- (AND4.bin 1);
+\draw (E0cross4) |- (AND5.bin 1);
+
+\node[circle, fill, inner sep=1pt] (E1cross1) at (-5.5,  0) {};
+\node[circle, fill, inner sep=1pt] (E1cross2) at (-5.5,  1) {};
+\node[circle, fill, inner sep=1pt] (E1cross3) at (-5.5,  -1) {};
+\draw (E1)[xshift = 0.25cm] |- (E1cross1);
+\draw (E1cross1) |- (AND3.bin 2);
+\draw (E1cross1) |- (E1cross2);
+\draw (E1cross2) |- (AND1.bin 2);
+\draw (E1cross2) |- (AND2.bin 2);
+\draw (E1cross2) |- (E1cross3);
+\draw (E1cross3) |- (AND4.bin 2);
+\draw (E1cross3) |- (AND5.bin 2);
+
+\node[circle, fill, inner sep=1pt] (E2cross1) at (-5,  -1.5) {};
+\node[circle, fill, inner sep=1pt] (E2cross2) at (-5,  -1.305) {};
+\node[circle, fill, inner sep=1pt] (E2cross3) at (-5,  -0.305) {};
+\node[circle, fill, inner sep=1pt] (E2cross4) at (-5,  0.705) {};
+\draw (E2)[xshift = 0.25cm] |- (E2cross1);
+\draw (E2cross1) |- (AND5.bin 3);
+\draw (E2cross1) |- (E2cross2);
+\draw (E2cross2) |- (AND4.bin 3);
+\draw (E2cross2) |- (E2cross3);
+\draw (E2cross3) |- (AND3.bin 3);
+\draw (E2cross3) |- (E2cross4);
+\draw (E2cross4) |- (AND2.bin 3);
+\draw (E2cross4) |- (AND1.bin 3);
+
+\node at (AND1.bin 2) [notcirc, left]{};
+\node at (AND1.bin 3) [notcirc, left]{};
+
+\node at (AND2.bin 1) [notcirc, left]{};
+\node at (AND2.bin 2) [notcirc, left]{};
+
+\node at (AND3.bin 2) [notcirc, left]{};
+
+\node at (AND4.bin 1) [notcirc, left]{};
+
+\end{circuitikz}
+\caption*{Schaltnetz}
+\end{minipage}
+\vspace{0.5cm}
+\begin{minipage}{\textwidth}
+\centering
+\begin{align*}
+\begin{rcases}
+E_0 \wedge \neg E_1 \wedge \neg E_2 \\
+\neg E_0 \wedge \neg E_1 \wedge E_2 \\
+E_0 \wedge \neg E_1 \wedge E_2 \\
+\neg E_0 \wedge E_1 \wedge E_2 \\
+E_0 \wedge E_1 \wedge E_2 \\
+\end{rcases} & \parbox[c]{10cm}{$A_0 = (E_0 \wedge \neg E_1 \wedge \neg E_2) \vee (\neg E_0 \wedge \neg E_1 \wedge E_2) \vee (E_0 \wedge \neg E_1 \wedge E_2) \vee (\neg E_0 \wedge E_1 \wedge E_2) \vee (E_0 \wedge E_1 \wedge E_2)$}
+\end{align*}
+\caption*{Boolesche Formel in \ac{DNF}}
+\end{minipage}
+\end{figure}
+\end{solution}
+
+
 \begin{exercise}
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \begin{minipage}{0.2\textwidth}
 \centering
@@ -295,3 +635,48 @@ Boolesche Formel in \ac{DNF} und Schaltnetz:
 \end{minipage}
 \end{table}
 \end{exercise}
+
+\begin{solution}
+\begin{figure}[H]
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tblr}{
+colspec = {|c|c||c|},
+cell{2}{3} = {yellow!25}
+}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+$0$  & $0$  & $1$  \\ \hline
+$0$  & $1$  & $0$  \\ \hline
+$1$  & $0$  & $0$  \\ \hline
+$1$ & $1$  & $0$  \\ \hline
+\end{tblr}
+\caption*{Wahrheitstabelle}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+$A_0 = \neg E_0 \wedge \neg E_1$
+\caption*{Boolesche Formel in \ac{DNF}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 0) node[and port] (AND1) {};
+
+\node at (AND1.bin 1) [notcirc, left]{};
+\node at (AND1.bin 2) [notcirc, left]{};
+
+\draw (AND1.out) node[anchor=west] {$A_0$};
+
+\draw (-4.5, 0.25) node (E0) {$E_0$};
+\draw (-4.5, -0.25) node (E1) {$E_1$};
+
+\draw (E0)[xshift = 0.25cm] |- (AND1.in 1);
+\draw (E1)[xshift = 0.25cm] |- (AND1.in 2);
+\end{circuitikz}
+\caption*{Schaltnetz}
+\end{minipage}
+\end{figure}
+\end{solution}

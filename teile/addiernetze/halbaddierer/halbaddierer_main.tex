@@ -10,13 +10,13 @@
 \chapter{Halbaddierer}
 \label{chapter-halbaddierer}
 
-Das Ziel von diesem und den folgenden Kapiteln ist es, ein Schaltnetz zu konstruieren, welches zwei mehrstellige Dualzahlen addieren kann. Die Lernziele für dieses Kapitel lauten:\\
+Ziel dieses und der folgenden Kapitel ist es, ein Schaltnetz zu konstruieren, das in der Lage ist, zwei mehrstellige Dualzahlen zu addieren. Die Lernziele dieses Kapitels sind:\\
 
 \newcommand{\halbaddiererLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
 \item Sie definieren, was ein Addiernetz ist.
-\item Sie erstellen ein Schaltnetz, welches zwei einstellige Dualzahlen addieren kann.
+\item Sie erstellen ein Schaltnetz, das zwei Binärziffern addieren kann.
 \item Sie vereinfachen ein Schaltnetz, sodass es weniger Logikgatter benötigt.
 \item Sie definieren, was ein Halbaddierer ist.
 \end{todolist}
@@ -29,17 +29,17 @@ Das Ziel von diesem und den folgenden Kapiteln ist es, ein Schaltnetz zu konstru
 
 \section{Addiernetz}
 
-Ein Addiernetz automatisiert die schriftliche Addition von zwei Dualzahlen im Computer.
+Ein Addiernetz automatisiert die schriftliche Addition zweier Dualzahlen im Computer.
 
 \begin{definition}[Addiernetz]
-Ein Addiernetz ist ein Schaltnetz, welches zwei mehrstellige Dualzahlen addieren kann. Es ist Bestandteil eines Prozessors, eine zentrale Hardwarekomponente des Computers.
+Ein Addiernetz ist ein Schaltnetz, das zwei mehrstellige Dualzahlen addieren kann. Es ist Teil eines Prozessors, einer zentralen Hardware-Komponente eines Computers.
 \end{definition}
 
 Wir werden das Addiernetz schrittweise über mehrere Kapitel konstruieren. 
 
 \section{Konstruktion des Halbaddierers}
 
-Wir realisieren nun die Addition von \textbf{zwei} Binär\textbf{ziffern} durch ein Schaltnetz. Dies kommt bei der schriftlichen Addition von zwei mehrstelligen Dualzahlen immer in der Spalte ganz rechts vor, wie in folgendem Beispiel zu sehen.
+Wir realisieren nun die Addition von \textbf{zwei} Binär\textbf{ziffern} durch ein Schaltnetz. Dies geschieht bei der schriftlichen Addition von zwei mehrstelligen Dualzahlen immer in der Spalte ganz rechts vor, wie das folgende Beispiel zeigt.
 
 \begin{figure}[htb]
 \centering
@@ -55,26 +55,27 @@ Wir realisieren nun die Addition von \textbf{zwei} Binär\textbf{ziffern} durch 
     		& 	& 1 & 0 & 1 & \textbf{1} & [5mm]	\text{1. Summand} \\
 	+      & 	&    & 1 & 1 & \textbf{1} &      	\text{2. Summand} \\ 
 		& 1 	& 1 & 1 & 1 &    &         	\text{Überträge} \\
-        		& 1 	& 0 & 0 & 0 & 0 &      	 \text{Summe} \\                                                  
+        		& 1 	& 0 & 0 & 1 & 0 &      	 \text{Summe} \\                                                  
     };
     \draw[-,color=black, semithick] (m-3-1.south west) -- (m-3-6.south east);
 \end{tikzpicture}
 \end{equation*}
 \end{figure}
 
-Das Schaltnetz muss alle vier Kombinationen von zwei Binärziffern addieren können. Wir fassen die vier Kombinationen in \autoref{table-wahrheitstabelle-halbaddierer} zusammen und verwenden die üblichen Bezeichnungen der Digitaltechnik. Wir können \autoref{table-wahrheitstabelle-halbaddierer} nun als Wahrheitstabelle auffassen und daraus mit den bekannten Tools ein Schaltnetz konstruieren.
+Das Schaltnetz muss in der Lage sein, alle vier Kombinationen von zwei Binärziffern zu addieren. Wir fassen die vier Kombinationen in \autoref{table-wahrheitstabelle-halbaddierer} zusammen und verwenden die in der Digitaltechnik üblichen Bezeichnungen. Wir können nun \autoref{table-wahrheitstabelle-halbaddierer} als Wahrheitstabelle auffassen und daraus mit den bekannten Werkzeugen ein Schaltnetz konstruieren.
 
 \begin{table}[htb]
 \centering
 \begin{tblr}{|Q[c, m, 2cm]|Q[c, m, 2cm]||Q[c, m, 2cm]|Q[c, m, 2cm]|}
 \hline
+\SetCell[c=2]{c} Eingänge & & \SetCell[c=2]{c} Ausgänge \\ \hline
 Bit $x$ & Bit $y$ & Summe $s$ & ausgehender Übertrag $c_{\text{out}}$ \\ \hline[2pt]
 0 & 0 & 0 & 0 \\ \hline
 0 & 1 & 1 & 0 \\ \hline
 1 & 0 & 1 & 0 \\ \hline
 1 & 1 & 0 & 1 \\ \hline
 \end{tblr}
-\caption{Der Übertrag wird ausgehender Übertrag genannt (eng. carry out), da bei der Addition ein Übertrag am Ausgang erzeugt wird.}
+\caption{Der Übertrag wird als ausgehender Übertrag bezeichnet (engl. carry out), da bei der Addition am Ausgang ein Übertrag erzeugt wird.}
 \label{table-wahrheitstabelle-halbaddierer}
 \end{table}
 
@@ -83,24 +84,29 @@ Bit $x$ & Bit $y$ & Summe $s$ & ausgehender Übertrag $c_{\text{out}}$ \\ \hline
 Lösen Sie die Übungen in der vorgegebenen Reihenfolge.
 
 \begin{exercise}
-\label{exercise-wahrheitstabelle-halbaddierer}
-Erstellen Sie für die Wahrheitstabelle  (siehe \autoref{table-wahrheitstabelle-halbaddierer}) eine Boolesche Formel in \ac{DNF}. Sie müssen also für $s$ und $c_{\text{out}}$ \textbf{jeweils} eine Boolesche Formel in \ac{DNF} erstellen.
+\label{exercise-dnf-halbaddierer}
+Erstellen Sie für die Wahrheitstabelle (siehe \autoref{table-wahrheitstabelle-halbaddierer}) eine boolesche Formel in \ac{DNF}. Sie müssen also für $s$ und $c_{\text{out}}$ \textbf{jeweils} eine boolesche Formel in \ac{DNF} erstellen.
 
-\fillwithgrid{2in}
+\fillwithgrid{1in}
 \end{exercise}
 
 \begin{exercise}
-Zeichen Sie für die Booleschen Formeln aus \autoref{exercise-wahrheitstabelle-halbaddierer} das dazugehörige Schaltnetz. Es ist \textbf{ein} Schaltnetz mit \textbf{zwei} Eingängen und \textbf{zwei Ausgängen}.
+\label{exercise-schaltnetz-halbaddierer}
+Zeichen Sie für die booleschen Formeln aus Übung \ref{exercise-dnf-halbaddierer} das entsprechende Schaltnetz. Es handelt sich um \textbf{ein} Schaltnetz mit \textbf{zwei} Eingängen und \textbf{zwei Ausgängen}.
 
-\fillwithgrid{\stretch{1}}
+\fillwithgrid{2in}
 
+\end{exercise}
+
+\begin{exercise}
+Zeichnen Sie in das Schaltnetz aus Übung \ref{exercise-schaltnetz-halbaddierer} ein, wie das Schaltnetz das Ergebnis von $x = 1$ und $y = 1$ berechnet. Tragen Sie dazu vor und nach jedem Logikgatter entweder $0$ oder $1$ ein. Tragen Sie abschliessend die korrekten Bits an den Ausgängen ein.
 \end{exercise}
 
 \newpage
 
 \section{Der Halbaddierer}
 
-Für die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-halbaddierer} erhalten wir die Formeln $s = (\neg x \wedge y) \vee (x \wedge \neg y)$ und $c_{\text{out}} = x \wedge y$. Damit entsteht das Schaltnetz aus \autoref{half-adder-schaltnetz-1}.
+Für die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-halbaddierer} erhalten wir die Formeln $s = (\neg x \wedge y) \vee (x \wedge \neg y)$ und $c_{\text{out}} = x \wedge y$. Dies ergibt das in \autoref{half-adder-schaltnetz-1} dargestellte Schaltnetz.
 
 \begin{figure}[ht]
 \centering
@@ -114,14 +120,14 @@ Für die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-halbaddierer} erha
 \draw (-4,1.5) node[european not port] (NOT1) {};
 \draw (-4,-1.5) node[european not port] (NOT2) {};
 
-\draw (OR1.out) node[anchor=west] {$s$};
-\draw (AND3.out) node[anchor=west] {$c_{\text{out}}$};
+\draw (OR1.out) -+(1,0) node[anchor=west] {$s$};
+\draw (AND3.out) -+(1,-2.5) node[anchor=west] {$c_{\text{out}}$};
 
-\draw (-8, 0.5) node (x) {$x$};
+\draw (-9, 0.5) node (x) {$x$};
 \draw (-7, 0.5) node[circle, fill, inner sep=1pt] (xC1) {};
 \draw (-7, -0.775) node[circle, fill, inner sep=1pt] (xC2) {};
 
-\draw (-8, -0.25) node (y) {$y$};
+\draw (-9, -0.25) node (y) {$y$};
 \draw (-7.5, -0.25) node[circle, fill, inner sep=1pt] (yC1) {};
 \draw (-7.5, -1.5) node[circle, fill, inner sep=1pt] (yC2) {};
 
@@ -141,28 +147,29 @@ Für die Wahrheitstabelle aus \autoref{table-wahrheitstabelle-halbaddierer} erha
 \draw (yC1) |- (AND1.in 2);
 \draw (yC2) |- (AND3.in 2);
 \end{circuitikz}
-\caption{Schaltnetz für $s = (\neg x \wedge y) \vee (x \wedge \neg y)$ und $c_{\text{out}} = x \wedge y$.}
+\caption{Schaltnetz für einen Halbaddierer als \protect\say{White Box}).}
 \label{half-adder-schaltnetz-1}
 \end{figure}
 
-Das Schaltnetz aus \autoref{half-adder-schaltnetz-1} kann zwei Binärziffern addieren. Es ist somit ein Halbaddierer.
+Das Schaltnetz in \autoref{half-adder-schaltnetz-1} kann zwei Binärziffern addieren. Es ist somit ein Halbaddierer.
 
-\begin{definition}
-Ein Schaltnetz, welches zwei \textbf{einstellige} Dualzahlen (zwei Binärziffern) addieren kann, nennt man \textbf{Halbaddierer} (eng. half adder, kurz \acs{HA}).
+\begin{definition}[Halbaddierer]
+Ein Schaltnetz, das zwei beliebige Binärziffern addieren kann, wird als \textbf{Halbaddierer} (engl. half adder, abgekürzt \acs{HA}) bezeichnet.
 \end{definition}
 
-Es gibt verschiedenen Schaltnetze, welche einen Halbaddierer (\ac{HA}) darstellen. Das Schaltnetz aus \autoref{half-adder-schaltnetz-1} ist eine Möglichkeit für die Realisierung. Unabhängig davon, wie wir das Schaltnetz für den Halbaddierer konstruieren, verwenden wir nun die Darstellung aus \autoref{figure-ha-block} für den Halbaddierer. Es repräsentiert ein eigenständiges Bauteil, welches auch so zu kaufen gibt. Wir können es uns so vorstellen, als wäre das Schaltnetz aus \autoref{half-adder-schaltnetz-1} dahinter \say{verborgen}.
+Es gibt verschiedene Schaltnetze, die einen Halbaddierer (\ac{HA}) darstellen. Das Schaltnetz in \autoref{half-adder-schaltnetz-1} ist eine Möglichkeit der Realisierung. Unabhängig davon, wie wir das Schaltnetz für den Halbaddierer konstruieren, verwenden wir nun die Darstellung in \autoref{figure-ha-block} für den Halbaddierer. Es stellt ein eigenständiges Bauteil dar, das auch so gekauft werden kann. Wir können es uns so vorstellen, dass das Schaltnetz in \autoref{half-adder-schaltnetz-1} dahinter \say{versteckt} ist.
 
 \begin{figure}[htb]
 \centering
 \begin{circuitikz}[american]
-	\draw (0,0) node[dipchip, num pins=4, hide numbers, no topmark] (HA) {\acs{HA}};
-	\node[left] at (HA.pin 1) {$x$};
-	\node[left] at (HA.pin 2) {$y$};
-	\node[right] at (HA.pin 3) {$c_{\text{out}}$};
-	\node[right] at (HA.pin 4) {$s$};
+	\ctikzset{multipoles/dipchip/width=2}
+	\draw (0,0) node[dipchip, num pins=4, hide numbers, no topmark] (HA1) {\textbf{\acs{HA}}};
+	\node [right] at (HA1.bpin 1) {$x$};
+	\node [right] at (HA1.bpin 2) {$y$};
+	\node [left] at (HA1.bpin 4) {$s$};
+	\node [left] at (HA1.bpin 3) {$c_{\text{out}}$};
 \end{circuitikz}
-\caption{Ein Halbaddierer mit zwei Eingängen ($x$ und $y$) und zwei Ausgängen ($s$ und $c_{\text{out}}$). Die Eingänge repräsentieren zwei einstellige Dualzahlen (zwei Binärziffern). Die Ausgänge zeigen die Summe und den ausgehenden Übertrag (eng. carry out, kurz $c_{\text{out}}$).}
+\caption{Ein Halbaddierer als \protect\say{Black Box} mit zwei Eingängen ($x$ und $y$) und zwei Ausgängen ($s$ und $c_{\text{out}}$). Die Eingänge stellen zwei Binärziffern dar. Die Ausgänge zeigen die Summe und den ausgehenden Übertrag (engl. carry out, kurz $c_{\text{out}}$) an.}
 \label{figure-ha-block}
 \end{figure}
 
@@ -184,7 +191,7 @@ Es gibt verschiedenen Schaltnetze, welche einen Halbaddierer (\ac{HA}) darstelle
 \centering
 \includegraphics[width=\textwidth]{ha_4}
 \end{minipage}
-\caption{Der Halbaddierer simuliert in Logicly. Es werden alle vier Kombinationen angezeigt.}
+\caption{Der Halbaddierer simuliert in Logicly. Alle vier Kombinationen werden angezeigt.}
 \end{figure}
 
 \newpage
@@ -194,11 +201,22 @@ Es gibt verschiedenen Schaltnetze, welche einen Halbaddierer (\ac{HA}) darstelle
 Lösen Sie die Übungen in der vorgegebenen Reihenfolge.
 
 \begin{exercise}
-Ein Teil des Schaltnetzes für den Halbaddierer lässt sich kompakter darstellen. Vereinfachen Sie die Formel $s = (\neg x \wedge y) \vee (x \wedge \neg y)$, sodass weniger Boolesche Operatoren benutzt werden. Schauen Sie sich dazu gegebenenfalls nochmals Übung \ref{exercise-xor-nor-nand-xnor} an.
-\fillwithgrid{1in}
+\label{exercise-ha-xor}
+Ein Teil des Schaltnetzes für den Halbaddierer kann kompakter dargestellt werden. Vereinfachen Sie die Formel $s = (\neg x \wedge y) \vee (x \wedge \neg y)$ so, dass nur \textbf{ein boolescher Operator} verwendet wird. Sehen Sie sich dazu ggf. noch einmal Übung \ref{exercise-xor-nor-nand-xnor} an.
+\fillwithgrid{0.5in}
 \end{exercise}
 
 \begin{exercise}
-Zeichnen Sie erneut das Schaltnetz für einen Halbaddierer. Berücksichtigen Sie dieses Mal Ihre Ergebnisse aus der vorherigen Aufgabe.
+Zeichnen Sie erneut das Schaltnetz für einen Halbaddierer. Berücksichtigen Sie diesmal Ihre Ergebnisse aus Übung \ref{exercise-ha-xor}.
+\fillwithgrid{2in}
+\end{exercise}
+
+\begin{exercise}
+\begin{enumerate}
+\item[a)] Notieren Sie eine schriftliche Addition von \textbf{zwei unterschiedlichen Dualzahlen} mit \textbf{je drei Bits}. Berechnen Sie das Ergebnis schriftlich.
+\fillwithgrid{1in}
+\item[b)] Markieren Sie die \textbf{Stelle}, welche mit einem \textbf{Halbaddierer} durchgeführt werden kann.
+\item[c)] Warum kann man die anderen Stellen \textbf{nicht} mit einem Halbaddierer realisieren?
 \fillwithgrid{\stretch{1}}
+\end{enumerate}
 \end{exercise}

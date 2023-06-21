@@ -184,11 +184,12 @@ Für jeden Block bilden wir nun \textbf{eine Teilformel}. Pro Block bestimmen wi
 \begin{itemize}
 \item $T_1 = \neg E_1 \wedge \neg E_2$
 \begin{itemize}
-\item $\neg E_0 \notin T_1$: nur die \textbf{erste} Eins in diesem Block \say{besitzt} den Eingang $\neg E_0$
-\item $E_0 \notin T_1$: nur die \textbf{zweite} Eins in diesem Block \say{besitzt} den Eingang $E_0$
-\item $E_1 \notin T_1$ und $E_2 \notin T_1$: keine Eins \say{besitzt} einen dieser Eingänge in diesem Block 
+\item \textbf{Beide} Einsen sind in der Zeile $\neg E_1$ und \textbf{beide} Einsen sind in den Spalten $\neg E_2$.
 \end{itemize}
 \item $T_2 = E_0 \wedge E_1$
+\begin{itemize}
+\item \textbf{Beide} Einsen sind in den Spalten $\neg E_0$ und \textbf{beide} Einsen sind in der Zeile $\neg E_1$.
+\end{itemize}
 \end{itemize}
 
 Daraus ergibt sich dann folgendes Ergebnis:
@@ -398,10 +399,33 @@ Wir fassen hier nochmals die wichtigsten Regeln zur Blockbildung zusammen und ze
 
 Erstellen Sie \textbf{pro Übung} für \textbf{jeden Ausgang} die \textbf{kompakte boolesche Formel} in \ac{DNF} mithilfe des entsprechenden \ac{KV}-Diagramms. Stellen Sie die Blöcke im \ac{KV}-Diagramm \textbf{sauber} dar.
 
-TODO: NOCH ZWEI ÜBUNGEN: 4 Zellen und 16 Zellen
+\begin{exercise}
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tblr}{|c|c||c|}
+\hline
+$E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+0 & 0 & 1 \\ \hline
+0 & 1 & 0 \\ \hline
+1 & 0 & 1 \\ \hline
+1 & 1 & 1 \\ \hline
+\end{tblr}
+\caption*{Wahrheitstabelle}
+\label{table-exercise-kv-1}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+\centering
+\fillwithgrid	{1.5in}
+\end{minipage}
+\end{table}
+\end{exercise}
+
+\vfill
 
 \begin{exercise}
-
 \begin{table}[htb]
 \centering
 \begin{minipage}{0.3\textwidth}
@@ -419,12 +443,12 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
 \caption*{Wahrheitstabelle}
-\label{table-exercise-kv-1}
+\label{table-exercise-kv-2}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{3in}
+\fillwithgrid	{2.5in}
 \end{minipage}
 \end{table}
 \end{exercise}
@@ -449,12 +473,12 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
 \caption*{Wahrheitstabelle}
-\label{table-exercise-kv-2}
+\label{table-exercise-kv-3}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{3in}
+\fillwithgrid	{2.5in}
 \end{minipage}
 \end{table}
 \end{exercise}
@@ -466,6 +490,7 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 \centering
 \begin{minipage}{0.3\textwidth}
 \centering
+\adjustbox{max height=4cm}{%
 \begin{tblr}{|c|c|c|c||c|c|}
 \hline
 $E_3$ & $E_2$ & $E_1$ & $E_0$ & $A_0$ & $A_1$ \\ \hline[2pt]
@@ -486,13 +511,54 @@ $E_3$ & $E_2$ & $E_1$ & $E_0$ & $A_0$ & $A_1$ \\ \hline[2pt]
 1 & 1 & 1 & 0 & 1 & 1 \\ \hline
 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
 \end{tblr}
+}
 \caption*{Wahrheitstabelle}
-\label{table-exercise-kv-3}
+\label{table-exercise-kv-4}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
 \centering
-\fillwithgrid	{4.5in}
+\fillwithgrid	{3.5in}
+\end{minipage}
+\end{table}
+\end{exercise}
+
+\vfill
+
+\begin{exercise}
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.3\textwidth}
+\centering
+\adjustbox{max height=4cm}{%
+\begin{tblr}{|c|c|c|c||c|}
+\hline
+$E_3$ & $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
+0 & 0 & 0 & 0 & 0 \\ \hline
+0 & 0 & 0 & 1 & 0 \\ \hline
+0 & 0 & 1 & 0 & 0 \\ \hline
+0 & 0 & 1 & 1 & 1 \\ \hline
+0 & 1 & 0 & 0 & 0  \\ \hline
+0 & 1 & 0 & 1 & 0 \\ \hline
+0 & 1 & 1 & 0 & 1 \\ \hline
+0 & 1 & 1 & 1 & 1 \\ \hline
+1 & 0 & 0 & 0 & 0 \\ \hline
+1 & 0 & 0 & 1 & 0 \\ \hline
+1 & 0 & 1 & 0 & 1 \\ \hline
+1 & 0 & 1 & 1 & 1 \\ \hline
+1 & 1 & 0 & 0 & 0 \\ \hline
+1 & 1 & 0 & 1 & 1 \\ \hline
+1 & 1 & 1 & 0 & 0 \\ \hline
+1 & 1 & 1 & 1 & 1 \\ \hline
+\end{tblr}
+}
+\caption*{Wahrheitstabelle}
+\label{table-exercise-kv-5}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+\centering
+\fillwithgrid	{3.5in}
 \end{minipage}
 \end{table}
 \end{exercise}
