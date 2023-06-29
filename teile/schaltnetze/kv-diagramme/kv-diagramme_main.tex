@@ -15,7 +15,7 @@ Boolesche Formeln in \ac{DNF} können sehr umfangreich sein. Wir zeigen nun, wie
 \newcommand{\kvDiagrammeLernziele}{
 \protect\begin{minipage}{\textwidth}
 \begin{todolist}
-\item Sie erstellen eine kompakte boolesche Formel in \ac{DNF} mithilfe eines \acs{KV}-Diagramms.
+\item Sie erstellen eine vereinfachte boolesche Formel in \ac{DNF} mithilfe eines \acs{KV}-Diagramms.
 \end{todolist}
 \end{minipage}
 }
@@ -273,11 +273,11 @@ Wir fassen hier nochmals die wichtigsten Regeln zur Blockbildung zusammen und ze
 \begin{enumerate}
 \item Blöcke dürfen \textbf{nicht} diagonal gebildet werden.
 \item Die Blockgrösse muss eine \textbf{$\mathbf{2}$er-Potenz} sein.
-\item Ein Block muss so gross wie möglich sein.
+\item Ein Block muss \textbf{so gross wie möglich} sein.
 \item Jede Eins muss \textbf{mindestens} in einem Block vorkommen.
 \item Blöcke \textbf{dürfen} sich überlappen.
 \item Blöcke \textbf{dürfen} (unter bestimmten Bedingungen) über den \say{Rand} gebildet werden.
-\item Je weniger Blöcke, desto besser.
+\item Je \textbf{weniger Blöcke}, desto \textbf{besser}.
 \end{enumerate}
 
 \subsection{Ausgewählte Beispiele}
@@ -397,7 +397,7 @@ Wir fassen hier nochmals die wichtigsten Regeln zur Blockbildung zusammen und ze
 
 \section{Übungen}
 
-Erstellen Sie \textbf{pro Übung} für \textbf{jeden Ausgang} die \textbf{kompakte boolesche Formel} in \ac{DNF} mithilfe des entsprechenden \ac{KV}-Diagramms. Stellen Sie die Blöcke im \ac{KV}-Diagramm \textbf{sauber} dar.
+Erstellen Sie pro \textbf{Übung} und \textbf{Ausgang} die \textbf{vereinfachte boolesche Formel} in \ac{DNF} mithilfe eines \ac{KV}-Diagramms. Wählen Sie das korrekte \ac{KV}-Diagramm und stellen Sie die Blöcke \textbf{sauber} dar.
 
 \begin{exercise}
 \begin{table}[htb]
@@ -458,7 +458,7 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 \begin{exercise}
 \begin{table}[htb]
 \centering
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.2\textwidth}
 \centering
 \begin{tblr}{|c|c|c||c|}
 \hline
@@ -476,9 +476,43 @@ $E_2$ & $E_1$ & $E_0$ & $A_0$ \\ \hline[2pt]
 \label{table-exercise-kv-3}
 \end{minipage}
 \hfill
-\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.75\textwidth}
 \centering
-\fillwithgrid	{2.5in}
+
+\begin{tikzpicture}[karnaugh]
+\karnaughmap{1}{$A$}{{$E_0$}}{}{
+	\node (negE0) at (0.5, 1.25) {\tiny $\neg E_0$};
+  }
+\end{tikzpicture}
+
+\begin{tikzpicture}[karnaugh]
+\karnaughmap{2}{$A$}{{$E_1$}{$E_0$}}{}{
+	\node (negE1) at (0.5, 2.25) {\tiny $\neg E_0$};
+	\node (negE0) at (-0.35, 1.5) {\tiny $\neg E_1$};
+  }
+\end{tikzpicture}
+
+\begin{tikzpicture}[karnaugh]
+\karnaughmap{3}{$A$}{{$E_2$}{$E_1$}{$E_0$}}{}{
+	\node (negE01) at (0.5, 2.25) {\tiny $\neg E_0$};
+	\node (negE02) at (3.5, 2.25) {\tiny $\neg E_0$};
+	\node (negE11) at (-0.35, 1.5) {\tiny $\neg E_1$};
+	\node (negE21) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE22) at (1.5, -.25) {\tiny $\neg E_2$};
+  }
+\end{tikzpicture}
+\begin{tikzpicture}[karnaugh]
+\karnaughmap{4}{$A$}{{$E_3$}{$E_2$}{$E_1$}{$E_0$}}{}{
+	\node (negE01) at (4.35, 3.5) {\tiny $\neg E_3$};
+	\node (negE02) at (4.35, 2.5) {\tiny $\neg E_3$};
+	\node (negE11) at (0.5, -.25) {\tiny $\neg E_2$};
+     	\node (negE12) at (1.5, -.25) {\tiny $\neg E_2$};
+	\node (negE12) at (-0.35, 3.5) {\tiny $\neg E_1$};
+	\node (negE22) at (-0.35, 0.5) {\tiny $\neg E_1$};
+	\node (negE31) at (0.5, 4.25) {\tiny $\neg E_0$};
+	\node (negE32) at (3.5, 4.25) {\tiny $\neg E_0$};
+  }
+\end{tikzpicture}
 \end{minipage}
 \end{table}
 \end{exercise}
